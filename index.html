@@ -291,6 +291,70 @@
       .contact-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* ── CHATBOT WIDGET ── */
+    #chat-widget { position:fixed; bottom:25px; right:25px; z-index:9999; font-family:'Segoe UI',sans-serif; }
+    #chat-bubble {
+      background:#2B6CB0; color:#fff; border-radius:50px; padding:13px 20px;
+      cursor:pointer; display:flex; align-items:center; gap:8px;
+      box-shadow:0 4px 20px rgba(43,108,176,0.45); font-size:14px; font-weight:600;
+      animation:chatpulse 2.5s infinite;
+    }
+    @keyframes chatpulse {
+      0%,100%{box-shadow:0 4px 20px rgba(43,108,176,0.45);}
+      50%{box-shadow:0 4px 32px rgba(43,108,176,0.75);}
+    }
+    #chat-window {
+      display:none; flex-direction:column; width:320px; height:460px;
+      background:#fff; border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,0.2); overflow:hidden;
+    }
+    #chat-header {
+      background:linear-gradient(135deg,#1a3a5c,#2B6CB0); color:#fff;
+      padding:14px 18px; display:flex; justify-content:space-between; align-items:center;
+    }
+    .chat-hdr-info { display:flex; align-items:center; gap:10px; }
+    .chat-hdr-avatar {
+      width:38px; height:38px; background:rgba(255,255,255,0.2); border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px;
+    }
+    .chat-hdr-info strong { font-size:14px; display:block; }
+    .chat-hdr-info small { font-size:11px; opacity:0.85; }
+    .chat-online { color:#68D391; }
+    #chat-close { background:none; border:none; color:#fff; font-size:20px; cursor:pointer; opacity:0.8; line-height:1; padding:0; }
+    #chat-messages {
+      flex:1; overflow-y:auto; padding:14px; display:flex;
+      flex-direction:column; gap:10px; background:#f8faff;
+    }
+    .chat-msg { max-width:82%; padding:10px 13px; border-radius:14px; font-size:13.5px; line-height:1.5; }
+    .chat-msg.bot {
+      background:#fff; color:#333; border-radius:14px 14px 14px 4px;
+      box-shadow:0 1px 5px rgba(0,0,0,0.08); align-self:flex-start;
+    }
+    .chat-msg.user { background:#2B6CB0; color:#fff; border-radius:14px 14px 4px 14px; align-self:flex-end; }
+    .typing-dots {
+      display:flex; gap:4px; align-items:center; padding:10px 14px;
+      background:#fff; border-radius:14px 14px 14px 4px;
+      box-shadow:0 1px 5px rgba(0,0,0,0.08); align-self:flex-start;
+    }
+    .typing-dots span {
+      width:7px; height:7px; background:#bbb; border-radius:50%; animation:tdot 1.2s infinite;
+    }
+    .typing-dots span:nth-child(2){animation-delay:0.2s;}
+    .typing-dots span:nth-child(3){animation-delay:0.4s;}
+    @keyframes tdot{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+    #chat-input-area {
+      display:flex; padding:11px; gap:7px; border-top:1px solid #eee; background:#fff;
+    }
+    #chat-input {
+      flex:1; border:1.5px solid #e2e8f0; border-radius:8px;
+      padding:8px 11px; font-size:13px; outline:none; font-family:inherit;
+    }
+    #chat-input:focus { border-color:#2B6CB0; }
+    #chat-send {
+      background:#2B6CB0; color:#fff; border:none; border-radius:8px;
+      padding:8px 15px; font-size:13px; font-weight:600; cursor:pointer;
+    }
+    #chat-send:hover { background:#1a4f8a; }
+
     /* ── RESPONSIVE — MOBILE (≤600px) ── */
     @media (max-width: 600px) {
       nav { padding: 10px 15px; }
@@ -520,6 +584,119 @@
       </div>
     </div>
   </section>
+
+  <!-- CHATBOT WIDGET -->
+  <div id="chat-widget">
+    <div id="chat-bubble" onclick="toggleChat()">
+      <span>💬</span> Chat with us
+    </div>
+    <div id="chat-window">
+      <div id="chat-header">
+        <div class="chat-hdr-info">
+          <div class="chat-hdr-avatar">SS</div>
+          <div>
+            <strong>SSquare IT</strong>
+            <small><span class="chat-online">●</span> We reply quickly</small>
+          </div>
+        </div>
+        <button id="chat-close" onclick="toggleChat()">✕</button>
+      </div>
+      <div id="chat-messages"></div>
+      <div id="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Type your message..." />
+        <button id="chat-send">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let chatStep = 0, userName = '', userRequirement = '', userContact = '';
+    const msgs = document.getElementById('chat-messages');
+
+    function toggleChat() {
+      const win = document.getElementById('chat-window');
+      const bbl = document.getElementById('chat-bubble');
+      const open = win.style.display === 'flex';
+      win.style.display = open ? 'none' : 'flex';
+      bbl.style.display = open ? 'flex' : 'none';
+      if (!open && chatStep === 0) {
+        setTimeout(() => botSay("Hi! Welcome to SSquare IT \uD83D\uDC4B What\u2019s your name?"), 600);
+        chatStep = 1;
+      }
+    }
+
+    function addMsg(text, who) {
+      const d = document.createElement('div');
+      d.className = 'chat-msg ' + who;
+      d.textContent = text;
+      msgs.appendChild(d);
+      msgs.scrollTop = 99999;
+    }
+
+    function showTyping(cb) {
+      const t = document.createElement('div');
+      t.className = 'typing-dots';
+      t.id = 'typing';
+      t.innerHTML = '<span></span><span></span><span></span>';
+      msgs.appendChild(t);
+      msgs.scrollTop = 99999;
+      setTimeout(() => { t.remove(); cb(); }, 900);
+    }
+
+    function botSay(text) {
+      showTyping(() => addMsg(text, 'bot'));
+    }
+
+    function handleSend() {
+      const inp = document.getElementById('chat-input');
+      const txt = inp.value.trim();
+      if (!txt) return;
+      addMsg(txt, 'user');
+      inp.value = '';
+      if (chatStep === 1) {
+        userName = txt;
+        botSay('Nice to meet you, ' + userName + '! What service or requirement can we help you with?');
+        chatStep = 2;
+      } else if (chatStep === 2) {
+        userRequirement = txt;
+        botSay('Please share your phone number or email so we can reach you.');
+        chatStep = 3;
+      } else if (chatStep === 3) {
+        userContact = txt;
+        chatStep = 4;
+        document.getElementById('chat-input-area').style.display = 'none';
+        botSay('Sending your message\u2026');
+        submitToEmail();
+      }
+    }
+
+    function submitToEmail() {
+      const body = new FormData();
+      body.append('access_key', '520b1c7e-b15d-4a23-b022-b1f03e53a371');
+      body.append('subject', 'SSquare IT received a new message.');
+      body.append('from_name', userName);
+      body.append('to', 'info@ssquareit.co.in');
+      body.append('message',
+        'SSquare IT received a new message.\n\nFrom ' + userName + ':\n\n' +
+        userRequirement + '\n\nContact: ' + userContact
+      );
+      fetch('https://api.web3forms.com/submit', { method:'POST', body })
+        .then(r => r.json())
+        .then(d => {
+          if (d.success) {
+            botSay('Your message has been sent! Our team will contact you very soon. \uD83C\uDF89');
+          } else {
+            botSay('Something went wrong. Please call us at +91 8939756045.');
+          }
+        })
+        .catch(() => botSay('Something went wrong. Please call us at +91 8939756045.'));
+    }
+
+    document.getElementById('chat-send').addEventListener('click', handleSend);
+    document.getElementById('chat-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleSend();
+    });
+  </script>
 
   <!-- FOOTER -->
   <footer>
