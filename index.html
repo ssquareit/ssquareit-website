@@ -153,11 +153,31 @@
       flex: 1;
       background: rgba(255,255,255,0.1);
       border-radius: 15px;
-      padding: 40px;
+      overflow: hidden;
       text-align: center;
     }
-    .product-img .big-icon { font-size: 100px; }
-    .product-img p { margin-top: 15px; font-size: 14px; opacity: 0.8; }
+    .product-img iframe {
+      width: 100%;
+      height: 320px;
+      border: none;
+      border-radius: 15px;
+    }
+    .product-img p { margin-top: 12px; font-size: 13px; opacity: 0.8; padding: 0 15px 15px; }
+    /* ── DEMO SECTION ── */
+    .demo { background: #f8faff; }
+    .demo-video-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(43,108,176,0.15);
+    }
+    .demo-video-wrap iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+    }
     .btn-white {
       background: #fff;
       color: #2B6CB0;
@@ -354,9 +374,21 @@
         <a href="#contact" class="btn-white">Request Free Demo</a>
       </div>
       <div class="product-img">
-        <div class="big-icon">🧠</div>
-        <p>Powered by LLaMA 3.1<br/>DeepSeek Math Engine<br/>100% Offline & Secure</p>
+        <iframe src="https://drive.google.com/file/d/1fWg-hCpGAPnZQ2ia0m2Iz6EF1yRnd41Z/preview" allowfullscreen allow="autoplay"></iframe>
+        <p>▶ Watch Live Demo — Sense AI in Action</p>
       </div>
+    </div>
+  </section>
+
+  <!-- DEMO VIDEO -->
+  <section class="demo">
+    <div class="section-title">
+      <div class="tag">See It In Action</div>
+      <h2>Sense AI — Live Demo</h2>
+      <p>Watch how Sense AI generates exam-ready questions in seconds — fully offline</p>
+    </div>
+    <div class="demo-video-wrap">
+      <iframe src="https://drive.google.com/file/d/1fWg-hCpGAPnZQ2ia0m2Iz6EF1yRnd41Z/preview" allowfullscreen allow="autoplay"></iframe>
     </div>
   </section>
 
