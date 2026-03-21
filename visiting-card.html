@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SSquare IT — Visiting Card</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e8e8e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 40px;
+      padding: 40px;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: -30px;
+    }
+
+    /* Card size: 90mm x 54mm = 340px x 204px at 96dpi */
+    .card {
+      width: 340px;
+      height: 204px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      position: relative;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      outline: 2px solid;
+      outline-color: #b38728;
+      outline-offset: -2px;
+    }
+
+    /* ── FRONT ── */
+    .front {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 20px 22px;
+      gap: 16px;
+    }
+
+    .front-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .front-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .front-logo img {
+      height: 36px;
+      border-radius: 5px;
+    }
+
+    .front-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .company-name {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .tagline {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, #bf953f, #fcf6ba, #aa771c);
+      opacity: 0.7;
+    }
+
+    .person-name {
+      font-size: 13px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .designation {
+      font-size: 9px;
+      color: #90cdf4;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .contact-info p {
+      font-size: 8.5px;
+      color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-info span {
+      font-size: 10px;
+    }
+
+    .front-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qr-placeholder {
+      width: 65px;
+      height: 65px;
+      background: #fff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .qr-placeholder p {
+      font-size: 6px;
+      color: #333;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .qr-placeholder img {
+      width: 55px;
+      height: 55px;
+    }
+
+    .scan-text {
+      font-size: 6.5px;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+    }
+
+    /* Gold foil label */
+    .foil-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      color: #7a4100;
+      font-size: 6px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 10px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: none; /* hidden — just for reference */
+    }
+
+    /* ── BACK ── */
+    .back {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 28px;
+      gap: 10px;
+    }
+
+    .back-logo img {
+      height: 38px;
+      border-radius: 5px;
+    }
+
+    .back-title {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #90cdf4;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 20px;
+      width: 100%;
+    }
+
+    .service-item {
+      font-size: 8px;
+      color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .service-item::before {
+      content: '▸';
+      color: #90cdf4;
+      font-size: 8px;
+    }
+
+    .back-quote {
+      font-size: 7.5px;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 8px;
+      width: 100%;
+    }
+
+    /* GOLD FOIL elements note */
+    .foil-note {
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .note-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px 24px;
+      max-width: 340px;
+      font-size: 12px;
+      color: #333;
+      line-height: 1.8;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .note-box h3 {
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #1a3a5c;
+    }
+
+    .note-box .gold { color: #b8860b; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <h2>Front Side</h2>
+
+  <div class="card front">
+    <div class="front-left">
+
+      <div class="front-logo">
+        <img src="ssquareit-logo.png" alt="SSquare IT" />
+        <div class="front-logo-text">
+          <span class="tagline">Cloud • AI • Innovation</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="person-name">Shashikumar Subramanian</div>
+        <div class="designation">Founder & CEO</div>
+      </div>
+
+      <div class="contact-info">
+        <p><span>📞</span> 0462-2915449</p>
+        <p><span>✉</span> info@ssquareit.co.in</p>
+        <p><span>🌐</span> ssquareit.co.in</p>
+      </div>
+
+    </div>
+
+    <div class="front-right">
+      <div class="qr-placeholder">
+        <img src="ssquareit-qrcode.png" alt="QR Code" />
+      </div>
+      <div class="scan-text">Scan to visit</div>
+    </div>
+  </div>
+
+  <h2>Back Side</h2>
+
+  <div class="card back">
+    <div class="back-logo">
+      <img src="ssquareit-logo.png" alt="SSquare IT" />
+    </div>
+    <div class="back-title">What We Do</div>
+    <div class="services">
+      <div class="service-item">Cloud Migration</div>
+      <div class="service-item">AI & Machine Learning</div>
+      <div class="service-item">Cybersecurity</div>
+      <div class="service-item">ERP & Enterprise</div>
+      <div class="service-item">DevOps & Automation</div>
+      <div class="service-item">Custom Software</div>
+    </div>
+    <div class="back-quote">"Transforming Businesses with Technology"</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2 style="margin-top:20px;">— Shanthi Chinnadurai —</h2>
+
+  <h2>Front Side</h2>
+
+  <div class="card front">
+    <div class="front-left">
+
+      <div class="front-logo">
+        <img src="ssquareit-logo.png" alt="SSquare IT" />
+        <div class="front-logo-text">
+          <span class="tagline">Cloud • AI • Innovation</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="person-name">Shanthi Chinnadurai</div>
+        <div class="designation">CTO & AI Architect</div>
+      </div>
+
+      <div class="contact-info">
+        <p><span>📞</span> 0462-2915449</p>
+        <p><span>✉</span> info@ssquareit.co.in</p>
+        <p><span>🌐</span> ssquareit.co.in</p>
+      </div>
+
+    </div>
+
+    <div class="front-right">
+      <div class="qr-placeholder">
+        <img src="ssquareit-qrcode.png" alt="QR Code" />
+      </div>
+      <div class="scan-text">Scan to visit</div>
+    </div>
+  </div>
+
+  <h2>Back Side</h2>
+
+  <div class="card back">
+    <div class="back-logo">
+      <img src="ssquareit-logo.png" alt="SSquare IT" />
+    </div>
+    <div class="back-title">Expertise</div>
+    <div class="services">
+      <div class="service-item">AI Engineering</div>
+      <div class="service-item">Azure AI (AI-900)</div>
+      <div class="service-item">Machine Learning</div>
+      <div class="service-item">AI-102 Certified</div>
+      <div class="service-item">Cloud Architecture</div>
+      <div class="service-item">AZ-305 Certified</div>
+    </div>
+    <div class="back-quote">"Transforming Businesses with Technology"</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+
+  <div class="note-box">
+    <h3>🖨 Print Instructions for Printer</h3>
+    <b>Size:</b> 90mm × 54mm (standard business card)<br/>
+    <b>Paper:</b> 400 GSM matte / velvet lamination<br/>
+    <b class="gold">Foil:</b> Gold foil on — "Cloud • AI • Innovation" tagline + card border/frame<br/>
+    <b class="gold">Optional Foil:</b> Person name (Shashikumar / Shanthi)<br/>
+    <b>Logo:</b> Full color CMYK print (provide ssquareit-logo.png)<br/>
+    <b>QR Code:</b> Included — print as-is (ssquareit-qrcode.png)<br/>
+    <b>Background:</b> Matte dark blue gradient<br/>
+    <b>Quantity (Shashikumar):</b> _______ cards<br/>
+    <b>Quantity (Shanthi):</b> _______ cards<br/>
+    <b>Both sides:</b> Yes (Front + Back as shown above)<br/>
+    <b>Note:</b> Request digital proof before final print run
+  </div>
+
+</body>
+</html>
