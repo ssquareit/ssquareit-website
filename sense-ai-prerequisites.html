@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Sense AI — Pre-Installation Requirements</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #1a202c;
+      background: #fff;
+      font-size: 13.5px;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { font-size: 12px; }
+      .no-print { display: none !important; }
+      .page { page-break-after: avoid; }
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 32px 36px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #2B6CB0;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .header-left h1 {
+      font-size: 22px;
+      color: #1a3a5c;
+      font-weight: 800;
+    }
+    .header-left p {
+      color: #718096;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+    .header-right {
+      text-align: right;
+      font-size: 12px;
+      color: #718096;
+      line-height: 1.7;
+    }
+    .header-right strong { color: #1a3a5c; font-size: 14px; }
+
+    /* ── SECTION TITLE ── */
+    .sec-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #2B6CB0;
+      background: #ebf4ff;
+      padding: 7px 14px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      margin-top: 22px;
+    }
+
+    /* ── REQ TABLE ── */
+    .req-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 8px;
+    }
+    .req-table th {
+      background: #1a3a5c;
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+    .req-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 13px;
+      vertical-align: top;
+    }
+    .req-table tr:nth-child(even) td { background: #f8faff; }
+    .req-table td:first-child { color: #555; width: 30%; font-weight: 600; }
+    .req-table td:nth-child(2) { color: #c53030; width: 35%; }
+    .req-table td:nth-child(3) { color: #276749; width: 35%; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .badge-green { background: #c6f6d5; color: #276749; }
+    .badge-blue  { background: #bee3f8; color: #2c5282; }
+    .badge-red   { background: #fed7d7; color: #c53030; }
+
+    /* ── CHECKLIST ── */
+    .checklist {
+      list-style: none;
+      columns: 2;
+      column-gap: 30px;
+      margin-bottom: 8px;
+    }
+    .checklist li {
+      padding: 6px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      break-inside: avoid;
+      font-size: 13px;
+    }
+    .checklist li .check-box {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #2B6CB0;
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── NOTE BOX ── */
+    .note-box {
+      background: #fffbeb;
+      border-left: 4px solid #f6ad55;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 16px 0;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .info-box {
+      background: #ebfaf2;
+      border-left: 4px solid #48bb78;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 16px 0;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* ── FLOW ── */
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 14px 0;
+    }
+    .flow-step {
+      background: #ebf4ff;
+      border: 1px solid #bee3f8;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #1a3a5c;
+      text-align: center;
+    }
+    .flow-arrow { color: #2B6CB0; font-size: 18px; font-weight: 700; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 28px;
+      padding-top: 14px;
+      border-top: 2px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #718096;
+    }
+    .footer strong { color: #1a3a5c; }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      display: inline-block;
+      margin: 16px 0 8px;
+      padding: 10px 24px;
+      background: #2B6CB0;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .print-btn:hover { background: #1a3a5c; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- PRINT BUTTON -->
+  <div class="no-print" style="text-align:right; margin-bottom:8px;">
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Sense AI — Pre-Installation Requirements</h1>
+      <p>Please review and confirm these requirements before purchase &amp; installation</p>
+    </div>
+    <div class="header-right">
+      <strong>SSQUARE AI SOLUTIONS PVT. LTD.</strong><br/>
+      support@ssquareit.co.in<br/>
+      www.ssquareit.co.in
+    </div>
+  </div>
+
+  <!-- WHAT IS SENSE AI -->
+  <div class="info-box">
+    <strong>What is Sense AI?</strong> — An offline AI-powered Knowledge Assistant and Question Paper Generator for schools and colleges.
+    Runs 100% on your school's own hardware. No internet needed after installation. No data leaves your premises.
+  </div>
+
+  <!-- SERVER REQUIREMENTS -->
+  <div class="sec-title">1. Server Machine Requirements (One Dedicated PC)</div>
+  <table class="req-table">
+    <tr>
+      <th>Component</th>
+      <th>Minimum</th>
+      <th>Recommended</th>
+    </tr>
+    <tr>
+      <td>Operating System</td>
+      <td>Windows 10 (64-bit)</td>
+      <td>Windows 11 (64-bit)</td>
+    </tr>
+    <tr>
+      <td>RAM</td>
+      <td>16 GB</td>
+      <td>32 GB</td>
+    </tr>
+    <tr>
+      <td>Processor</td>
+      <td>Intel Core i5 / AMD Ryzen 5</td>
+      <td>Intel Core i7 / AMD Ryzen 7 (8 cores)</td>
+    </tr>
+    <tr>
+      <td>Storage</td>
+      <td>60 GB free disk space</td>
+      <td>120 GB free SSD</td>
+    </tr>
+    <tr>
+      <td>Usage</td>
+      <td colspan="2">Must be a <strong>dedicated machine</strong> — not used for other heavy software simultaneously</td>
+    </tr>
+  </table>
+
+  <div class="note-box">
+    <strong>Note:</strong> The server machine does not need to be a rack server. A regular desktop PC or laptop meeting the above specs works fine.
+    It should remain switched on during school hours so students can access the AI assistant.
+  </div>
+
+  <!-- NETWORK REQUIREMENTS -->
+  <div class="sec-title">2. Network Requirements</div>
+  <table class="req-table">
+    <tr>
+      <th>Item</th>
+      <th>Requirement</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>WiFi Router / Switch</td>
+      <td>Any standard WiFi router</td>
+      <td>Already present in most schools</td>
+    </tr>
+    <tr>
+      <td>Server Connection</td>
+      <td>Wired LAN preferred</td>
+      <td>WiFi also works</td>
+    </tr>
+    <tr>
+      <td>Internet</td>
+      <td>Required during installation only</td>
+      <td>Not needed after setup</td>
+    </tr>
+    <tr>
+      <td>Student Access</td>
+      <td>School WiFi / LAN</td>
+      <td>Students open browser → http://&lt;server-ip&gt;</td>
+    </tr>
+  </table>
+
+  <!-- STUDENT DEVICES -->
+  <div class="sec-title">3. Student &amp; Teacher Devices</div>
+  <table class="req-table">
+    <tr>
+      <th>Item</th>
+      <th>Requirement</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Device</td>
+      <td>Any laptop, tablet, or mobile</td>
+      <td>Windows, Android, iOS — all supported</td>
+    </tr>
+    <tr>
+      <td>Browser</td>
+      <td>Google Chrome / Microsoft Edge / Firefox</td>
+      <td>No app installation needed</td>
+    </tr>
+    <tr>
+      <td>Software</td>
+      <td>Nothing to install</td>
+      <td>100% web-based</td>
+    </tr>
+    <tr>
+      <td>Internet</td>
+      <td>Not required</td>
+      <td>Works on school's local network only</td>
+    </tr>
+  </table>
+
+  <!-- PRE-INSTALL CHECKLIST -->
+  <div class="sec-title">4. Pre-Installation Checklist</div>
+  <p style="margin-bottom:10px; color:#555; font-size:13px;">Please confirm the following before our team's visit:</p>
+  <ul class="checklist">
+    <li><span class="check-box"></span>Dedicated Windows 10/11 PC is available</li>
+    <li><span class="check-box"></span>PC has at least 16 GB RAM</li>
+    <li><span class="check-box"></span>PC has at least 60 GB free storage</li>
+    <li><span class="check-box"></span>PC is connected to school's WiFi / LAN</li>
+    <li><span class="check-box"></span>Internet available on the day of installation</li>
+    <li><span class="check-box"></span>Windows admin login credentials available</li>
+    <li><span class="check-box"></span>School's WiFi password is available</li>
+    <li><span class="check-box"></span>At least one teacher device for testing</li>
+  </ul>
+
+  <!-- INSTALLATION FLOW -->
+  <div class="sec-title">5. Installation Options</div>
+
+  <!-- Option A: On-site -->
+  <div style="margin-bottom:18px;">
+    <div style="font-size:13.5px; font-weight:700; color:#1a3a5c; margin-bottom:8px;">
+      Option A — On-Site Visit <span style="background:#ebf4ff;color:#2B6CB0;border-radius:10px;padding:2px 10px;font-size:11px;font-weight:600;">Tamil Nadu &amp; nearby states</span>
+    </div>
+    <div class="flow">
+      <div class="flow-step">We courier<br/>USB drive</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Our team<br/>visits school</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Install &amp; configure<br/>(2–3 hours)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Staff training<br/>&amp; demo</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Handover<br/>&amp; go live</div>
+    </div>
+  </div>
+
+  <!-- Option B: Remote -->
+  <div style="margin-bottom:14px;">
+    <div style="font-size:13.5px; font-weight:700; color:#1a3a5c; margin-bottom:8px;">
+      Option B — Remote Installation <span style="background:#ebfaf2;color:#276749;border-radius:10px;padding:2px 10px;font-size:11px;font-weight:600;">Any state / country</span>
+    </div>
+    <div class="flow">
+      <div class="flow-step">We courier<br/>USB drive</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">School plugs<br/>USB &amp; runs script</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">We join via<br/>TeamViewer / AnyDesk</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Remote config<br/>&amp; testing</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Video call<br/>demo &amp; handover</div>
+    </div>
+    <p style="color:#555; font-size:12.5px; margin-top:8px;">
+      School needs: <strong>TeamViewer or AnyDesk</strong> installed (free) + internet connection during the remote session (~2 hours).
+      After setup, internet is no longer needed.
+    </p>
+  </div>
+
+  <div class="info-box">
+    <strong>What we send in the USB:</strong> All AI models, Docker images, installer script — no internet download needed on the school machine.<br/>
+    <strong>What you arrange:</strong> Server machine switched on, Windows admin password ready, one IT/teacher contact available during installation.
+  </div>
+
+  <!-- AFTER INSTALLATION -->
+  <div class="sec-title">6. After Installation — How It Works</div>
+  <table class="req-table">
+    <tr>
+      <th>User</th>
+      <th>Access Method</th>
+      <th>What They Can Do</th>
+    </tr>
+    <tr>
+      <td>Teacher / Admin</td>
+      <td>Browser → http://&lt;server-ip&gt;</td>
+      <td>Upload documents, generate question papers, manage students</td>
+    </tr>
+    <tr>
+      <td>Student</td>
+      <td>Browser → http://&lt;server-ip&gt;</td>
+      <td>Ask questions, get AI answers from school textbooks</td>
+    </tr>
+    <tr>
+      <td>School Admin</td>
+      <td>Admin panel</td>
+      <td>Manage users, view reports, upload license</td>
+    </tr>
+  </table>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <strong>SSQUARE AI SOLUTIONS PRIVATE LIMITED</strong><br/>
+      support@ssquareit.co.in &nbsp;|&nbsp; www.ssquareit.co.in
+    </div>
+    <div style="text-align:right;">
+      Sense AI Offline Appliance<br/>
+      Pre-Installation Requirements v1.0
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

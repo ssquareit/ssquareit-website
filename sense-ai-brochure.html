@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SenseAI — Enterprise Knowledge Assistant for Schools</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #1a202c; font-size: 13px; }
+
+    @media print {
+      body { background: white; font-size: 12px; }
+      .no-print { display: none !important; }
+      .page { box-shadow: none !important; margin: 0 !important; }
+    }
+
+    .print-bar {
+      background: #1a3a5c; padding: 10px 40px;
+      display: flex; align-items: center; justify-content: space-between; color: white;
+    }
+    .print-bar span { font-size: 0.85rem; opacity: 0.85; }
+    .print-btn {
+      background: #f6ad55; color: #1a202c; border: none; padding: 7px 20px;
+      border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer;
+    }
+    .print-btn:hover { background: #ed8936; }
+
+    .nav-links { display: flex; gap: 12px; }
+    .nav-links a {
+      color: #90cdf4; font-size: 0.8rem; text-decoration: none; border: 1px solid #4a7fad;
+      padding: 4px 12px; border-radius: 4px;
+    }
+    .nav-links a:hover { background: #2B6CB0; }
+
+    .page {
+      width: 210mm; min-height: 297mm; margin: 20px auto;
+      background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      padding: 0; overflow: hidden; page-break-after: always;
+    }
+
+    /* ── HERO HEADER ── */
+    .hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 60%, #3182ce 100%);
+      color: white; padding: 32px 36px 28px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -40px; right: -40px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -60px; right: 80px;
+      width: 150px; height: 150px; border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .hero-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+    .hero-brand h1 { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; }
+    .hero-brand h1 span { color: #f6ad55; }
+    .hero-brand .tagline { font-size: 1rem; opacity: 0.85; margin-top: 4px; font-weight: 300; }
+    .hero-badge {
+      background: rgba(246,173,85,0.2); border: 1px solid #f6ad55;
+      border-radius: 20px; padding: 4px 14px; font-size: 0.75rem; color: #f6ad55;
+      font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; display: inline-block;
+    }
+    .hero-right { text-align: right; font-size: 0.78rem; opacity: 0.85; line-height: 1.8; }
+    .hero-right strong { font-size: 1.1rem; display: block; color: #f6ad55; }
+
+    .hero-statement {
+      background: rgba(255,255,255,0.1); border-radius: 10px;
+      padding: 14px 20px; font-size: 1.05rem; font-weight: 400; line-height: 1.6;
+      border-left: 4px solid #f6ad55;
+    }
+
+    /* ── BODY CONTENT ── */
+    .body { padding: 24px 36px; }
+
+    .section-title {
+      font-size: 0.95rem; font-weight: 700; color: #2B6CB0;
+      background: #ebf4ff; padding: 7px 14px; border-radius: 6px;
+      margin-bottom: 14px; margin-top: 22px; display: flex; align-items: center; gap: 8px;
+    }
+    .section-title .icon { font-size: 1.1rem; }
+
+    /* ── FEATURES GRID ── */
+    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 8px; }
+    .feature-card {
+      border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 14px 16px;
+      background: #fafcff;
+    }
+    .feature-card h3 { font-size: 0.88rem; color: #1a3a5c; font-weight: 700; margin-bottom: 5px; }
+    .feature-card .feature-icon { font-size: 1.4rem; margin-bottom: 6px; display: block; }
+    .feature-card p { font-size: 0.78rem; color: #4a5568; line-height: 1.5; }
+
+    /* ── BENEFIT PILLS ── */
+    .benefits-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+    .benefit-pill {
+      background: #1a3a5c; color: white; border-radius: 20px;
+      padding: 5px 14px; font-size: 0.75rem; font-weight: 600;
+    }
+
+    /* ── USP TABLE ── */
+    .usp-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+    .usp-table tr:nth-child(even) { background: #f7fafc; }
+    .usp-table td { padding: 8px 12px; font-size: 0.8rem; border-bottom: 1px solid #e2e8f0; }
+    .usp-table td:first-child { font-weight: 700; color: #1a3a5c; width: 40%; }
+    .check { color: #38a169; font-weight: 700; }
+
+    /* ── MODULES ── */
+    .modules-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .module-box {
+      border: 1.5px solid #bee3f8; border-radius: 8px; padding: 12px;
+      text-align: center; background: linear-gradient(180deg, #ebf8ff 0%, #fff 100%);
+    }
+    .module-box .m-icon { font-size: 1.8rem; margin-bottom: 6px; display: block; }
+    .module-box h4 { font-size: 0.8rem; color: #1a3a5c; font-weight: 700; margin-bottom: 4px; }
+    .module-box p { font-size: 0.72rem; color: #4a5568; line-height: 1.4; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #1a3a5c; color: white; padding: 16px 36px;
+      display: flex; justify-content: space-between; align-items: center; margin-top: 20px;
+    }
+    .footer-left { font-size: 0.78rem; line-height: 1.8; }
+    .footer-left strong { font-size: 1rem; display: block; color: #f6ad55; }
+    .footer-right { text-align: right; font-size: 0.75rem; opacity: 0.8; line-height: 1.8; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border: 1.5px solid #f6ad55; border-radius: 8px; padding: 14px 18px;
+      margin: 12px 0;
+    }
+    .highlight-box h4 { font-size: 0.88rem; color: #744210; font-weight: 700; margin-bottom: 6px; }
+    .highlight-box p { font-size: 0.8rem; color: #7b6236; line-height: 1.5; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+    .info-box {
+      background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px;
+    }
+    .info-box h4 { font-size: 0.82rem; font-weight: 700; color: #2B6CB0; margin-bottom: 8px; }
+    .info-box ul { padding-left: 16px; }
+    .info-box ul li { font-size: 0.78rem; color: #4a5568; line-height: 1.6; }
+
+    .stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin: 14px 0; }
+    .stat-box {
+      text-align: center; background: #1a3a5c; color: white;
+      border-radius: 8px; padding: 14px 8px;
+    }
+    .stat-box .num { font-size: 1.6rem; font-weight: 900; color: #f6ad55; display: block; }
+    .stat-box .lbl { font-size: 0.7rem; opacity: 0.85; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- Print Bar -->
+<div class="print-bar no-print">
+  <span>SenseAI — School Demo Brochure | SSQUARE AI SOLUTIONS PRIVATE LIMITED</span>
+  <div class="nav-links">
+    <a href="sense-ai-pricing.html">Pricing</a>
+    <a href="sense-ai-hardware.html">Hardware Req.</a>
+    <a href="sense-ai-installation.html">Installation</a>
+    <a href="sense-ai-operations-support.html">Support</a>
+    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- PAGE 1: Product Overview -->
+<div class="page">
+  <div class="hero">
+    <div class="hero-top">
+      <div class="hero-brand">
+        <h1>Sense<span>AI</span></h1>
+        <div class="tagline">Enterprise Knowledge Assistant for Educational Institutions</div>
+        <span class="hero-badge">Powered by Local AI &bull; 100% Offline</span>
+        <span class="hero-badge" style="margin-left:6px; background:rgba(255,100,100,0.15); border-color:#fc8181; color:#fc8181;">CBSE &bull; NEET &bull; JEE Main &bull; JEE Advanced</span>
+      </div>
+      <div class="hero-right">
+        <strong>SSQUARE AI SOLUTIONS PRIVATE LIMITED</strong>
+        ssquareit.co.in<br/>
+        senseai-support@ssquareit.co.in<br/>
+        Tamil Nadu, India
+      </div>
+    </div>
+    <div class="hero-statement">
+      SenseAI transforms your school's knowledge infrastructure — enabling the Tenant Admin to generate exam-ready questions and publish tests, users to query institutional documents, and students to take AI-graded tests or join real-time Live Quizzes via a 6-digit PIN. All data stays on your server. No internet required after setup.
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="stat-row">
+      <div class="stat-box"><span class="num">100%</span><div class="lbl">Offline Operation</div></div>
+      <div class="stat-box"><span class="num">4</span><div class="lbl">Core Modules</div></div>
+      <div class="stat-box"><span class="num" style="font-size:1rem;">NEET<br/>JEE</span><div class="lbl">CBSE / NEET / JEE Main / JEE Adv.</div></div>
+      <div class="stat-box"><span class="num">Data</span><div class="lbl">Privacy First</div></div>
+    </div>
+
+    <div class="section-title"><span class="icon">🎯</span> What is SenseAI?</div>
+    <p style="font-size:0.82rem; color:#4a5568; line-height:1.6; margin-bottom:12px;">
+      SenseAI is an AI-powered institutional knowledge platform installed directly on your school's server. It uses Large Language Models (LLMs) running entirely offline to help teachers, students, and administrators work smarter — without sharing any data with external cloud services.
+    </p>
+
+    <div class="section-title"><span class="icon">🧩</span> Core Modules</div>
+    <div class="modules-row">
+      <div class="module-box">
+        <span class="m-icon">📚</span>
+        <h4>Knowledge Assistant</h4>
+        <p>Ask questions in plain English. Get accurate answers sourced from your school's uploaded documents — syllabus, circulars, handbooks, policies.</p>
+      </div>
+      <div class="module-box">
+        <span class="m-icon">✍️</span>
+        <h4>Auto Question Generator</h4>
+        <p>Generate CBSE-aligned MCQ, Short Answer, and Essay questions from any chapter. Review, approve, and build your question bank in minutes.</p>
+      </div>
+      <div class="module-box">
+        <span class="m-icon">📝</span>
+        <h4>Student Test Module</h4>
+        <p>Publish MCQ tests to students. Auto-graded results with per-question analytics and CSV reports. Ready for <strong>CBSE, NEET, JEE Main & JEE Advanced</strong> preparation.</p>
+      </div>
+      <div class="module-box">
+        <span class="m-icon">🎮</span>
+        <h4>Live Quiz &amp; Student Sessions</h4>
+        <p>Run real-time classroom quizzes with a live leaderboard. Students join via a 6-digit PIN — no accounts or login required. Results saved automatically.</p>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="icon">🏆</span> Why SenseAI Stands Out</div>
+    <table class="usp-table">
+      <tr>
+        <td>Complete Offline Operation</td>
+        <td><span class="check">✔</span> Works on school LAN — no internet needed after one-time setup</td>
+      </tr>
+      <tr>
+        <td>Data Privacy & Security</td>
+        <td><span class="check">✔</span> Student data never leaves your premises — CBSE & DPDP compliant</td>
+      </tr>
+      <tr>
+        <td>CBSE Curriculum Ready</td>
+        <td><span class="check">✔</span> Question generation tuned for Class 6–12, NEET, JEE Main &amp; JEE Advanced patterns</td>
+      </tr>
+      <tr>
+        <td>One-Time USB Installation</td>
+        <td><span class="check">✔</span> No ongoing cloud subscription — deploy once, run forever</td>
+      </tr>
+      <tr>
+        <td>Multi-Role Access</td>
+        <td><span class="check">✔</span> Separate portals for Admin, Teachers, and Students</td>
+      </tr>
+    </table>
+
+    <div class="highlight-box">
+      <h4>🔒 Your Data. Your School. Your Server.</h4>
+      <p>Unlike cloud AI tools, SenseAI runs 100% on-premise. No student names, exam data, or documents are sent to any external server. All AI processing happens locally using Llama 3.1 — one of the world's most advanced open-source language models.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box">
+        <h4>For Tenant Admin (Principal / Senior Teacher)</h4>
+        <ul>
+          <li>Generate questions chapter-wise in seconds (AQG)</li>
+          <li>Review &amp; approve AI-generated questions</li>
+          <li>Create and publish MCQ tests to students</li>
+          <li>Create PIN sessions — students join without accounts</li>
+          <li>Run Live Quizzes with real-time classroom leaderboard</li>
+          <li>Manage user accounts for teachers &amp; students</li>
+          <li>Download student performance reports (CSV)</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h4>For Users (Teachers / Students / Staff)</h4>
+        <ul>
+          <li>Ask questions from school documents (Knowledge Assistant)</li>
+          <li>Get AI-powered answers with source references</li>
+          <li>Take assigned MCQ tests on any device</li>
+          <li>Join Live Quizzes via PIN — no login needed for students</li>
+          <li>View instant results, scores, and correct answers</li>
+          <li>Query school policies, circulars, and handbooks</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <strong>SSQUARE AI SOLUTIONS PRIVATE LIMITED</strong>
+      senseai-support@ssquareit.co.in &nbsp;|&nbsp; ssquareit.co.in
+    </div>
+    <div class="footer-right">
+      SenseAI — Enterprise Edition v1.0<br/>
+      &copy; 2026 SSQUARE AI SOLUTIONS PRIVATE LIMITED. All rights reserved.
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: Features Deep Dive -->
+<div class="page">
+  <div class="hero" style="padding: 20px 36px;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <h2 style="font-size:1.4rem; font-weight:800;">Feature Details</h2>
+        <p style="font-size:0.85rem; opacity:0.8; margin-top:4px;">Complete capability overview for each module</p>
+      </div>
+      <div style="font-size:0.78rem; opacity:0.8; text-align:right;">Sense<span style="color:#f6ad55;">AI</span> &nbsp;|&nbsp; SSQUARE AI SOLUTIONS PRIVATE LIMITED</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section-title"><span class="icon">📚</span> Module 1 — Institutional Knowledge Assistant</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🔍</span>
+        <h3>Smart Document Search</h3>
+        <p>Upload PDFs, Word docs, and images. SenseAI indexes them with AI embeddings and answers questions with exact source references.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🗂️</span>
+        <h3>Subject-wise Organization</h3>
+        <p>Documents organized by subject and domain. Each teacher sees only relevant content. No information overload.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <h3>Natural Language Q&A</h3>
+        <p>Ask "What is the attendance policy?" or "Explain Newton's second law from Chapter 5" — get precise, grounded answers.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🛡️</span>
+        <h3>Hallucination Detection</h3>
+        <p>Built-in confidence scoring flags low-reliability answers. Admins see hallucination counts on the dashboard.</p>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="icon">✍️</span> Module 2 — Auto Question Generator (AQG)</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🎯</span>
+        <h3>CBSE / NEET / JEE Question Patterns</h3>
+        <p>Generates MCQ (1 mark), Short Answer, and Essay questions aligned to <strong>CBSE, NEET, JEE Main, and JEE Advanced</strong> patterns — covering all difficulty levels.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔄</span>
+        <h3>Bulk Generation</h3>
+        <p>Generate 10, 20, or 50 questions in one job. AI processes chapter content and produces a full question bank automatically.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">✅</span>
+        <h3>Tenant Admin Review Workflow</h3>
+        <p>Tenant Admin approves or rejects individual questions. Bulk approve/reject with one click. Only approved questions go to tests.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3>Analytics Dashboard</h3>
+        <p>Track questions generated, approved, and rejected per subject. Monitor AQG job history and performance from the admin dashboard.</p>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="icon">📝</span> Module 3 — Student Test Module</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🏫</span>
+        <h3>Publish Tests to Students</h3>
+        <p>Teacher selects approved MCQ questions and publishes a timed test. Students access it from their own devices on the school LAN.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3>Instant Auto-Grading</h3>
+        <p>Student submits test → marks calculated instantly. No manual checking. Teacher sees per-student scores in real time.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📈</span>
+        <h3>Per-Question Analytics</h3>
+        <p>See which questions students struggled with. Difficulty analysis helps teachers focus revision on weak areas.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⬇️</span>
+        <h3>CSV Export Reports</h3>
+        <p>Download student-wise results as CSV. Import into Excel for school records, parent communication, or progress reports.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔑</span>
+        <h3>PIN-Based Student Sessions</h3>
+        <p>Teacher generates a 6-digit PIN and shares it with the class. Students join instantly from any device — no account or login required.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🏆</span>
+        <h3>Live Quiz with Leaderboard</h3>
+        <p>Run a real-time classroom quiz — teacher controls the pace, one question at a time. Live leaderboard keeps students engaged and competitive.</p>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="icon">👥</span> User Role Structure</div>
+    <table class="usp-table">
+      <tr style="background:#1a3a5c; color:white;">
+        <td style="color:white; font-weight:700;">Role</td>
+        <td style="color:white; font-weight:700;">Who</td>
+        <td style="color:white; font-weight:700;">Key Capabilities</td>
+      </tr>
+      <tr>
+        <td>Super Admin</td>
+        <td>SSQUARE AI SOLUTIONS (Vendor)</td>
+        <td>License management, tenant onboarding, global configuration</td>
+      </tr>
+      <tr>
+        <td>Tenant Admin</td>
+        <td>Principal / Senior Teacher</td>
+        <td>User creation &amp; management, AQG question generation, test publishing, document upload, system monitoring, backup</td>
+      </tr>
+      <tr>
+        <td>User</td>
+        <td>Teachers / Students / Staff<br/><small style="color:#718096;">(created by Tenant Admin)</small></td>
+        <td>Knowledge Assistant (Q&amp;A), take assigned MCQ tests, view personal results</td>
+      </tr>
+      <tr>
+        <td>Student (PIN Session)</td>
+        <td>Any student in class<br/><small style="color:#718096;">(joins via 6-digit PIN, no account needed)</small></td>
+        <td>Join Live Quizzes, take published tests, view score — access via nickname + PIN only</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <strong>SSQUARE AI SOLUTIONS PRIVATE LIMITED</strong>
+      senseai-support@ssquareit.co.in &nbsp;|&nbsp; ssquareit.co.in
+    </div>
+    <div class="footer-right">
+      SenseAI — Enterprise Edition v1.0<br/>
+      &copy; 2026 SSQUARE AI SOLUTIONS PRIVATE LIMITED. All rights reserved.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

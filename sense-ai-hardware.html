@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SenseAI — Hardware & Infrastructure Prerequisites</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #1a202c; font-size: 13px; }
+
+    @media print {
+      body { background: white; font-size: 11.5px; }
+      .no-print { display: none !important; }
+      .page { box-shadow: none !important; margin: 0 !important; }
+    }
+
+    .print-bar {
+      background: #1a3a5c; padding: 10px 40px;
+      display: flex; align-items: center; justify-content: space-between; color: white;
+    }
+    .print-btn { background: #f6ad55; color: #1a202c; border: none; padding: 7px 20px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
+    .nav-links { display: flex; gap: 12px; }
+    .nav-links a { color: #90cdf4; font-size: 0.8rem; text-decoration: none; border: 1px solid #4a7fad; padding: 4px 12px; border-radius: 4px; }
+
+    .page {
+      width: 210mm; min-height: 297mm; margin: 20px auto;
+      background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      overflow: hidden; page-break-after: always;
+    }
+
+    .doc-header {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%);
+      color: white; padding: 20px 36px; display: flex;
+      justify-content: space-between; align-items: center;
+    }
+    .doc-header h1 { font-size: 1.3rem; font-weight: 800; }
+    .doc-header h1 span { color: #f6ad55; }
+    .doc-header p { font-size: 0.8rem; opacity: 0.8; margin-top: 3px; }
+    .doc-header .right { text-align: right; font-size: 0.75rem; opacity: 0.85; line-height: 1.8; }
+    .doc-header .right strong { font-size: 0.9rem; display: block; color: #f6ad55; }
+
+    .body { padding: 20px 36px; }
+
+    .section-title {
+      font-size: 0.9rem; font-weight: 700; color: #2B6CB0;
+      background: #ebf4ff; padding: 6px 14px; border-radius: 6px;
+      margin-bottom: 12px; margin-top: 18px; display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ── SPEC TABLE ── */
+    .spec-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+    .spec-table th {
+      background: #1a3a5c; color: white; padding: 8px 12px;
+      font-size: 0.78rem; text-align: left;
+    }
+    .spec-table td { padding: 7px 12px; font-size: 0.78rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+    .spec-table tr:nth-child(even) { background: #f7fafc; }
+    .spec-table td:first-child { font-weight: 700; color: #1a3a5c; width: 28%; }
+    .spec-table td:nth-child(2) { width: 30%; }
+    .spec-table td:nth-child(3) { color: #2f855a; font-weight: 600; width: 28%; }
+    .spec-table td:last-child { font-size: 0.72rem; color: #718096; }
+    .req { color: #e53e3e; font-size: 0.68rem; font-weight: 700; background: #fff5f5; padding: 1px 6px; border-radius: 3px; }
+    .rec { color: #2f855a; font-size: 0.68rem; font-weight: 700; background: #f0fff4; padding: 1px 6px; border-radius: 3px; }
+
+    /* ── CARDS ── */
+    .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 10px 0; }
+    .info-card {
+      border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 14px; background: #fafcff;
+    }
+    .info-card h4 { font-size: 0.82rem; font-weight: 700; color: #1a3a5c; margin-bottom: 8px; display: flex; gap: 6px; align-items: center; }
+    .info-card ul { padding-left: 16px; }
+    .info-card ul li { font-size: 0.76rem; color: #4a5568; line-height: 1.7; }
+    .info-card .icon { font-size: 1rem; }
+
+    /* ── WARN BOX ── */
+    .warn-box {
+      background: #fff5f5; border: 1.5px solid #fc8181; border-radius: 8px;
+      padding: 12px 16px; margin: 10px 0;
+    }
+    .warn-box h4 { font-size: 0.82rem; color: #c53030; font-weight: 700; margin-bottom: 5px; }
+    .warn-box p { font-size: 0.76rem; color: #742a2a; line-height: 1.5; }
+    .warn-box ul { padding-left: 16px; margin-top: 4px; }
+    .warn-box ul li { font-size: 0.76rem; color: #742a2a; line-height: 1.6; }
+
+    .ok-box {
+      background: #f0fff4; border: 1.5px solid #68d391; border-radius: 8px;
+      padding: 12px 16px; margin: 10px 0;
+    }
+    .ok-box h4 { font-size: 0.82rem; color: #276749; font-weight: 700; margin-bottom: 5px; }
+    .ok-box ul { padding-left: 16px; }
+    .ok-box ul li { font-size: 0.76rem; color: #22543d; line-height: 1.7; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border: 1.5px solid #f6ad55; border-radius: 8px; padding: 12px 16px; margin: 10px 0;
+    }
+    .highlight-box h4 { font-size: 0.85rem; color: #744210; font-weight: 700; margin-bottom: 5px; }
+    .highlight-box p { font-size: 0.76rem; color: #7b6236; line-height: 1.5; }
+
+    /* ── CHECKLIST ── */
+    .checklist { list-style: none; padding: 0; margin: 8px 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 6px 0; border-bottom: 1px solid #f0f4f8; font-size: 0.78rem;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist .box {
+      width: 16px; height: 16px; border: 1.5px solid #2B6CB0;
+      border-radius: 3px; min-width: 16px; margin-top: 1px;
+    }
+    .checklist li span { color: #4a5568; line-height: 1.4; }
+    .checklist li strong { color: #1a3a5c; }
+
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+    .mini-card {
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; text-align: center;
+      background: #fafcff;
+    }
+    .mini-card .icon { font-size: 1.6rem; display: block; margin-bottom: 6px; }
+    .mini-card h4 { font-size: 0.78rem; color: #1a3a5c; font-weight: 700; margin-bottom: 4px; }
+    .mini-card p { font-size: 0.7rem; color: #4a5568; line-height: 1.4; }
+
+    .footer {
+      background: #1a3a5c; color: white; padding: 12px 36px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-left { font-size: 0.73rem; line-height: 1.8; }
+    .footer-left strong { font-size: 0.88rem; display: block; color: #f6ad55; }
+    .footer-right { text-align: right; font-size: 0.7rem; opacity: 0.8; line-height: 1.8; }
+  </style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <span>SenseAI — Hardware Prerequisites | SSQUARE AI SOLUTIONS PRIVATE LIMITED</span>
+  <div class="nav-links">
+    <a href="sense-ai-brochure.html">Brochure</a>
+    <a href="sense-ai-pricing.html">Pricing</a>
+    <a href="sense-ai-installation.html">Installation</a>
+    <a href="sense-ai-operations-support.html">Support</a>
+    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="doc-header">
+    <div>
+      <h1>Sense<span>AI</span> — Hardware & Infrastructure Requirements</h1>
+      <p>Pre-installation checklist for school IT administrators</p>
+    </div>
+    <div class="right">
+      <strong>SSQUARE AI SOLUTIONS PRIVATE LIMITED</strong>
+      ssquareit.co.in<br/>
+      senseai-support@ssquareit.co.in
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section-title">🖥️ Server / Dedicated Machine Requirements</div>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Minimum Requirement</th>
+          <th>Recommended</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Processor (CPU)</td>
+          <td>Intel Core i7 (10th Gen+)<br/><small>or AMD Ryzen 7 5000+</small></td>
+          <td>Intel Core i9 / Xeon<br/><small>or AMD Ryzen 9</small></td>
+          <td>Minimum 8 cores, 16 threads for AI inference speed</td>
+        </tr>
+        <tr>
+          <td>RAM (Memory)</td>
+          <td>32 GB DDR4</td>
+          <td>64 GB DDR4/DDR5</td>
+          <td>AI model (llama3.1:8b) alone needs ~8 GB. With Live Quiz + 40 concurrent student sessions, 32 GB provides comfortable headroom. 64 GB recommended for schools with 100+ simultaneous users</td>
+        </tr>
+        <tr>
+          <td>Storage (OS + Software)</td>
+          <td>512 GB SSD (NVMe preferred)</td>
+          <td>1 TB NVMe SSD</td>
+          <td>SSD mandatory — HDD causes severe AI loading delays (5–10 min per query)</td>
+        </tr>
+        <tr>
+          <td>Storage (AI Models)</td>
+          <td>100 GB free space</td>
+          <td>200 GB free space</td>
+          <td>Software package: ~32 GB. AI models included in package. Document storage: varies by school usage</td>
+        </tr>
+        <tr>
+          <td>GPU (Optional)</td>
+          <td>Not required</td>
+          <td>NVIDIA RTX 3060 / A2000 (8 GB VRAM)</td>
+          <td>GPU reduces AI response time from ~15s to ~3s. CPU-only mode works fully</td>
+        </tr>
+        <tr>
+          <td>Operating System</td>
+          <td>Windows 10/11 (64-bit, Pro recommended)</td>
+          <td>Windows 11 Pro / Windows Server 2019</td>
+          <td>WSL2 must be enabled. Pro edition recommended. Home edition works if WSL2 is enabled</td>
+        </tr>
+        <tr>
+          <td>Network Interface</td>
+          <td>1 Gbps Ethernet (LAN)</td>
+          <td>1 Gbps Ethernet + Wi-Fi backup</td>
+          <td>Server must have a static/reserved IP on school LAN (e.g., 192.168.1.100)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box">
+      <h4>⚠️ Critical: Do NOT use these configurations</h4>
+      <ul>
+        <li>Laptop as server — thermal throttling kills AI performance; no uptime guarantee</li>
+        <li>HDD (spinning disk) storage — AI model loading takes 5–10 minutes, unusable</li>
+        <li>Less than 32 GB RAM — AI models will crash with out-of-memory errors during answer generation</li>
+        <li>Windows Home Edition — Docker Desktop requires WSL2 to be enabled; Pro edition recommended for stability</li>
+        <li>Shared internet PC — AI inference is CPU-heavy; sharing with teacher workstation causes slowdowns</li>
+      </ul>
+    </div>
+
+    <div class="section-title">🌐 Network Requirements</div>
+    <div class="card-row">
+      <div class="info-card">
+        <h4><span class="icon">📡</span> LAN Setup (Required)</h4>
+        <ul>
+          <li>Switch with minimum 100 Mbps ports</li>
+          <li>Server must have a <strong>fixed / reserved IP</strong></li>
+          <li>All teacher / student devices on same LAN</li>
+          <li>Router must allow local traffic (no inter-VLAN blocking)</li>
+          <li><strong>Live Quiz:</strong> stable LAN essential — students answer in real-time; network drops cause missed responses</li>
+          <li>Router/switch must not block WebSocket connections (port 80 upgrade) — all standard routers support this by default</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4><span class="icon">🔌</span> Power & UPS</h4>
+        <ul>
+          <li>Server must be on a <strong>dedicated UPS</strong></li>
+          <li>UPS capacity: minimum 1 kVA for server alone</li>
+          <li>Power fluctuations cause database corruption</li>
+          <li>Sudden shutdown during AI generation = job failure</li>
+          <li>Recommended: APC / Luminous online UPS</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title">💻 Computer Lab / Client Device Requirements</div>
+    <div class="three-col">
+      <div class="mini-card">
+        <span class="icon">🖥️</span>
+        <h4>Desktop / Lab PC</h4>
+        <p>Any desktop or laptop with 4 GB RAM+. No software installation needed — students open a browser and access the system directly from the school server.</p>
+      </div>
+      <div class="mini-card">
+        <span class="icon">🔌</span>
+        <h4>LAN / Network</h4>
+        <p>All lab PCs must be connected to the same local network as the server (wired LAN recommended). No internet required — SenseAI runs fully offline on the school server.</p>
+      </div>
+      <div class="mini-card">
+        <span class="icon">🌐</span>
+        <h4>Browser Requirement</h4>
+        <p>Chrome 90+ or Firefox 88+ required. Edge Chromium supported. Internet Explorer not supported. No plugins or extensions needed.</p>
+      </div>
+    </div>
+
+    <div class="ok-box">
+      <h4>✅ What You Do NOT Need</h4>
+      <ul>
+        <li>Internet connection — SenseAI is fully offline after installation</li>
+        <li>Cloud subscription or external server — everything runs on your school server</li>
+        <li>Client software on student/teacher PCs — just a web browser is sufficient</li>
+        <li>IT team for daily operation — designed for non-technical school staff</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <strong>SSQUARE AI SOLUTIONS PRIVATE LIMITED</strong>
+      senseai-support@ssquareit.co.in &nbsp;|&nbsp; ssquareit.co.in
+    </div>
+    <div class="footer-right">
+      Hardware Requirements — SenseAI v1.0<br/>
+      Please share this with your IT administrator before purchase
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: Pre-Installation Checklist -->
+<div class="page">
+  <div class="doc-header">
+    <div>
+      <h1>Sense<span>AI</span> — Pre-Installation Checklist</h1>
+      <p>Complete this checklist before scheduling installation</p>
+    </div>
+    <div class="right">
+      <strong>SSQUARE AI SOLUTIONS PRIVATE LIMITED</strong>
+      ssquareit.co.in
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section-title">✅ Server Readiness Checklist</div>
+    <p style="font-size:0.76rem; color:#718096; margin-bottom:10px;">Please tick each item and share this completed checklist with SSQUARE AI SOLUTIONS before your installation date.</p>
+
+    <ul class="checklist">
+      <li><div class="box"></div><span><strong>Dedicated server machine ready</strong> — not a shared workstation or laptop (i7, 32 GB RAM, 512 GB SSD minimum)</span></li>
+      <li><div class="box"></div><span><strong>Windows 10/11 Pro installed</strong> — fresh installation preferred, OS updated to latest patches</span></li>
+      <li><div class="box"></div><span><strong>UPS connected to server</strong> — minimum 1 kVA, server should survive 30-minute power cut</span></li>
+      <li><div class="box"></div><span><strong>Static IP assigned to server</strong> — e.g., 192.168.1.100 (coordinate with your network admin)</span></li>
+      <li><div class="box"></div><span><strong>100 GB free disk space confirmed</strong> — AI models, Docker images, and document storage</span></li>
+      <li><div class="box"></div><span><strong>Server accessible from classroom PCs</strong> — ping test successful from at least one teacher PC</span></li>
+      <li><div class="box"></div><span><strong>Administrator account credentials ready</strong> — needed during installation for software setup</span></li>
+      <li><div class="box"></div><span><strong>Antivirus / Windows Defender exclusions set</strong> — exclude SenseAI installation folder from real-time scanning</span></li>
+      <li><div class="box"></div><span><strong>USB 3.0 port available on server</strong> — installation is done via USB drive (minimum 64 GB, USB 3.0 required for speed)</span></li>
+    </ul>
+
+    <div class="section-title">🌐 Network Readiness Checklist</div>
+    <ul class="checklist">
+      <li><div class="box"></div><span><strong>LAN switch with available ports</strong> — server connected via Ethernet (not Wi-Fi)</span></li>
+      <li><div class="box"></div><span><strong>All classrooms reachable on same LAN</strong> — or at minimum teacher room + computer lab</span></li>
+      <li><div class="box"></div><span><strong>Port 80 not blocked</strong> — this is the port used by SenseAI (standard web port, same as any website)</span></li>
+      <li><div class="box"></div><span><strong>Firewall allows internal traffic</strong> — no firewall rule blocking 192.168.x.x to server IP</span></li>
+      <li><div class="box"></div><span><strong>Wi-Fi available in classrooms/exam hall (optional)</strong> — any device (laptop, tablet, smartphone) connected to the same Wi-Fi can access SenseAI through a browser — no software installation needed on the device</span></li>
+    </ul>
+
+    <div class="section-title">👤 Administrative Readiness Checklist</div>
+    <ul class="checklist">
+      <li><div class="box"></div><span><strong>List of teachers with names and email IDs</strong> — to create teacher accounts during setup</span></li>
+      <li><div class="box"></div><span><strong>Subject structure decided</strong> — e.g., Physics, Chemistry, Biology, Maths for Class 11</span></li>
+      <li><div class="box"></div><span><strong>Student list ready (optional)</strong> — roll number, name, class. Note: students can also join sessions using a PIN shared by the teacher — no individual student accounts required</span></li>
+      <li><div class="box"></div><span><strong>Documents to upload identified</strong> — syllabus PDFs, NCERT chapters, school policies</span></li>
+      <li><div class="box"></div><span><strong>IT person designated as Tenant Admin</strong> — one person responsible for ongoing user management</span></li>
+    </ul>
+
+    <div class="section-title">📋 Server Details to Share with SSQUARE AI SOLUTIONS</div>
+    <table class="spec-table">
+      <tr><td>School Name</td><td colspan="3">_______________________________________________</td></tr>
+      <tr><td>Server IP Address</td><td colspan="3">___________________ (e.g., 192.168.1.100)</td></tr>
+      <tr><td>Processor</td><td>___________________</td><td>RAM</td><td>____________</td></tr>
+      <tr><td>OS Version</td><td>___________________</td><td>Storage Free</td><td>____________</td></tr>
+      <tr><td>TeamViewer ID</td><td>___________________</td><td>TeamViewer Pass</td><td>____________</td></tr>
+      <tr><td>Contact Person</td><td>___________________</td><td>Phone</td><td>____________</td></tr>
+      <tr><td>Preferred Install Date</td><td colspan="3">_______________________________________________</td></tr>
+    </table>
+
+    <div class="highlight-box">
+      <h4>📞 Ready to Install? Contact Us</h4>
+      <p>Once you've completed this checklist, share it with us via email or WhatsApp. We'll schedule an installation slot (remote via TeamViewer or on-site for TN/nearby states) within 2–3 working days of receiving payment confirmation.</p>
+      <p style="margin-top:6px;"><strong>Email:</strong> senseai-support@ssquareit.co.in &nbsp;|&nbsp; <strong>Website:</strong> ssquareit.co.in</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <strong>SSQUARE AI SOLUTIONS PRIVATE LIMITED</strong>
+      senseai-support@ssquareit.co.in &nbsp;|&nbsp; ssquareit.co.in
+    </div>
+    <div class="footer-right">
+      Hardware Requirements — SenseAI v1.0<br/>
+      Please complete and return before installation appointment
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
