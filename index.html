@@ -39,6 +39,38 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: #90cdf4; }
+
+    /* Products dropdown */
+    .nav-dropdown { position: relative; display: inline-block; margin-left: 30px; }
+    .nav-dropdown-btn {
+      background: none; border: none; cursor: pointer;
+      color: #e2e8f0; font-weight: 500; font-size: 15px;
+      font-family: inherit; padding: 0; display: flex; align-items: center; gap: 5px;
+      transition: color 0.2s;
+    }
+    .nav-dropdown-btn:hover { color: #90cdf4; }
+    .nav-dropdown-btn::after { content: ' ▾'; font-size: 11px; }
+    .nav-dropdown-menu {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: #1a3a5c; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; min-width: 240px; padding: 8px 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3); z-index: 999;
+      padding-top: 14px; margin-top: 0;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 14px;
+    }
+    .nav-dropdown-menu a {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin: 0; padding: 10px 16px; border-radius: 0;
+      color: #e2e8f0; font-size: 13.5px; text-decoration: none; transition: background 0.15s;
+    }
+    .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.08); color: #f6ad55; }
+    .nav-dropdown-menu .prod-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+    .nav-dropdown-menu .prod-info .prod-name { font-weight: 700; font-size: 13.5px; }
+    .nav-dropdown-menu .prod-info .prod-desc { font-size: 11.5px; opacity: 0.65; margin-top: 1px; }
+    .nav-dropdown-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 6px 0; }
     .nav-btn {
       background: #2B6CB0;
       color: #fff !important;
@@ -698,7 +730,26 @@
     <div class="nav-logo"><img src="ssquareit-logo.png" alt="SSquare IT" style="height:45px;" /></div>
     <div class="nav-links">
       <a href="#services">Services</a>
-      <a href="#product">Sense AI</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn">Products</button>
+        <div class="nav-dropdown-menu">
+          <a href="#product">
+            <span class="prod-icon">🧠</span>
+            <div class="prod-info">
+              <div class="prod-name">Sense AI</div>
+              <div class="prod-desc">AI Platform for Schools — Offline, On-premise</div>
+            </div>
+          </a>
+          <hr class="nav-dropdown-divider"/>
+          <a href="#contact" style="opacity:0.5; pointer-events:none;">
+            <span class="prod-icon">🔜</span>
+            <div class="prod-info">
+              <div class="prod-name">More Products Coming Soon</div>
+              <div class="prod-desc">Stay tuned for new innovations</div>
+            </div>
+          </a>
+        </div>
+      </div>
       <a href="#pricing">Pricing</a>
       <a href="#purchase" style="color:#68d391; font-weight:700;">Buy Now</a>
       <a href="#requirements">Requirements</a>
