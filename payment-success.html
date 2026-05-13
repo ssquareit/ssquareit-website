@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Status — SenseAI | SSQUARE AI SOLUTIONS</title>
+  <link rel="icon" type="image/png" href="ssquareit-logo.png"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%);
+      padding: 15px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 36px; }
+    .nav-logo-text { font-size: 20px; font-weight: 700; color: #fff; }
+    .nav-logo-text span { color: #90cdf4; }
+    .nav-home {
+      color: #e2e8f0; text-decoration: none; font-size: 14px;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-home:hover { color: #90cdf4; }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 48px 44px;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    }
+
+    /* ── STATUS ICON ── */
+    .status-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; font-size: 38px;
+    }
+    .icon-success { background: #c6f6d5; color: #276749; }
+    .icon-pending { background: #fefcbf; color: #744210; }
+    .icon-failed  { background: #fed7d7; color: #9b2c2c; }
+
+    h1 { font-size: 1.75rem; font-weight: 900; text-align: center; margin-bottom: 10px; }
+    .h1-success { color: #276749; }
+    .h1-pending { color: #744210; }
+    .h1-failed  { color: #9b2c2c; }
+
+    .subtitle {
+      text-align: center; color: #718096; font-size: 0.95rem;
+      line-height: 1.7; margin-bottom: 32px;
+    }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      border-radius: 10px; padding: 18px 20px;
+      margin-bottom: 24px; font-size: 0.88rem; line-height: 1.8;
+    }
+    .info-box-success { background: #ebf8ff; border: 1.5px solid #2B6CB0; color: #1a3a5c; }
+    .info-box-pending { background: #fffbeb; border: 1.5px solid #d69e2e; color: #744210; }
+    .info-box-failed  { background: #fff5f5; border: 1.5px solid #fc8181; color: #9b2c2c; }
+    .info-box strong { font-weight: 700; }
+
+    /* ── STEPS ── */
+    .steps { background: #f7fafc; border-radius: 10px; padding: 20px; margin-bottom: 24px; }
+    .steps-title {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.6px; color: #1a3a5c; margin-bottom: 14px;
+    }
+    .step { display: flex; gap: 12px; margin-bottom: 10px; font-size: 0.83rem; color: #4a5568; }
+    .step:last-child { margin-bottom: 0; }
+    .step-num {
+      background: #2B6CB0; color: white; width: 22px; height: 22px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ── ORDER DETAIL ── */
+    .order-detail {
+      background: #f7fafc; border-radius: 8px; padding: 14px 16px;
+      margin-bottom: 24px; font-size: 0.82rem; color: #4a5568;
+      border: 1px solid #e2e8f0;
+    }
+    .order-detail span { color: #718096; }
+    .order-detail strong { color: #1a3a5c; float: right; }
+
+    /* ── SUPPORT ── */
+    .support {
+      border-top: 1px solid #e2e8f0; padding-top: 20px;
+      font-size: 0.82rem; color: #718096; line-height: 1.9; text-align: center;
+    }
+    .support strong { color: #1a3a5c; }
+
+    /* ── BUTTONS ── */
+    .btn-row { display: flex; gap: 12px; margin-top: 24px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #2B6CB0; color: white; text-decoration: none;
+      padding: 12px 28px; border-radius: 8px; font-size: 0.9rem;
+      font-weight: 700; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #1a3a5c; }
+    .btn-secondary {
+      background: white; color: #2B6CB0; text-decoration: none;
+      padding: 12px 28px; border-radius: 8px; font-size: 0.9rem;
+      font-weight: 700; border: 2px solid #2B6CB0; transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: #ebf4ff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a3a5c; color: rgba(255,255,255,0.6);
+      text-align: center; padding: 16px;
+      font-size: 0.78rem;
+    }
+
+    /* ── HIDDEN ── */
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      nav { padding: 15px 20px; }
+      .card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="https://ssquareit.co.in">
+      <img src="ssquareit-logo.png" alt="SSQUARE AI"/>
+      <span class="nav-logo-text">SSQUARE <span>AI</span></span>
+    </a>
+    <a class="nav-home" href="https://ssquareit.co.in">&#8592; Back to Website</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="card">
+
+      <!-- SUCCESS STATE -->
+      <div id="state-success" class="hidden">
+        <div class="status-icon icon-success">&#10003;</div>
+        <h1 class="h1-success">Payment Successful!</h1>
+        <p class="subtitle">
+          Thank you for purchasing SenseAI.<br/>
+          Your download link is being sent to your email.
+        </p>
+        <div class="info-box info-box-success">
+          &#128231; Check your inbox — an email from
+          <strong>support@ssquareit.co.in</strong> with your
+          <strong>download link</strong> will arrive within 2–5 minutes.<br/><br/>
+          &#128274; If you don't see it, check your <strong>spam / junk folder</strong>.
+        </div>
+        <div class="steps">
+          <div class="steps-title">What happens next</div>
+          <div class="step"><div class="step-num">1</div><div>Download the SenseAI installation package (32 GB) from the link in your email</div></div>
+          <div class="step"><div class="step-num">2</div><div>Copy it to a USB drive and bring it to your server machine</div></div>
+          <div class="step"><div class="step-num">3</div><div>Our team will call you within 1 business day to schedule on-site installation</div></div>
+          <div class="step"><div class="step-num">4</div><div>Installation takes 1–2 hours — fully offline, no internet needed</div></div>
+        </div>
+        <div class="support">
+          <strong>Need help?</strong><br/>
+          &#128222; <strong>0462-2915449</strong> &nbsp;|&nbsp;
+          &#128231; <strong>support@ssquareit.co.in</strong><br/>
+          Mon–Sat &nbsp;9 AM – 6 PM IST
+        </div>
+        <div class="btn-row">
+          <a href="https://ssquareit.co.in" class="btn-primary">&#8592; Back to Website</a>
+        </div>
+      </div>
+
+      <!-- PENDING STATE -->
+      <div id="state-pending" class="hidden">
+        <div class="status-icon icon-pending">&#9203;</div>
+        <h1 class="h1-pending">Payment Pending</h1>
+        <p class="subtitle">
+          Your payment is being processed.<br/>
+          This may take a few minutes.
+        </p>
+        <div class="info-box info-box-pending">
+          &#9888; <strong>Do not close this page or retry payment.</strong>
+          Once the payment is confirmed by your bank, you will receive the download link at your registered email.
+        </div>
+        <div class="support">
+          If payment is not confirmed within 30 minutes, contact us:<br/>
+          <strong>0462-2915449</strong> &nbsp;|&nbsp; <strong>support@ssquareit.co.in</strong>
+        </div>
+        <div class="btn-row">
+          <a href="https://ssquareit.co.in" class="btn-secondary">&#8592; Back to Website</a>
+        </div>
+      </div>
+
+      <!-- FAILED STATE -->
+      <div id="state-failed" class="hidden">
+        <div class="status-icon icon-failed">&#10007;</div>
+        <h1 class="h1-failed">Payment Failed</h1>
+        <p class="subtitle">
+          Unfortunately, your payment could not be processed.<br/>
+          No amount has been debited.
+        </p>
+        <div class="info-box info-box-failed">
+          &#128683; The transaction was declined. This could be due to insufficient funds,
+          bank restrictions, or a network issue. Please try again or use a different payment method.
+        </div>
+        <div class="support">
+          Need assistance? Contact us:<br/>
+          <strong>0462-2915449</strong> &nbsp;|&nbsp; <strong>support@ssquareit.co.in</strong><br/>
+          Or use <strong>Bank Transfer (NEFT/IMPS)</strong> as an alternative.
+        </div>
+        <div class="btn-row">
+          <a href="https://ssquareit.co.in/#purchase" class="btn-primary">Try Again</a>
+          <a href="https://ssquareit.co.in" class="btn-secondary">Back to Website</a>
+        </div>
+      </div>
+
+      <!-- FALLBACK STATE (no params) -->
+      <div id="state-default" class="hidden">
+        <div class="status-icon icon-success">&#128184;</div>
+        <h1 style="color:#1a3a5c;text-align:center;">Thank You!</h1>
+        <p class="subtitle">
+          If your payment was successful, you will receive a download link at your registered email within 5 minutes.
+        </p>
+        <div class="support">
+          Questions? Contact us:<br/>
+          <strong>0462-2915449</strong> &nbsp;|&nbsp; <strong>support@ssquareit.co.in</strong>
+        </div>
+        <div class="btn-row">
+          <a href="https://ssquareit.co.in" class="btn-primary">&#8592; Back to Website</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 SSQUARE AI SOLUTIONS PVT LTD &nbsp;|&nbsp; Tirunelveli, Tamil Nadu, India
+  </footer>
+
+  <script>
+    // Read status from URL query params sent by HDFC after redirect
+    const params  = new URLSearchParams(window.location.search);
+    const status  = (params.get("status") || params.get("order_status") || "").toUpperCase();
+
+    const CHARGED = ["CHARGED", "SUCCESS", "COMPLETED", "PAID", "TXN_SUCCESS"];
+    const PENDING = ["PENDING", "AUTHORIZING", "COD_INITIATED", "STARTED"];
+    const FAILED  = ["FAILED", "AUTHORIZATION_FAILED", "AUTHENTICATION_FAILED", "JUSPAY_DECLINED", "DECLINED", "ERROR"];
+
+    function show(id) {
+      document.getElementById(id).classList.remove("hidden");
+    }
+
+    if (CHARGED.includes(status)) {
+      show("state-success");
+    } else if (PENDING.includes(status)) {
+      show("state-pending");
+    } else if (FAILED.includes(status)) {
+      show("state-failed");
+    } else {
+      // No status param — show default (e.g. direct page visit or POST redirect)
+      show("state-default");
+    }
+  </script>
+
+</body>
+</html>
