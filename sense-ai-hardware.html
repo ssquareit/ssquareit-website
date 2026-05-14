@@ -197,8 +197,8 @@
         <tr>
           <td>GPU (Optional)</td>
           <td>Not required</td>
-          <td>NVIDIA RTX 3060 / A2000 (8 GB VRAM)</td>
-          <td>GPU reduces AI response time from ~15s to ~3s. CPU-only mode works fully</td>
+          <td>NVIDIA RTX 3060 / RTX 5050 (8 GB VRAM+)</td>
+          <td>GPU reduces AI response time 6–10x. Measured performance: 5 questions in ~15–44 sec (GPU, warmed up) vs 11–16 min (CPU cold start). After first job, GPU stays fast. CPU-only mode works fully. NVIDIA GPU strongly recommended for school demos</td>
         </tr>
         <tr>
           <td>Operating System</td>
@@ -215,15 +215,37 @@
       </tbody>
     </table>
 
+    <div class="section-title">✅ Tested &amp; Recommended Machine</div>
+    <div class="ok-box">
+      <h4>✅ Lenovo LOQ 2025 — Tested &amp; Verified by SSQUARE AI SOLUTIONS</h4>
+      <ul>
+        <li><strong>Processor:</strong> AMD Ryzen 7-250 (AI Series) — 440 AI TOPS NPU</li>
+        <li><strong>GPU:</strong> NVIDIA GeForce RTX 5050 — 8 GB VRAM (CUDA 13.0) — GPU acceleration confirmed working</li>
+        <li><strong>RAM:</strong> 24 GB DDR5</li>
+        <li><strong>Storage:</strong> 1 TB NVMe SSD</li>
+        <li><strong>Display:</strong> 15.6" FHD 144Hz</li>
+        <li><strong>OS:</strong> Windows 11 Home (WSL2 enabled)</li>
+        <li><strong>Model:</strong> 83JG008NIN &nbsp;|&nbsp; <strong>Weight:</strong> 2.4 Kg</li>
+        <li><strong>Performance (measured):</strong> 5 questions in ~15 sec, 10 questions in ~39 sec, 11 questions in ~44 sec (after GPU warmup)</li>
+        <li><strong>Cold Start Note:</strong> First AQG job after system boot takes 11–16 minutes (GPU loading model into VRAM). All subsequent jobs are fast. Run one warmup job before any live demo or class session</li>
+      </ul>
+    </div>
+
     <div class="warn-box">
       <h4>⚠️ Critical: Do NOT use these configurations</h4>
       <ul>
-        <li>Laptop as server — thermal throttling kills AI performance; no uptime guarantee</li>
+        <li>Low-end or thin-and-light laptop as server — thermal throttling kills AI performance. High-performance gaming/workstation laptops (e.g., Lenovo LOQ, ASUS ROG) with dedicated GPU are acceptable</li>
         <li>HDD (spinning disk) storage — AI model loading takes 5–10 minutes, unusable</li>
-        <li>Less than 32 GB RAM — AI models will crash with out-of-memory errors during answer generation</li>
+        <li>Less than 32 GB RAM on CPU-only machines — AI models will crash with out-of-memory errors. Exception: machines with NVIDIA GPU (8 GB VRAM+) can run with 24 GB RAM as the model loads into GPU VRAM instead of system RAM</li>
         <li>Windows Home Edition — Docker Desktop requires WSL2 to be enabled; Pro edition recommended for stability</li>
         <li>Shared internet PC — AI inference is CPU-heavy; sharing with teacher workstation causes slowdowns</li>
       </ul>
+    </div>
+
+    <div class="section-title">⚡ Performance Tips</div>
+    <div class="highlight-box">
+      <h4>Cold Start — GPU Model Warmup</h4>
+      <p>After the server boots, the first AQG job takes 11–16 minutes because Ollama loads the AI model (~8 GB) into GPU VRAM for the first time. Once loaded, all subsequent jobs complete in 15–44 seconds. <strong>Always run one dummy AQG job before a live demo or class session</strong> to pre-warm the model. The model stays loaded as long as the system is running — no warmup needed between jobs.</p>
     </div>
 
     <div class="section-title">🌐 Network Requirements</div>
