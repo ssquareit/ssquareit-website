@@ -261,9 +261,12 @@
   </footer>
 
   <script>
-    // Read status from URL query params sent by HDFC after redirect
+    const WORKER_URL = "https://sense-ai-payment.ssquareai.workers.dev";
+
+    // Read status + order_id from URL query params
     const params  = new URLSearchParams(window.location.search);
     const status  = (params.get("status") || params.get("order_status") || "").toUpperCase();
+    const orderId = params.get("order_id") || "";
 
     const CHARGED = ["CHARGED", "SUCCESS", "COMPLETED", "PAID", "TXN_SUCCESS"];
     const PENDING = ["PENDING", "AUTHORIZING", "COD_INITIATED", "STARTED"];
@@ -275,13 +278,38 @@
 
     if (CHARGED.includes(status)) {
       show("state-success");
+      sendDownloadLink();
     } else if (PENDING.includes(status)) {
       show("state-pending");
     } else if (FAILED.includes(status)) {
       show("state-failed");
     } else {
-      // No status param — show default (e.g. direct page visit or POST redirect)
       show("state-default");
+    }
+
+    function sendDownloadLink() {
+      const email = localStorage.getItem("senseai_email") || "";
+      const plan  = localStorage.getItem("senseai_plan")  || "SenseAI License";
+      if (!email || !email.includes("@")) return; // webhook will handle if available
+
+      fetch(WORKER_URL + "/send-link", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, plan: plan, order_id: orderId }),
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.ok) {
+          localStorage.removeItem("senseai_email");
+          localStorage.removeItem("senseai_plan");
+          // Update subtitle to show the email address
+          var subtitle = document.querySelector("#state-success .subtitle");
+          if (subtitle) {
+            subtitle.innerHTML = "Thank you for purchasing SenseAI.<br/>Your download link is being sent to <strong>" + email + "</strong>.";
+          }
+        }
+      })
+      .catch(function() { /* silent — webhook is fallback */ });
     }
   </script>
 
