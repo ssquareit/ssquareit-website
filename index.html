@@ -28,7 +28,9 @@
       top: 0;
       z-index: 999;
     }
-    .nav-logo { font-size: 24px; font-weight: 700; color: #fff; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-text { font-size: 18px; font-weight: 800; color: #fff; line-height: 1.2; }
+    .nav-logo-text .sub { display: block; font-size: 10px; font-weight: 500; color: #90cdf4; letter-spacing: 1px; text-transform: uppercase; }
     .nav-logo span { color: #90cdf4; }
     .nav-links a {
       margin-left: 30px;
@@ -427,6 +429,93 @@
       font-size: 10px; font-weight: 800; padding: 1px 8px; border-radius: 10px;
       text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle; margin-left: 6px;
     }
+    .live-badge {
+      display: inline-block; background: #38a169; color: white;
+      font-size: 10px; font-weight: 800; padding: 1px 8px; border-radius: 10px;
+      text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle; margin-left: 6px;
+    }
+    .online-plan-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid #f0f4f8; font-size: 13px;
+    }
+    .online-plan-row:last-of-type { border-bottom: none; }
+    .online-plan-name { color: #1a3a5c; font-weight: 600; flex: 1; }
+    .online-plan-amount { margin: 0 12px; min-width: 110px; text-align: right; line-height: 1.35; }
+    .online-plan-amount .amt-base { display: block; color: #2B6CB0; font-weight: 800; white-space: nowrap; font-size: 13px; }
+    .online-plan-amount .amt-gst  { display: block; color: #718096; font-weight: 500; white-space: nowrap; font-size: 11px; }
+    .pay-now-btn {
+      display: inline-block; background: #2B6CB0; color: white !important;
+      text-decoration: none; font-size: 12px; font-weight: 700;
+      padding: 6px 14px; border-radius: 6px; white-space: nowrap;
+      transition: background 0.2s; cursor: pointer; border: none;
+    }
+    .pay-now-btn:hover { background: #1a3a5c; }
+
+    /* ── Email capture modal ── */
+    /* ── Student Edition Section ── */
+    .student-section { background: linear-gradient(135deg, #f0f7ff 0%, #fff 100%); padding: 80px 40px; }
+    .student-inner { max-width: 1100px; margin: 0 auto; }
+    .student-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; align-items: start; }
+    @media(max-width:768px){ .student-grid { grid-template-columns: 1fr; } }
+    .student-features-col h4 { color: #1a3a5c; font-size: 1rem; font-weight: 800; margin-bottom: 14px; }
+    .student-feat-list { list-style: none; padding: 0; margin: 0 0 24px; }
+    .student-feat-list li { padding: 9px 0; border-bottom: 1px solid #e2e8f0; font-size: 0.88rem; color: #2d3748; display: flex; gap: 10px; align-items: flex-start; }
+    .student-feat-list li:last-child { border-bottom: none; }
+    .student-feat-list li .fi { color: #38a169; font-weight: 900; font-size: 0.9rem; margin-top: 1px; flex-shrink: 0; }
+    .student-feat-list li .fx { color: #e53e3e; font-weight: 900; font-size: 0.9rem; margin-top: 1px; flex-shrink: 0; }
+    .student-feat-list li .feat-body strong { display: block; font-weight: 700; color: #1a3a5c; margin-bottom: 2px; }
+    .student-feat-list li .feat-body span { color: #718096; font-size: 0.82rem; }
+    .student-pricing-col { background: white; border-radius: 16px; box-shadow: 0 4px 24px rgba(43,108,176,0.10); padding: 32px; border: 2px solid #bee3f8; position: sticky; top: 80px; }
+    .student-badge { background: #ebf8ff; color: #2B6CB0; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 14px; text-transform: uppercase; }
+    .student-pricing-col h3 { color: #1a3a5c; font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+    .student-pricing-col .s-subtitle { color: #718096; font-size: 0.85rem; margin-bottom: 20px; }
+    .student-price-box { background: #f7fafc; border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; }
+    .student-price-box .s-amount { font-size: 2rem; font-weight: 900; color: #2B6CB0; }
+    .student-price-box .s-gst { font-size: 0.82rem; color: #718096; margin-top: 2px; }
+    .student-price-box .s-total { font-size: 0.9rem; font-weight: 700; color: #1a3a5c; margin-top: 6px; }
+    .student-buy-btn { width: 100%; background: #2B6CB0; color: white; border: none; padding: 14px; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-bottom: 16px; }
+    .student-buy-btn:hover { background: #1a3a5c; }
+    .student-hw-box { background: #fffbeb; border: 1px solid #f6e05e; border-radius: 8px; padding: 12px 14px; font-size: 0.8rem; color: #744210; line-height: 1.6; }
+    .student-hw-box strong { display: block; margin-bottom: 4px; color: #744210; }
+    .not-included-label { font-size: 0.78rem; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; margin-top: 4px; }
+
+    .pay-modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55); z-index: 2000;
+      align-items: center; justify-content: center;
+    }
+    .pay-modal-overlay.active { display: flex; }
+    .pay-modal {
+      background: white; border-radius: 14px; padding: 32px 28px;
+      max-width: 420px; width: 90%; box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+    }
+    .pay-modal h3 { color: #1a3a5c; font-size: 1.1rem; margin-bottom: 6px; }
+    .pay-modal p  { color: #718096; font-size: 0.83rem; margin-bottom: 20px; line-height: 1.5; }
+    .pay-modal .plan-tag {
+      background: #ebf4ff; color: #2B6CB0; font-size: 0.78rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 16px;
+    }
+    .pay-modal label { display: block; font-size: 0.82rem; font-weight: 600; color: #1a3a5c; margin-bottom: 6px; }
+    .pay-modal input[type="email"] {
+      width: 100%; padding: 10px 14px; border: 1.5px solid #cbd5e0;
+      border-radius: 8px; font-size: 0.9rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .pay-modal input[type="email"]:focus { border-color: #2B6CB0; }
+    .pay-modal .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+    .pay-modal .btn-proceed {
+      flex: 1; background: #2B6CB0; color: white; border: none;
+      padding: 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .pay-modal .btn-proceed:hover { background: #1a3a5c; }
+    .pay-modal .btn-cancel {
+      background: white; color: #718096; border: 1.5px solid #cbd5e0;
+      padding: 12px 18px; border-radius: 8px; font-size: 0.9rem;
+      font-weight: 600; cursor: pointer;
+    }
+    .payment-methods-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; padding-top: 14px; border-top: 1px solid #f0f4f8; }
+    .pm-badge { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 10px; font-size: 11px; font-weight: 600; color: #4a5568; }
     .coming-soon-placeholder { text-align: center; padding: 40px 10px; color: #a0aec0; }
     .coming-soon-placeholder .cs-icon { font-size: 44px; margin-bottom: 14px; }
     .coming-soon-placeholder p { font-size: 13px; line-height: 1.7; }
@@ -727,7 +816,12 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo"><img src="ssquareit-logo.png" alt="SSquare IT" style="height:45px;" /></div>
+    <a class="nav-logo" href="#">
+      <img src="ssquareit-logo.png" alt="SSquare IT" style="height:45px;" />
+      <div class="nav-logo-text">
+        SSQUARE <span>AI</span> SOLUTIONS
+      </div>
+    </a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <div class="nav-dropdown">
@@ -956,6 +1050,89 @@
     </p>
   </section>
 
+  <!-- STUDENT EDITION -->
+  <section class="student-section" id="student">
+    <div class="student-inner">
+      <div class="section-title">
+        <div class="tag">For Individual Students</div>
+        <h2>SenseAI Student Edition</h2>
+        <p>The same AI-powered study assistant — on your own laptop. Fully offline, fully private.</p>
+      </div>
+      <div class="student-grid">
+
+        <!-- Features column -->
+        <div class="student-features-col">
+          <h4>What's Included</h4>
+          <ul class="student-feat-list">
+            <li>
+              <span class="fi">&#10003;</span>
+              <div class="feat-body">
+                <strong>AI Knowledge Assistant (RAG Chat)</strong>
+                <span>Ask questions in natural language from your own uploaded study material. Answers come directly from your documents — no internet needed.</span>
+              </div>
+            </li>
+            <li>
+              <span class="fi">&#10003;</span>
+              <div class="feat-body">
+                <strong>Upload Your Own Study Material</strong>
+                <span>Upload PDFs, DOCX, PPT files — textbooks, notes, reference material. All stored privately on your own laptop.</span>
+              </div>
+            </li>
+            <li>
+              <span class="fi">&#10003;</span>
+              <div class="feat-body">
+                <strong>Auto Question Generator (AQG)</strong>
+                <span>Generate MCQ &amp; essay questions from your material — CBSE (Class 11 &amp; 12), NEET, JEE Main, JEE Advanced, English Comprehension.</span>
+              </div>
+            </li>
+            <li>
+              <span class="fi">&#10003;</span>
+              <div class="feat-body">
+                <strong>Self-Practice Tests</strong>
+                <span>Auto-graded tests from your own material. Instant results with correct answers and explanations.</span>
+              </div>
+            </li>
+            <li>
+              <span class="fi">&#10003;</span>
+              <div class="feat-body">
+                <strong>Works Fully Offline</strong>
+                <span>No internet required after first setup. No data sent to any server. Everything runs on your laptop.</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="not-included-label">Not included (School / Enterprise only)</div>
+          <ul class="student-feat-list">
+            <li><span class="fx">&#10007;</span><div class="feat-body"><strong>Live Quiz with classroom leaderboard</strong></div></li>
+            <li><span class="fx">&#10007;</span><div class="feat-body"><strong>PIN-based student sessions</strong></div></li>
+            <li><span class="fx">&#10007;</span><div class="feat-body"><strong>Multi-user / multi-teacher access</strong></div></li>
+            <li><span class="fx">&#10007;</span><div class="feat-body"><strong>School LAN sharing</strong></div></li>
+          </ul>
+        </div>
+
+        <!-- Pricing column -->
+        <div class="student-pricing-col">
+          <span class="student-badge">Student Edition</span>
+          <h3>Personal License</h3>
+          <div class="s-subtitle">Class 11 &amp; 12 — CBSE, NEET, JEE Main &amp; Advanced</div>
+          <div class="student-price-box">
+            <div class="s-amount">₹25,000</div>
+            <div class="s-gst">+ ₹4,500 GST (18%)</div>
+            <div class="s-total">Total: ₹29,500 &nbsp;•&nbsp; One-time, use forever</div>
+          </div>
+          <button class="student-buy-btn" onclick="openPayModal('Student Edition — Personal License','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_c8c3755a6b3c4d9d9f5d5401e7c13d59')">Buy Now &rarr;</button>
+          <div class="student-hw-box">
+            <strong>&#9888; Hardware Required</strong>
+            Gaming laptop with NVIDIA RTX GPU (min. 8 GB VRAM) &amp; 16 GB RAM<br/>
+            e.g. Lenovo LOQ, ASUS ROG, MSI Gaming series<br/>
+            <span style="font-size:0.76rem; color:#975a16;">Standard laptops without a dedicated GPU are not supported.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- PURCHASE -->
   <section class="purchase section-pad" id="purchase">
     <div class="section-title">
@@ -1006,25 +1183,52 @@
         </ol>
       </div>
 
-      <!-- HDFC SmartHub Vyapar Coming Soon -->
-      <div class="payment-card coming-soon">
+      <!-- HDFC SmartGateway — Online Payment -->
+      <div class="payment-card active">
         <div class="payment-card-header">
-          <div class="payment-icon">📱</div>
+          <div class="payment-icon">💳</div>
           <div>
-            <h3>UPI / QR / Card — HDFC SmartHub <span class="coming-badge">Coming Soon</span></h3>
-            <p>Scan &amp; pay instantly via UPI, debit/credit card or net banking</p>
+            <h3>Pay Online — UPI / Card / Netbanking <span class="live-badge">Live</span></h3>
+            <p>Secure payment via HDFC SmartGateway — instant confirmation</p>
           </div>
         </div>
-        <div class="coming-soon-placeholder">
-          <div class="cs-icon">📲</div>
-          <p>UPI QR code and online card payment via <strong>HDFC SmartHub Vyapar</strong> will be activated shortly.<br/><br/>Until then, use bank transfer (NEFT/IMPS) — equally safe and credited same day.</p>
+        <div class="online-plan-row">
+          <span class="online-plan-name">CBSE Plan</span>
+          <span class="online-plan-amount">
+            <span class="amt-base">₹75,000</span>
+            <span class="amt-gst">+ ₹13,500 GST</span>
+          </span>
+          <button class="pay-now-btn" onclick="openPayModal('CBSE Plan','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_3c7e6c7914a943cdab5b383b771af379')">Pay Now</button>
+        </div>
+        <div class="online-plan-row">
+          <span class="online-plan-name">CBSE + NEET Plan</span>
+          <span class="online-plan-amount">
+            <span class="amt-base">₹1,25,000</span>
+            <span class="amt-gst">+ ₹22,500 GST</span>
+          </span>
+          <button class="pay-now-btn" onclick="openPayModal('CBSE + NEET Plan','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_ee68fa8557ad4132a80d363633f90708')">Pay Now</button>
+        </div>
+        <div class="online-plan-row">
+          <span class="online-plan-name">Full Exam Pack</span>
+          <span class="online-plan-amount">
+            <span class="amt-base">₹1,50,000</span>
+            <span class="amt-gst">+ ₹27,000 GST</span>
+          </span>
+          <button class="pay-now-btn" onclick="openPayModal('Full Exam Pack (CBSE + NEET + JEE)','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_b39e855927bc45109f9f9a20f3cfe633')">Pay Now</button>
+        </div>
+        <div class="payment-methods-row">
+          <span class="pm-badge">UPI</span>
+          <span class="pm-badge">VISA</span>
+          <span class="pm-badge">Mastercard</span>
+          <span class="pm-badge">RuPay</span>
+          <span class="pm-badge">Netbanking</span>
         </div>
       </div>
 
     </div>
 
     <p class="purchase-note">
-      Have questions before purchasing? Email <strong>senseai-support@ssquareit.co.in</strong> or use the <a href="#inquiry" style="color:#2B6CB0;">Request Demo</a> form above.
+      Have questions before purchasing? Email <strong>support@ssquareit.co.in</strong> or use the <a href="#inquiry" style="color:#2B6CB0;">Request Demo</a> form above.
     </p>
   </section>
 
@@ -1455,6 +1659,67 @@
     document.getElementById('chat-send').addEventListener('click', handleSend);
     document.getElementById('chat-input').addEventListener('keydown', e => {
       if (e.key === 'Enter') handleSend();
+    });
+  </script>
+
+  <!-- Pay Now email modal -->
+  <div class="pay-modal-overlay" id="payModalOverlay">
+    <div class="pay-modal">
+      <span class="plan-tag" id="modalPlanTag"></span>
+      <h3>Enter your school email</h3>
+      <p>Your download link will be sent to this email after payment is confirmed.</p>
+      <label for="modalEmail">School Email Address</label>
+      <input type="email" id="modalEmail" placeholder="principal@schoolname.edu.in" autocomplete="email"/>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closePayModal()">Cancel</button>
+        <button class="btn-proceed" id="modalProceedBtn" onclick="proceedToPayment()">Proceed to Payment &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var _payLink = '';
+    var _planName = '';
+
+    function openPayModal(planName, link) {
+      _payLink   = link;
+      _planName  = planName;
+      document.getElementById('modalPlanTag').textContent = planName;
+      document.getElementById('modalEmail').value = '';
+      document.getElementById('payModalOverlay').classList.add('active');
+      setTimeout(function(){ document.getElementById('modalEmail').focus(); }, 100);
+    }
+
+    function closePayModal() {
+      document.getElementById('payModalOverlay').classList.remove('active');
+    }
+
+    function proceedToPayment() {
+      var email = document.getElementById('modalEmail').value.trim();
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        document.getElementById('modalEmail').style.borderColor = '#fc8181';
+        document.getElementById('modalEmail').focus();
+        return;
+      }
+      document.getElementById('modalEmail').style.borderColor = '#cbd5e0';
+      localStorage.setItem('senseai_email', email);
+      localStorage.setItem('senseai_plan', _planName);
+      document.getElementById('modalProceedBtn').textContent = 'Redirecting...';
+      document.getElementById('modalProceedBtn').disabled = true;
+      window.open(_payLink, '_blank');
+      closePayModal();
+      document.getElementById('modalProceedBtn').textContent = 'Proceed to Payment →';
+      document.getElementById('modalProceedBtn').disabled = false;
+    }
+
+    // Close modal on overlay click
+    document.getElementById('payModalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closePayModal();
+    });
+
+    // Allow Enter key to submit
+    document.getElementById('modalEmail').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') proceedToPayment();
     });
   </script>
 
