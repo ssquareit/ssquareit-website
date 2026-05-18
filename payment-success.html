@@ -288,24 +288,31 @@
     }
 
     function sendDownloadLink() {
-      const email = localStorage.getItem("senseai_email") || "";
-      const plan  = localStorage.getItem("senseai_plan")  || "SenseAI License";
-      if (!email || !email.includes("@")) return; // webhook will handle if available
+      const email    = localStorage.getItem("senseai_email")    || "";
+      const plan     = localStorage.getItem("senseai_plan")     || "SenseAI License";
+      const instName = localStorage.getItem("senseai_instname") || "";
+      const state    = localStorage.getItem("senseai_state")    || "";
+      const address  = localStorage.getItem("senseai_address")  || "";
+      const gstin    = localStorage.getItem("senseai_gstin")    || "";
+      if (!email || !email.includes("@")) return;
 
       fetch(WORKER_URL + "/send-link", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email, plan: plan, order_id: orderId }),
+        body: JSON.stringify({ email, plan, order_id: orderId, inst_name: instName, state, address, gstin }),
       })
       .then(function(r) { return r.json(); })
       .then(function(d) {
         if (d.ok) {
           localStorage.removeItem("senseai_email");
           localStorage.removeItem("senseai_plan");
-          // Update subtitle to show the email address
+          localStorage.removeItem("senseai_instname");
+          localStorage.removeItem("senseai_state");
+          localStorage.removeItem("senseai_address");
+          localStorage.removeItem("senseai_gstin");
           var subtitle = document.querySelector("#state-success .subtitle");
           if (subtitle) {
-            subtitle.innerHTML = "Thank you for purchasing SenseAI.<br/>Your download link is being sent to <strong>" + email + "</strong>.";
+            subtitle.innerHTML = "Thank you for purchasing SenseAI.<br/>Your download link and GST invoice are being sent to <strong>" + email + "</strong>.";
           }
         }
       })
