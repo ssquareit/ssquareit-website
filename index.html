@@ -1803,10 +1803,32 @@
   <div class="pay-modal-overlay" id="payModalOverlay">
     <div class="pay-modal">
       <span class="plan-tag" id="modalPlanTag"></span>
-      <h3>Enter your school email</h3>
-      <p>Your download link will be sent to this email after payment is confirmed.</p>
-      <label for="modalEmail">School Email Address</label>
+      <h3>Billing Details</h3>
+      <p>Required for your GST invoice. Download link will be sent to your email after payment.</p>
+      <label for="modalInstName">Institution / Name <span style="color:#e53e3e">*</span></label>
+      <input type="text" id="modalInstName" placeholder="St Antony's Public School" autocomplete="organization"/>
+      <label for="modalEmail">Email Address <span style="color:#e53e3e">*</span></label>
       <input type="email" id="modalEmail" placeholder="principal@schoolname.edu.in" autocomplete="email"/>
+      <label for="modalState">State <span style="color:#e53e3e">*</span></label>
+      <select id="modalState" style="width:100%;padding:9px 12px;border:1.5px solid #cbd5e0;border-radius:6px;font-size:13px;margin-bottom:10px;font-family:inherit;box-sizing:border-box;">
+        <option value="">-- Select State --</option>
+        <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option>
+        <option>Bihar</option><option>Chhattisgarh</option><option>Goa</option>
+        <option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option>
+        <option>Jharkhand</option><option>Karnataka</option><option>Kerala</option>
+        <option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option>
+        <option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option>
+        <option>Odisha</option><option>Punjab</option><option>Rajasthan</option>
+        <option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option>
+        <option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option>
+        <option>West Bengal</option><option>Delhi</option><option>Jammu &amp; Kashmir</option>
+        <option>Ladakh</option><option>Puducherry</option><option>Chandigarh</option>
+        <option>Other</option>
+      </select>
+      <label for="modalAddress">Address <span style="color:#e53e3e">*</span></label>
+      <textarea id="modalAddress" rows="2" placeholder="No. 12, Main Road, City, PIN" style="width:100%;padding:9px 12px;border:1.5px solid #cbd5e0;border-radius:6px;font-size:13px;resize:none;font-family:inherit;box-sizing:border-box;margin-bottom:10px;"></textarea>
+      <label for="modalGstin">GSTIN <span style="color:#718096;font-weight:400;">(optional)</span></label>
+      <input type="text" id="modalGstin" placeholder="e.g. 33AABCS1234A1Z5" style="text-transform:uppercase;" maxlength="15"/>
       <div class="modal-actions">
         <button class="btn-cancel" onclick="closePayModal()">Cancel</button>
         <button class="btn-proceed" id="modalProceedBtn" onclick="proceedToPayment()">Proceed to Payment &#8594;</button>
@@ -1832,15 +1854,33 @@
     }
 
     function proceedToPayment() {
-      var email = document.getElementById('modalEmail').value.trim();
-      if (!email || !email.includes('@') || !email.includes('.')) {
-        document.getElementById('modalEmail').style.borderColor = '#fc8181';
-        document.getElementById('modalEmail').focus();
-        return;
-      }
-      document.getElementById('modalEmail').style.borderColor = '#cbd5e0';
-      localStorage.setItem('senseai_email', email);
-      localStorage.setItem('senseai_plan', _planName);
+      var instName = document.getElementById('modalInstName').value.trim();
+      var email    = document.getElementById('modalEmail').value.trim();
+      var state    = document.getElementById('modalState').value.trim();
+      var address  = document.getElementById('modalAddress').value.trim();
+      var gstin    = document.getElementById('modalGstin').value.trim().toUpperCase();
+      var valid = true;
+      if (!instName) { document.getElementById('modalInstName').style.borderColor='#fc8181'; valid=false; }
+      else document.getElementById('modalInstName').style.borderColor='#cbd5e0';
+      if (!email || !email.includes('@') || !email.includes('.')) { document.getElementById('modalEmail').style.borderColor='#fc8181'; valid=false; }
+      else document.getElementById('modalEmail').style.borderColor='#cbd5e0';
+      if (!state)   { document.getElementById('modalState').style.borderColor='#fc8181'; valid=false; }
+      else document.getElementById('modalState').style.borderColor='#cbd5e0';
+      if (!address) { document.getElementById('modalAddress').style.borderColor='#fc8181'; valid=false; }
+      else document.getElementById('modalAddress').style.borderColor='#cbd5e0';
+      if (!valid) return;
+      localStorage.setItem('senseai_email',    email);
+      localStorage.setItem('senseai_plan',     _planName);
+      localStorage.setItem('senseai_instname', instName);
+      localStorage.setItem('senseai_state',    state);
+      localStorage.setItem('senseai_address',  address);
+      localStorage.setItem('senseai_gstin',    gstin);
+      // Track payment intent in D1
+      fetch('https://sense-ai-payment.ssquareai.workers.dev/track-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, plan: _planName, inst_name: instName, state: state, address: address, gstin: gstin })
+      }).catch(function(){});
       document.getElementById('modalProceedBtn').textContent = 'Redirecting...';
       document.getElementById('modalProceedBtn').disabled = true;
       window.open(_payLink, '_blank');
