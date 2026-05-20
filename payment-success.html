@@ -278,7 +278,8 @@
 
     if (CHARGED.includes(status)) {
       show("state-success");
-      sendDownloadLink();
+      // Email + download link already sent by /verify-payment in the Razorpay flow.
+      // sendDownloadLink() was the old HDFC fallback — no longer needed.
     } else if (PENDING.includes(status)) {
       show("state-pending");
     } else if (FAILED.includes(status)) {
@@ -287,37 +288,6 @@
       show("state-default");
     }
 
-    function sendDownloadLink() {
-      const email    = localStorage.getItem("senseai_email")    || "";
-      const plan     = localStorage.getItem("senseai_plan")     || "SenseAI License";
-      const instName = localStorage.getItem("senseai_instname") || "";
-      const state    = localStorage.getItem("senseai_state")    || "";
-      const address  = localStorage.getItem("senseai_address")  || "";
-      const gstin    = localStorage.getItem("senseai_gstin")    || "";
-      if (!email || !email.includes("@")) return;
-
-      fetch(WORKER_URL + "/send-link", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, plan, order_id: orderId, inst_name: instName, state, address, gstin }),
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(d) {
-        if (d.ok) {
-          localStorage.removeItem("senseai_email");
-          localStorage.removeItem("senseai_plan");
-          localStorage.removeItem("senseai_instname");
-          localStorage.removeItem("senseai_state");
-          localStorage.removeItem("senseai_address");
-          localStorage.removeItem("senseai_gstin");
-          var subtitle = document.querySelector("#state-success .subtitle");
-          if (subtitle) {
-            subtitle.innerHTML = "Thank you for purchasing SenseAI.<br/>Your download link and GST invoice are being sent to <strong>" + email + "</strong>.";
-          }
-        }
-      })
-      .catch(function() { /* silent — webhook is fallback */ });
-    }
   </script>
 
 </body>
