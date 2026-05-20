@@ -1117,7 +1117,7 @@
             <li>Class 11 &amp; 12 syllabus coverage</li>
             <li>Fully offline — no internet after setup</li>
           </ul>
-          <button class="coaching-buy-btn" onclick="openPayModal('NEET Coaching Pack — ₹60,000 + GST','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_d0b6fba6f03449619accc4d3e9c3d60e')">Buy Now &rarr;</button>
+          <button class="coaching-buy-btn" onclick="openPayModal('NEET Coaching Pack — ₹60,000 + GST')">Buy Now &rarr;</button>
         </div>
 
         <!-- JEE Main Coaching Pack -->
@@ -1137,7 +1137,7 @@
             <li>Class 11 &amp; 12 syllabus coverage</li>
             <li>Fully offline — no internet after setup</li>
           </ul>
-          <button class="coaching-buy-btn" onclick="openPayModal('JEE Main Coaching Pack — ₹60,000 + GST','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_0ccea2cd41c94c8da1628b8baf84c6e8')">Buy Now &rarr;</button>
+          <button class="coaching-buy-btn" onclick="openPayModal('JEE Main Coaching Pack — ₹60,000 + GST')">Buy Now &rarr;</button>
         </div>
 
         <!-- JEE Advanced Coaching Pack -->
@@ -1157,7 +1157,7 @@
             <li>Self-practice &amp; auto-graded tests</li>
             <li>Fully offline — no internet after setup</li>
           </ul>
-          <button class="coaching-buy-btn" onclick="openPayModal('JEE Advanced Coaching Pack — ₹75,000 + GST','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_250f42fca1da4bddbaa44f955abe66be')">Buy Now &rarr;</button>
+          <button class="coaching-buy-btn" onclick="openPayModal('JEE Advanced Coaching Pack — ₹75,000 + GST')">Buy Now &rarr;</button>
         </div>
 
         <!-- Full Competitive Pack -->
@@ -1178,7 +1178,7 @@
             <li>Self-practice &amp; auto-graded tests</li>
             <li>~15% savings vs buying separately</li>
           </ul>
-          <button class="coaching-buy-btn" onclick="openPayModal('Full Competitive Pack — ₹1,25,000 + GST','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_db62469df6df48d993e4e53d1d7f6b98')">Buy Now &rarr;</button>
+          <button class="coaching-buy-btn" onclick="openPayModal('Full Competitive Pack — ₹1,25,000 + GST')">Buy Now &rarr;</button>
         </div>
 
       </div>
@@ -1257,7 +1257,7 @@
             <div class="s-gst">+ ₹4,500 GST (18%)</div>
             <div class="s-total">Total: ₹29,500 &nbsp;•&nbsp; One-time, use forever</div>
           </div>
-          <button class="student-buy-btn" onclick="openPayModal('Student Edition — Personal License','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_c8c3755a6b3c4d9d9f5d5401e7c13d59')">Buy Now &rarr;</button>
+          <button class="student-buy-btn" onclick="openPayModal('Student Edition — Personal License')">Buy Now &rarr;</button>
           <div class="student-hw-box">
             <strong>&#9888; Hardware Required</strong>
             Gaming laptop with NVIDIA RTX GPU (min. 8 GB VRAM) &amp; 16 GB RAM<br/>
@@ -1335,7 +1335,7 @@
             <span class="amt-base">₹75,000</span>
             <span class="amt-gst">+ ₹13,500 GST</span>
           </span>
-          <button class="pay-now-btn" onclick="openPayModal('CBSE Plan','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_f34ebd561a3c47ca9e2b0a351f368568')">Pay Now</button>
+          <button class="pay-now-btn" onclick="openPayModal('CBSE Plan')">Pay Now</button>
         </div>
         <div class="online-plan-row">
           <span class="online-plan-name">CBSE + NEET Plan</span>
@@ -1343,7 +1343,7 @@
             <span class="amt-base">₹1,25,000</span>
             <span class="amt-gst">+ ₹22,500 GST</span>
           </span>
-          <button class="pay-now-btn" onclick="openPayModal('CBSE + NEET Plan','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_ee68fa8557ad4132a80d363633f90708')">Pay Now</button>
+          <button class="pay-now-btn" onclick="openPayModal('CBSE + NEET Plan')">Pay Now</button>
         </div>
         <div class="online-plan-row">
           <span class="online-plan-name">Full Exam Pack</span>
@@ -1351,7 +1351,7 @@
             <span class="amt-base">₹1,50,000</span>
             <span class="amt-gst">+ ₹27,000 GST</span>
           </span>
-          <button class="pay-now-btn" onclick="openPayModal('Full Exam Pack (CBSE + NEET + JEE)','https://smartgateway.hdfc.bank.in/payment-page/order/ordeh_b39e855927bc45109f9f9a20f3cfe633')">Pay Now</button>
+          <button class="pay-now-btn" onclick="openPayModal('Full Exam Pack (CBSE + NEET + JEE)')">Pay Now</button>
         </div>
         <div class="payment-methods-row">
           <span class="pm-badge">UPI</span>
@@ -1836,12 +1836,11 @@
     </div>
   </div>
 
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script>
-    var _payLink = '';
     var _planName = '';
 
-    function openPayModal(planName, link) {
-      _payLink   = link;
+    function openPayModal(planName) {
       _planName  = planName;
       document.getElementById('modalPlanTag').textContent = planName;
       document.getElementById('modalEmail').value = '';
@@ -1869,24 +1868,89 @@
       if (!address) { document.getElementById('modalAddress').style.borderColor='#fc8181'; valid=false; }
       else document.getElementById('modalAddress').style.borderColor='#cbd5e0';
       if (!valid) return;
-      localStorage.setItem('senseai_email',    email);
-      localStorage.setItem('senseai_plan',     _planName);
-      localStorage.setItem('senseai_instname', instName);
-      localStorage.setItem('senseai_state',    state);
-      localStorage.setItem('senseai_address',  address);
-      localStorage.setItem('senseai_gstin',    gstin);
+
+      var btn = document.getElementById('modalProceedBtn');
+      btn.textContent = 'Creating order...';
+      btn.disabled = true;
+
       // Track payment intent in D1
       fetch('https://sense-ai-payment.ssquareai.workers.dev/track-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, plan: _planName, inst_name: instName, state: state, address: address, gstin: gstin })
       }).catch(function(){});
-      document.getElementById('modalProceedBtn').textContent = 'Redirecting...';
-      document.getElementById('modalProceedBtn').disabled = true;
-      window.open(_payLink, '_blank');
-      closePayModal();
-      document.getElementById('modalProceedBtn').textContent = 'Proceed to Payment →';
-      document.getElementById('modalProceedBtn').disabled = false;
+
+      // Step 1: Create Razorpay order on server
+      fetch('https://sense-ai-payment.ssquareai.workers.dev/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: _planName, email: email, inst_name: instName })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d.ok) {
+          alert('Could not create payment: ' + (d.error || 'Please try again'));
+          btn.textContent = 'Proceed to Payment \u2192';
+          btn.disabled = false;
+          return;
+        }
+        // Step 2: Open Razorpay checkout modal
+        closePayModal();
+        var rzp = new Razorpay({
+          key:         d.key_id,
+          amount:      d.amount_paise,
+          currency:    'INR',
+          name:        'SSQUARE AI SOLUTIONS',
+          description: _planName,
+          image:       'https://ssquareit.co.in/ssquareit-logo.png',
+          order_id:    d.order_id,
+          prefill:     { name: instName, email: email },
+          notes:       { plan: _planName, inst_name: instName },
+          theme:       { color: '#2B6CB0' },
+          modal: {
+            ondismiss: function() {
+              btn.textContent = 'Proceed to Payment \u2192';
+              btn.disabled = false;
+            }
+          },
+          handler: function(response) {
+            // Step 3: Verify payment signature + deliver download link
+            fetch('https://sense-ai-payment.ssquareai.workers.dev/verify-payment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id:   response.razorpay_order_id,
+                razorpay_signature:  response.razorpay_signature,
+                email:     email,
+                plan:      _planName,
+                inst_name: instName,
+                state:     state,
+                address:   address,
+                gstin:     gstin,
+              })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function() {
+              window.location.href = 'https://ssquareit.co.in/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id);
+            })
+            .catch(function() {
+              window.location.href = 'https://ssquareit.co.in/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id);
+            });
+          }
+        });
+        rzp.on('payment.failed', function(response) {
+          alert('Payment failed: ' + (response.error.description || 'Please try again'));
+          btn.textContent = 'Proceed to Payment \u2192';
+          btn.disabled = false;
+        });
+        rzp.open();
+      })
+      .catch(function() {
+        alert('Network error. Please try again.');
+        btn.textContent = 'Proceed to Payment \u2192';
+        btn.disabled = false;
+      });
     }
 
     // Close modal on overlay click
