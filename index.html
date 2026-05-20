@@ -536,12 +536,15 @@
       padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 16px;
     }
     .pay-modal label { display: block; font-size: 0.82rem; font-weight: 600; color: #1a3a5c; margin-bottom: 6px; }
-    .pay-modal input[type="email"] {
+    .pay-modal input[type="email"],
+    .pay-modal input[type="text"] {
       width: 100%; padding: 10px 14px; border: 1.5px solid #cbd5e0;
       border-radius: 8px; font-size: 0.9rem; outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s; box-sizing: border-box;
     }
-    .pay-modal input[type="email"]:focus { border-color: #2B6CB0; }
+    .pay-modal input[type="email"]:focus,
+    .pay-modal input[type="text"]:focus { border-color: #2B6CB0; }
+    #modalInstName { min-height: 52px; margin-bottom: 14px; }
     .pay-modal .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
     .pay-modal .btn-proceed {
       flex: 1; background: #2B6CB0; color: white; border: none;
@@ -1808,7 +1811,7 @@
       <label for="modalInstName">Institution / Name <span style="color:#e53e3e">*</span></label>
       <input type="text" id="modalInstName" placeholder="e.g. Your School / Institution Name" autocomplete="organization"/>
       <label for="modalEmail">Email Address <span style="color:#e53e3e">*</span></label>
-      <input type="email" id="modalEmail" placeholder="principal@schoolname.edu.in" autocomplete="email"/>
+      <input type="email" id="modalEmail" placeholder="principal@schoolname.edu.in" autocomplete="email" style="margin-bottom:14px;"/>
       <label for="modalState">State <span style="color:#e53e3e">*</span></label>
       <select id="modalState" style="width:100%;padding:9px 12px;border:1.5px solid #cbd5e0;border-radius:6px;font-size:13px;margin-bottom:10px;font-family:inherit;box-sizing:border-box;">
         <option value="">-- Select State --</option>
@@ -1845,7 +1848,7 @@
       document.getElementById('modalPlanTag').textContent = planName;
       document.getElementById('modalEmail').value = '';
       document.getElementById('payModalOverlay').classList.add('active');
-      setTimeout(function(){ document.getElementById('modalEmail').focus(); }, 100);
+      setTimeout(function(){ document.getElementById('modalInstName').focus(); }, 100);
     }
 
     function closePayModal() {
