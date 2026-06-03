@@ -1935,10 +1935,10 @@
             })
             .then(function(r) { return r.json(); })
             .then(function() {
-              window.location.href = 'https://ssquareit.co.in/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id);
+              window.location.href = 'https://ssquareit.co.in/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id) + '&plan=' + encodeURIComponent(_planName);
             })
             .catch(function() {
-              window.location.href = 'https://ssquareit.co.in/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id);
+              window.location.href = 'https://ssquareit.co.in/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id) + '&plan=' + encodeURIComponent(_planName);
             });
           }
         });
