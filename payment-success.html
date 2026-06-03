@@ -174,12 +174,19 @@
           <strong>download link</strong> will arrive within 2–5 minutes.<br/><br/>
           &#128274; If you don't see it, check your <strong>spam / junk folder</strong>.
         </div>
-        <div class="steps">
+        <div class="steps" id="steps-school">
           <div class="steps-title">What happens next</div>
           <div class="step"><div class="step-num">1</div><div>Download the SenseAI installation package (22.4 GB) from the link in your email</div></div>
           <div class="step"><div class="step-num">2</div><div>Copy it to a USB drive and bring it to your server machine</div></div>
           <div class="step"><div class="step-num">3</div><div>Our team will call you within 1 business day to schedule on-site installation</div></div>
           <div class="step"><div class="step-num">4</div><div>Installation takes 1–2 hours — fully offline, no internet needed</div></div>
+        </div>
+        <div class="steps hidden" id="steps-student">
+          <div class="steps-title">What happens next</div>
+          <div class="step"><div class="step-num">1</div><div>Download the ZIP file (~12.8 GB) from the link in your email</div></div>
+          <div class="step"><div class="step-num">2</div><div>Right-click the ZIP and select <strong>Extract All</strong> — extract to any folder</div></div>
+          <div class="step"><div class="step-num">3</div><div>Open the extracted folder and double-click <strong>SenseAI-Student-Setup.exe</strong> to install</div></div>
+          <div class="step"><div class="step-num">4</div><div>Installation runs fully offline — no internet needed after download</div></div>
         </div>
         <div class="support">
           <strong>Need help?</strong><br/>
@@ -264,9 +271,11 @@
     const WORKER_URL = "https://sense-ai-payment.ssquareai.workers.dev";
 
     // Read status + order_id from URL query params
-    const params  = new URLSearchParams(window.location.search);
-    const status  = (params.get("status") || params.get("order_status") || "").toUpperCase();
-    const orderId = params.get("order_id") || "";
+    const params   = new URLSearchParams(window.location.search);
+    const status   = (params.get("status") || params.get("order_status") || "").toUpperCase();
+    const orderId  = params.get("order_id") || "";
+    const planName = params.get("plan") || "";
+    const isStudent = planName.includes("Student Edition");
 
     const CHARGED = ["CHARGED", "SUCCESS", "COMPLETED", "PAID", "TXN_SUCCESS"];
     const PENDING = ["PENDING", "AUTHORIZING", "COD_INITIATED", "STARTED"];
@@ -278,8 +287,10 @@
 
     if (CHARGED.includes(status)) {
       show("state-success");
-      // Email + download link already sent by /verify-payment in the Razorpay flow.
-      // sendDownloadLink() was the old HDFC fallback — no longer needed.
+      if (isStudent) {
+        document.getElementById("steps-school").classList.add("hidden");
+        document.getElementById("steps-student").classList.remove("hidden");
+      }
     } else if (PENDING.includes(status)) {
       show("state-pending");
     } else if (FAILED.includes(status)) {
