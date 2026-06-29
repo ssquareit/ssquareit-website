@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SSquare IT — Visiting Card</title>
+  <title>SSQUARE AI SOLUTIONS PVT LTD — Visiting Card</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -10,11 +10,9 @@
       background: #e8e8e8;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      align-items: flex-start;
       gap: 40px;
-      padding: 40px;
+      padding: 60px;
     }
 
     h2 {
@@ -25,19 +23,19 @@
       margin-bottom: -30px;
     }
 
-    /* Card size: 90mm x 54mm = 340px x 204px at 96dpi */
+    /* Card size: 91mm x 61mm with bleed = 1075x720px at 300dpi */
+    .card-wrapper {
+      padding: 6px;
+      background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      border-radius: 14px;
+      display: inline-block;
+    }
     .card {
       width: 340px;
       height: 204px;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
       position: relative;
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      outline: 2px solid;
-      outline-color: #b38728;
-      outline-offset: -2px;
     }
 
     /* ── FRONT ── */
@@ -46,15 +44,16 @@
       color: #fff;
       display: flex;
       align-items: center;
-      padding: 20px 22px;
-      gap: 16px;
+      padding: 16px 18px;
+      gap: 10px;
     }
 
     .front-left {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 7px;
+      min-width: 0;
     }
 
     .front-logo {
@@ -64,7 +63,7 @@
     }
 
     .front-logo img {
-      height: 36px;
+      height: 28px;
       border-radius: 5px;
     }
 
@@ -74,15 +73,20 @@
     }
 
     .company-name {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 8px;
+      font-weight: 600;
       letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1.2;
+      color: #ffffff;
     }
 
     .tagline {
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 9px;
+      white-space: nowrap;
+      font-weight: 500;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
       background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
       -webkit-background-clip: text;
@@ -100,6 +104,7 @@
     .person-name {
       font-size: 13px;
       font-weight: 700;
+      white-space: nowrap;
       background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -107,8 +112,9 @@
     }
 
     .designation {
-      font-size: 9px;
-      color: #90cdf4;
+      font-size: 9.5px;
+      font-weight: 500;
+      color: #d1d5db;
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
@@ -116,31 +122,35 @@
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
 
     .contact-info p {
-      font-size: 8.5px;
-      color: rgba(255,255,255,0.85);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
     .contact-info span {
       font-size: 10px;
+      width: 14px;
+      text-align: center;
+      flex-shrink: 0;
     }
 
     .front-right {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
 
     .qr-placeholder {
-      width: 65px;
-      height: 65px;
+      width: 68px;
+      height: 68px;
       background: #fff;
       border-radius: 6px;
       display: flex;
@@ -158,12 +168,12 @@
     }
 
     .qr-placeholder img {
-      width: 55px;
-      height: 55px;
+      width: 60px;
+      height: 60px;
     }
 
     .scan-text {
-      font-size: 6.5px;
+      font-size: 9px;
       color: rgba(255,255,255,0.6);
       text-align: center;
     }
@@ -197,12 +207,12 @@
     }
 
     .back-logo img {
-      height: 38px;
+      height: 55px;
       border-radius: 5px;
     }
 
     .back-title {
-      font-size: 9px;
+      font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #90cdf4;
@@ -212,11 +222,12 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4px 20px;
-      width: 100%;
+      width: auto;
+      margin: 0 auto;
     }
 
     .service-item {
-      font-size: 8px;
+      font-size: 11px;
       color: rgba(255,255,255,0.85);
       display: flex;
       align-items: center;
@@ -226,11 +237,11 @@
     .service-item::before {
       content: '▸';
       color: #90cdf4;
-      font-size: 8px;
+      font-size: 11px;
     }
 
     .back-quote {
-      font-size: 7.5px;
+      font-size: 10px;
       color: rgba(255,255,255,0.5);
       font-style: italic;
       text-align: center;
@@ -272,12 +283,14 @@
 
   <h2>Front Side</h2>
 
+  <div class="card-wrapper">
   <div class="card front">
     <div class="front-left">
 
       <div class="front-logo">
-        <img src="ssquareit-logo.png" alt="SSquare IT" />
+        <img src="ssquareit-logo.png" alt="SSQUARE AI SOLUTIONS PVT LTD" />
         <div class="front-logo-text">
+          <span class="company-name">SSQUARE AI SOLUTIONS PVT LTD</span>
           <span class="tagline">Cloud • AI • Innovation</span>
         </div>
       </div>
@@ -290,26 +303,28 @@
       </div>
 
       <div class="contact-info">
-        <p><span>📞</span> 0462-2915449</p>
-        <p><span>✉</span> info@ssquareit.co.in</p>
-        <p><span>🌐</span> ssquareit.co.in</p>
+        <p><span>📞</span> +91-8939756045</p>
+        <p><span>✉</span> shashikumar@ssquareai.com</p>
+        <p><span>🌐</span> ssquareai.com</p>
       </div>
 
     </div>
 
     <div class="front-right">
       <div class="qr-placeholder">
-        <img src="ssquareit-qrcode.png" alt="QR Code" />
+        <img src="ssquare-qr-code.svg" alt="QR Code" />
       </div>
       <div class="scan-text">Scan to visit</div>
     </div>
   </div>
+  </div>
 
   <h2>Back Side</h2>
 
+  <div class="card-wrapper">
   <div class="card back">
     <div class="back-logo">
-      <img src="ssquareit-logo.png" alt="SSquare IT" />
+      <img src="ssquareit-logo.png" alt="SSQUARE AI SOLUTIONS PVT LTD" />
     </div>
     <div class="back-title">What We Do</div>
     <div class="services">
@@ -322,18 +337,21 @@
     </div>
     <div class="back-quote">"Transforming Businesses with Technology"</div>
   </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════ -->
   <h2 style="margin-top:20px;">— Shanthi Chinnadurai —</h2>
 
   <h2>Front Side</h2>
 
+  <div class="card-wrapper">
   <div class="card front">
     <div class="front-left">
 
       <div class="front-logo">
-        <img src="ssquareit-logo.png" alt="SSquare IT" />
+        <img src="ssquareit-logo.png" alt="SSQUARE AI SOLUTIONS PVT LTD" />
         <div class="front-logo-text">
+          <span class="company-name">SSQUARE AI SOLUTIONS PVT LTD</span>
           <span class="tagline">Cloud • AI • Innovation</span>
         </div>
       </div>
@@ -346,26 +364,28 @@
       </div>
 
       <div class="contact-info">
-        <p><span>📞</span> 0462-2915449</p>
-        <p><span>✉</span> info@ssquareit.co.in</p>
-        <p><span>🌐</span> ssquareit.co.in</p>
+        <p><span>📞</span> +91-8939756044</p>
+        <p><span>✉</span> shanthi@ssquareai.com</p>
+        <p><span>🌐</span> ssquareai.com</p>
       </div>
 
     </div>
 
     <div class="front-right">
       <div class="qr-placeholder">
-        <img src="ssquareit-qrcode.png" alt="QR Code" />
+        <img src="ssquare-qr-code.svg" alt="QR Code" />
       </div>
       <div class="scan-text">Scan to visit</div>
     </div>
   </div>
+  </div>
 
   <h2>Back Side</h2>
 
+  <div class="card-wrapper">
   <div class="card back">
     <div class="back-logo">
-      <img src="ssquareit-logo.png" alt="SSquare IT" />
+      <img src="ssquareit-logo.png" alt="SSQUARE AI SOLUTIONS PVT LTD" />
     </div>
     <div class="back-title">Expertise</div>
     <div class="services">
@@ -378,6 +398,7 @@
     </div>
     <div class="back-quote">"Transforming Businesses with Technology"</div>
   </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════ -->
 
@@ -388,7 +409,7 @@
     <b class="gold">Foil:</b> Gold foil on — "Cloud • AI • Innovation" tagline + card border/frame<br/>
     <b class="gold">Optional Foil:</b> Person name (Shashikumar / Shanthi)<br/>
     <b>Logo:</b> Full color CMYK print (provide ssquareit-logo.png)<br/>
-    <b>QR Code:</b> Included — print as-is (ssquareit-qrcode.png)<br/>
+    <b>QR Code:</b> Included — print as-is (ssquare-qr-code.svg)<br/>
     <b>Background:</b> Matte dark blue gradient<br/>
     <b>Quantity (Shashikumar):</b> _______ cards<br/>
     <b>Quantity (Shanthi):</b> _______ cards<br/>
