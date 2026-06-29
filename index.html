@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SSquare IT | Cloud • AI • Innovation</title>
+  <title>SSQUARE AI Solutions | Cloud • AI • Innovation</title>
   <link rel="icon" type="image/png" href="ssquareit-logo.png" />
   <link rel="apple-touch-icon" href="ssquareit-logo.png" />
   <style>
@@ -505,10 +505,10 @@
     .student-feat-list li .fx { color: #e53e3e; font-weight: 900; font-size: 0.9rem; margin-top: 1px; flex-shrink: 0; }
     .student-feat-list li .feat-body strong { display: block; font-weight: 700; color: #1a3a5c; margin-bottom: 2px; }
     .student-feat-list li .feat-body span { color: #718096; font-size: 0.82rem; }
-    .student-pricing-col { background: white; border-radius: 16px; box-shadow: 0 4px 24px rgba(43,108,176,0.10); padding: 32px; border: 2px solid #bee3f8; position: sticky; top: 80px; }
-    .student-badge { background: #ebf8ff; color: #2B6CB0; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 14px; text-transform: uppercase; }
-    .student-pricing-col h3 { color: #1a3a5c; font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
-    .student-pricing-col .s-subtitle { color: #718096; font-size: 0.85rem; margin-bottom: 20px; }
+    .student-pricing-col { background: linear-gradient(160deg, #ebf8ff 0%, #e8f4fd 40%, #f0f7ff 100%); border-radius: 16px; box-shadow: 0 6px 28px rgba(43,108,176,0.14); padding: 32px; border: 2px solid #90cdf4; position: sticky; top: 80px; }
+    .student-badge { color: #1a3a5c; font-size: 1.8rem; font-weight: 900; display: block; margin-bottom: 4px; letter-spacing: -0.3px; }
+    .student-pricing-col h3 { color: #718096; font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .student-pricing-col .s-subtitle { color: #a0aec0; font-size: 0.82rem; margin-bottom: 20px; }
     .student-price-box { background: #f7fafc; border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; }
     .student-price-box .s-amount { font-size: 2rem; font-weight: 900; color: #2B6CB0; }
     .student-price-box .s-gst { font-size: 0.82rem; color: #718096; margin-top: 2px; }
@@ -518,6 +518,20 @@
     .student-hw-box { background: #fffbeb; border: 1px solid #f6e05e; border-radius: 8px; padding: 12px 14px; font-size: 0.8rem; color: #744210; line-height: 1.6; }
     .student-hw-box strong { display: block; margin-bottom: 4px; color: #744210; }
     .not-included-label { font-size: 0.78rem; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; margin-top: 4px; }
+
+    /* ── Student individual plan rows ── */
+    .stu-plan-row { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #bee3f8; }
+    .stu-plan-row:last-of-type { border-bottom: none; }
+    .stu-exam-tag { background: #2B6CB0; color: white; font-size: 0.72rem; font-weight: 800; padding: 3px 0; border-radius: 8px; letter-spacing: 0.5px; white-space: nowrap; width: 82px; text-align: center; display: inline-block; flex-shrink: 0; }
+    .stu-exam-tag.combo { background: #c05621; }
+    .stu-plan-label { font-size: 1rem; font-weight: 700; color: #1a3a5c; flex: 1; }
+    .stu-plan-price { text-align: right; min-width: 100px; }
+    .stu-plan-price .stu-amt { display: block; font-size: 1.05rem; font-weight: 800; color: #2B6CB0; white-space: nowrap; }
+    .stu-plan-price .stu-gst { display: block; font-size: 0.8rem; color: #718096; white-space: nowrap; }
+    .stu-buy-btn { background: #2B6CB0; color: white; border: none; padding: 9px 18px; border-radius: 8px; font-size: 0.92rem; font-weight: 700; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .stu-buy-btn:hover { background: #1a3a5c; }
+    .stu-buy-btn.combo { background: #c05621; }
+    .stu-buy-btn.combo:hover { background: #744210; }
 
     .pay-modal-overlay {
       display: none; position: fixed; inset: 0;
@@ -1253,15 +1267,60 @@
         <!-- Pricing column -->
         <div class="student-pricing-col">
           <span class="student-badge">Student Edition</span>
-          <h3>Monthly Subscription</h3>
-          <div class="s-subtitle">Class 11 &amp; 12 — CBSE, NEET, JEE Main &amp; Advanced</div>
-          <div class="student-price-box">
-            <div class="s-amount">₹2,500<span style="font-size:1rem;font-weight:600;color:#4a5568;">/month</span></div>
-            <div class="s-gst">+ ₹450 GST (18%)</div>
-            <div class="s-total">Total: ₹2,950 &nbsp;•&nbsp; Valid for 1 month</div>
+          <h3>Choose Your Plan</h3>
+          <div class="s-subtitle">Monthly subscription — single user · cancel anytime</div>
+
+          <div class="stu-plan-row">
+            <span class="stu-exam-tag">CBSE</span>
+            <span class="stu-plan-label">CBSE Plan</span>
+            <div class="stu-plan-price">
+              <span class="stu-amt">₹999/mo</span>
+              <span class="stu-gst">₹1,179 incl. GST</span>
+            </div>
+            <button class="stu-buy-btn" onclick="openPayModal('CBSE Student Plan')">Buy</button>
           </div>
-          <button class="student-buy-btn" onclick="openPayModal('Student Edition — Monthly Subscription')">Buy Now &rarr;</button>
-          <div class="student-hw-box">
+
+          <div class="stu-plan-row">
+            <span class="stu-exam-tag">NEET</span>
+            <span class="stu-plan-label">NEET Plan</span>
+            <div class="stu-plan-price">
+              <span class="stu-amt">₹1,999/mo</span>
+              <span class="stu-gst">₹2,359 incl. GST</span>
+            </div>
+            <button class="stu-buy-btn" onclick="openPayModal('NEET Student Plan')">Buy</button>
+          </div>
+
+          <div class="stu-plan-row">
+            <span class="stu-exam-tag">JEE MAIN</span>
+            <span class="stu-plan-label">JEE Main Plan</span>
+            <div class="stu-plan-price">
+              <span class="stu-amt">₹1,999/mo</span>
+              <span class="stu-gst">₹2,359 incl. GST</span>
+            </div>
+            <button class="stu-buy-btn" onclick="openPayModal('JEE Main Student Plan')">Buy</button>
+          </div>
+
+          <div class="stu-plan-row">
+            <span class="stu-exam-tag">JEE ADV</span>
+            <span class="stu-plan-label">JEE Advanced Plan</span>
+            <div class="stu-plan-price">
+              <span class="stu-amt">₹2,500/mo</span>
+              <span class="stu-gst">₹2,950 incl. GST</span>
+            </div>
+            <button class="stu-buy-btn" onclick="openPayModal('JEE Advanced Student Plan')">Buy</button>
+          </div>
+
+          <div class="stu-plan-row">
+            <span class="stu-exam-tag combo">ALL</span>
+            <span class="stu-plan-label" style="font-weight:800;color:#c05621;">Combo — All Exams</span>
+            <div class="stu-plan-price">
+              <span class="stu-amt" style="color:#c05621;">₹2,500/mo</span>
+              <span class="stu-gst">₹2,950 incl. GST</span>
+            </div>
+            <button class="stu-buy-btn combo" onclick="openPayModal('Student Edition — Monthly Subscription')">Buy</button>
+          </div>
+
+          <div class="student-hw-box" style="margin-top:18px;">
             <strong>&#9888; Hardware Required</strong>
             Gaming laptop with NVIDIA RTX GPU (min. 8 GB VRAM) &amp; 16 GB RAM<br/>
             e.g. Lenovo LOQ, ASUS ROG, MSI Gaming series<br/>
@@ -1318,7 +1377,7 @@
         <div class="bank-detail-row"><span>Branch</span><strong>Tirunelveli STC Road, Tamil Nadu</strong></div>
         <ol class="bank-steps">
           <li>Transfer the plan amount to the account above</li>
-          <li>Email payment screenshot to <strong>senseai-support@ssquareit.co.in</strong></li>
+          <li>Email payment screenshot to <strong>senseai-support@ssquareai.com</strong></li>
           <li>We will contact you within 1 business day to schedule installation</li>
         </ol>
       </div>
@@ -1356,6 +1415,52 @@
           </span>
           <button class="pay-now-btn" onclick="openPayModal('Full Exam Pack (CBSE + NEET + JEE)')">Pay Now</button>
         </div>
+
+        <!-- Student Edition separator -->
+        <div style="margin: 10px 0 6px; font-size: 0.75rem; font-weight: 700; color: #2B6CB0; letter-spacing: 0.5px; text-transform: uppercase;">
+          Student Edition — Monthly Plans
+        </div>
+        <div class="online-plan-row">
+          <span class="online-plan-name">CBSE Student Plan</span>
+          <span class="online-plan-amount">
+            <span class="amt-base">₹999/mo</span>
+            <span class="amt-gst">₹1,179 incl. GST</span>
+          </span>
+          <button class="pay-now-btn" onclick="openPayModal('CBSE Student Plan')">Pay Now</button>
+        </div>
+        <div class="online-plan-row">
+          <span class="online-plan-name">NEET Student Plan</span>
+          <span class="online-plan-amount">
+            <span class="amt-base">₹1,999/mo</span>
+            <span class="amt-gst">₹2,359 incl. GST</span>
+          </span>
+          <button class="pay-now-btn" onclick="openPayModal('NEET Student Plan')">Pay Now</button>
+        </div>
+        <div class="online-plan-row">
+          <span class="online-plan-name">JEE Main Student Plan</span>
+          <span class="online-plan-amount">
+            <span class="amt-base">₹1,999/mo</span>
+            <span class="amt-gst">₹2,359 incl. GST</span>
+          </span>
+          <button class="pay-now-btn" onclick="openPayModal('JEE Main Student Plan')">Pay Now</button>
+        </div>
+        <div class="online-plan-row">
+          <span class="online-plan-name">JEE Advanced Student Plan</span>
+          <span class="online-plan-amount">
+            <span class="amt-base">₹2,500/mo</span>
+            <span class="amt-gst">₹2,950 incl. GST</span>
+          </span>
+          <button class="pay-now-btn" onclick="openPayModal('JEE Advanced Student Plan')">Pay Now</button>
+        </div>
+        <div class="online-plan-row">
+          <span class="online-plan-name">Student Edition Combo (All Exams)</span>
+          <span class="online-plan-amount">
+            <span class="amt-base">₹2,500/mo</span>
+            <span class="amt-gst">₹2,950 incl. GST</span>
+          </span>
+          <button class="pay-now-btn" onclick="openPayModal('Student Edition — Monthly Subscription')">Pay Now</button>
+        </div>
+
         <div class="payment-methods-row">
           <span class="pm-badge">UPI</span>
           <span class="pm-badge">VISA</span>
@@ -1368,7 +1473,7 @@
     </div>
 
     <p class="purchase-note">
-      Have questions before purchasing? Email <strong>support@ssquareit.co.in</strong> or use the <a href="#inquiry" style="color:#2B6CB0;">Request Demo</a> form above.
+      Have questions before purchasing? Email <strong>senseai-support@ssquareai.com</strong> or use the <a href="#inquiry" style="color:#2B6CB0;">Request Demo</a> form above.
     </p>
   </section>
 
@@ -1455,7 +1560,7 @@
         <div class="inquiry-contact-box">
           <h4>Prefer to reach us directly?</h4>
           <p>📞 <a href="tel:04622915449">0462-2915449</a></p>
-          <p>📧 <a href="mailto:info@ssquareit.co.in">info@ssquareit.co.in</a></p>
+          <p>📧 <a href="mailto:info@ssquareai.com">info@ssquareai.com</a></p>
           <p>💬 WhatsApp: <a href="https://wa.me/919876543210" target="_blank">Chat Now</a></p>
           <p style="margin-top:10px; font-size:12px; color:#cbd5e0;">Mon–Sat, 9 AM – 6 PM IST</p>
         </div>
@@ -1644,7 +1749,7 @@
       <div class="contact-item">
         <div class="icon">📧</div>
         <h3>Email</h3>
-        <p>info@ssquareit.co.in</p>
+        <p>info@ssquareai.com</p>
       </div>
       <div class="contact-item">
         <div class="icon">📍</div>
@@ -1744,7 +1849,7 @@
       body.append('access_key', '520b1c7e-b15d-4a23-b022-b1f03e53a371');
       body.append('subject', 'SSquare IT received a new message.');
       body.append('from_name', userName);
-      body.append('to', 'info@ssquareit.co.in');
+      body.append('to', 'info@ssquareai.com');
       body.append('message',
         'SSquare IT received a new message.\n\nFrom ' + userName + ':\n\n' +
         userRequirement + '\n\nContact: ' + userContact
@@ -1905,7 +2010,7 @@
           currency:    'INR',
           name:        'SSQUARE AI SOLUTIONS',
           description: _planName,
-          image:       'https://ssquareit.co.in/ssquareit-logo.png',
+          image:       'https://ssquareai.com/ssquareit-logo.png',
           order_id:    d.order_id,
           prefill:     { name: instName, email: email },
           notes:       { plan: _planName, inst_name: instName },
@@ -1935,10 +2040,10 @@
             })
             .then(function(r) { return r.json(); })
             .then(function() {
-              window.location.href = 'https://ssquareit.co.in/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id) + '&plan=' + encodeURIComponent(_planName);
+              window.location.href = 'https://ssquareai.com/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id) + '&plan=' + encodeURIComponent(_planName);
             })
             .catch(function() {
-              window.location.href = 'https://ssquareit.co.in/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id) + '&plan=' + encodeURIComponent(_planName);
+              window.location.href = 'https://ssquareai.com/payment-success.html?status=CHARGED&order_id=' + encodeURIComponent(response.razorpay_order_id) + '&plan=' + encodeURIComponent(_planName);
             });
           }
         });
