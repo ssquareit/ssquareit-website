@@ -73,13 +73,6 @@
     .nav-dropdown-menu .prod-info .prod-name { font-weight: 700; font-size: 13.5px; }
     .nav-dropdown-menu .prod-info .prod-desc { font-size: 11.5px; opacity: 0.65; margin-top: 1px; }
     .nav-dropdown-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 6px 0; }
-    .nav-btn {
-      background: #2B6CB0;
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 5px;
-    }
-    .nav-btn:hover { background: #4a90d9; color: #fff !important; }
 
     /* ── HERO ── */
     .hero {
@@ -203,19 +196,6 @@
     .product-img p { margin-top: 12px; font-size: 13px; opacity: 0.8; padding: 0 15px 15px; }
     /* ── DEMO SECTION ── */
     .demo { background: #f8faff; }
-    .demo-video-wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(43,108,176,0.15);
-    }
-    .demo-video-wrap iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      display: block;
-    }
     .btn-white {
       background: #fff;
       color: #2B6CB0;
@@ -288,211 +268,10 @@
 
     /* ── PRICING ── */
     .pricing { background: #f8faff; }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .pricing-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 40px 30px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
-      text-align: center;
-      position: relative;
-      border-top: 4px solid #2B6CB0;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 12px 35px rgba(43,108,176,0.15); }
-    .pricing-card.popular {
-      border-top: 4px solid #f6ad55;
-      transform: scale(1.04);
-      box-shadow: 0 8px 40px rgba(43,108,176,0.18);
-    }
-    .popular-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #f6ad55;
-      color: #fff;
-      padding: 4px 18px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    .pricing-card h3 { font-size: 20px; color: #1a3a5c; margin-bottom: 8px; }
-    .pricing-card .subtitle { color: #888; font-size: 13px; margin-bottom: 20px; }
-    .pricing-price { margin-bottom: 25px; }
-    .pricing-price .amount { font-size: 42px; font-weight: 800; color: #2B6CB0; }
-    .pricing-price .period { font-size: 14px; color: #888; }
-    .pricing-price .custom { font-size: 28px; font-weight: 800; color: #2B6CB0; }
-    .pricing-features {
-      list-style: none;
-      text-align: left;
-      margin-bottom: 30px;
-    }
-    .pricing-features li {
-      padding: 7px 0;
-      font-size: 14px;
-      color: #555;
-      border-bottom: 1px solid #f0f0f0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .pricing-features li::before { content: "✓"; color: #48bb78; font-weight: 700; font-size: 15px; }
-    .pricing-features li.no::before { content: "✗"; color: #fc8181; }
-    .btn-pricing {
-      display: block;
-      background: linear-gradient(135deg, #1a3a5c, #2B6CB0);
-      color: #fff;
-      padding: 13px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      transition: opacity 0.2s;
-    }
-    .btn-pricing:hover { opacity: 0.88; }
-    .btn-pricing-outline {
-      display: block;
-      border: 2px solid #2B6CB0;
-      color: #2B6CB0;
-      padding: 13px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-pricing-outline:hover { background: #2B6CB0; color: #fff; }
-    .pricing-note {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 13px;
-      color: #888;
-    }
     @media (max-width: 900px) {
-      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
-      .pricing-card.popular { transform: scale(1); }
     }
-
-    /* ── PURCHASE SECTION ── */
-    .purchase { background: #f7fafc; }
-    .purchase-steps {
-      display: flex; justify-content: center; gap: 0;
-      margin-bottom: 44px; position: relative; max-width: 700px; margin-left: auto; margin-right: auto;
-    }
-    .purchase-steps::before {
-      content: ''; position: absolute; top: 28px; left: 16%; right: 16%;
-      height: 2px; background: #bee3f8; z-index: 0;
-    }
-    .step-item {
-      display: flex; flex-direction: column; align-items: center;
-      flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 10px;
-    }
-    .step-num {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: #2B6CB0; color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 800; margin-bottom: 12px;
-    }
-    .step-item h4 { font-size: 14px; color: #1a3a5c; font-weight: 700; margin-bottom: 4px; }
-    .step-item p { font-size: 12px; color: #718096; line-height: 1.5; }
-    .payment-options {
-      display: flex; flex-direction: column; align-items: center; gap: 24px;
-      max-width: 560px; margin: 0 auto 28px;
-    }
-    .payment-card {
-      background: white; border: 2px solid #e2e8f0; border-radius: 12px; padding: 28px 28px;
-      width: 100%; box-sizing: border-box;
-    }
-    .payment-card.active { border-color: #2B6CB0; box-shadow: 0 4px 20px rgba(43,108,176,0.12); }
-    .payment-card.coming-soon { opacity: 0.65; }
-    .payment-card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
-    .payment-icon { font-size: 30px; line-height: 1; margin-top: 2px; }
-    .payment-card-header h3 { font-size: 16px; color: #1a3a5c; font-weight: 800; margin-bottom: 3px; }
-    .payment-card-header p { font-size: 12px; color: #718096; }
-    .bank-detail-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 7px 0; border-bottom: 1px solid #f0f4f8; font-size: 13px;
-    }
-    .bank-detail-row:last-of-type { border-bottom: none; }
-    .bank-detail-row span { color: #718096; }
-    .bank-detail-row strong { color: #1a3a5c; font-weight: 700; }
-    .bank-steps { padding-left: 18px; margin-top: 18px; border-top: 1px solid #f0f4f8; padding-top: 14px; }
-    .bank-steps li { font-size: 13px; color: #4a5568; line-height: 2; }
-    .coming-badge {
-      display: inline-block; background: #ecc94b; color: #744210;
-      font-size: 10px; font-weight: 800; padding: 1px 8px; border-radius: 10px;
-      text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle; margin-left: 6px;
-    }
-    .live-badge {
-      display: inline-block; background: #38a169; color: white;
-      font-size: 10px; font-weight: 800; padding: 1px 8px; border-radius: 10px;
-      text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle; margin-left: 6px;
-    }
-    .online-plan-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 0; border-bottom: 1px solid #f0f4f8; font-size: 13px;
-    }
-    .online-plan-row:last-of-type { border-bottom: none; }
-    .online-plan-name { color: #1a3a5c; font-weight: 600; flex: 1; }
-    .online-plan-amount { margin: 0 12px; min-width: 110px; text-align: right; line-height: 1.35; }
-    .online-plan-amount .amt-base { display: block; color: #2B6CB0; font-weight: 800; white-space: nowrap; font-size: 13px; }
-    .online-plan-amount .amt-gst  { display: block; color: #718096; font-weight: 500; white-space: nowrap; font-size: 11px; }
-    .pay-now-btn {
-      display: inline-block; background: #2B6CB0; color: white !important;
-      text-decoration: none; font-size: 12px; font-weight: 700;
-      padding: 6px 14px; border-radius: 6px; white-space: nowrap;
-      transition: background 0.2s; cursor: pointer; border: none;
-    }
-    .pay-now-btn:hover { background: #1a3a5c; }
-
-    /* ── Email capture modal ── */
-    /* ── Coaching Centre Section ── */
-    .coaching-section { background: #fff; padding: 80px 40px; }
-    .coaching-inner { max-width: 1160px; margin: 0 auto; }
-    .coaching-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
-    @media(max-width: 1024px) { .coaching-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media(max-width: 600px)  { .coaching-grid { grid-template-columns: 1fr; } }
-    .coaching-card {
-      border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 24px 20px;
-      display: flex; flex-direction: column; background: #fafbfc;
-      transition: box-shadow 0.2s;
-    }
-    .coaching-card:hover { box-shadow: 0 6px 24px rgba(43,108,176,0.10); }
-    .coaching-card.best-value {
-      border-color: #2B6CB0; background: #f0f7ff;
-      box-shadow: 0 4px 20px rgba(43,108,176,0.13);
-    }
-    .coaching-best-badge {
-      background: #2B6CB0; color: white; font-size: 0.7rem; font-weight: 800;
-      letter-spacing: 1px; padding: 3px 10px; border-radius: 20px;
-      display: inline-block; margin-bottom: 12px; text-transform: uppercase;
-    }
-    .coaching-card h4 { color: #1a3a5c; font-size: 0.95rem; font-weight: 800; margin-bottom: 4px; }
-    .coaching-card .c-target { color: #718096; font-size: 0.78rem; margin-bottom: 14px; line-height: 1.4; }
-    .coaching-price { margin-bottom: 6px; }
-    .coaching-price .c-base { font-size: 1.4rem; font-weight: 900; color: #2B6CB0; }
-    .coaching-price .c-gst  { font-size: 0.78rem; color: #718096; display: block; margin-top: 1px; }
-    .coaching-amc { font-size: 0.78rem; color: #4a5568; background: #edf2f7; border-radius: 6px; padding: 5px 10px; margin: 10px 0 14px; display: inline-block; }
-    .coaching-feats { list-style: none; padding: 0; margin: 0 0 18px; flex: 1; }
-    .coaching-feats li { font-size: 0.82rem; color: #2d3748; padding: 5px 0; border-bottom: 1px solid #f0f4f8; display: flex; gap: 8px; }
-    .coaching-feats li:last-child { border-bottom: none; }
-    .coaching-feats li::before { content: "✓"; color: #38a169; font-weight: 900; flex-shrink: 0; }
-    .coaching-buy-btn {
-      width: 100%; background: #2B6CB0; color: white; border: none;
-      padding: 11px; border-radius: 8px; font-size: 0.88rem; font-weight: 700;
-      cursor: pointer; transition: background 0.2s; margin-top: auto;
-    }
-    .coaching-card.best-value .coaching-buy-btn { background: #1a3a5c; }
-    .coaching-buy-btn:hover { background: #1a3a5c; }
-    .coaching-note { text-align: center; margin-top: 20px; font-size: 0.8rem; color: #718096; }
+    @media(max-width: 1024px) { }
+    @media(max-width: 600px)  { }
 
     /* ── Student Edition Section ── */
     .student-section { background: linear-gradient(135deg, #f0f7ff 0%, #fff 100%); padding: 80px 40px; }
@@ -504,22 +283,14 @@
     .student-feat-list li { padding: 9px 0; border-bottom: 1px solid #e2e8f0; font-size: 0.88rem; color: #2d3748; display: flex; gap: 10px; align-items: flex-start; }
     .student-feat-list li:last-child { border-bottom: none; }
     .student-feat-list li .fi { color: #38a169; font-weight: 900; font-size: 0.9rem; margin-top: 1px; flex-shrink: 0; }
-    .student-feat-list li .fx { color: #e53e3e; font-weight: 900; font-size: 0.9rem; margin-top: 1px; flex-shrink: 0; }
     .student-feat-list li .feat-body strong { display: block; font-weight: 700; color: #1a3a5c; margin-bottom: 2px; }
     .student-feat-list li .feat-body span { color: #718096; font-size: 0.82rem; }
     .student-pricing-col { background: linear-gradient(160deg, #ebf8ff 0%, #e8f4fd 40%, #f0f7ff 100%); border-radius: 16px; box-shadow: 0 6px 28px rgba(43,108,176,0.14); padding: 32px; border: 2px solid #90cdf4; position: sticky; top: 80px; }
     .student-badge { color: #1a3a5c; font-size: 1.8rem; font-weight: 900; display: block; margin-bottom: 4px; letter-spacing: -0.3px; }
     .student-pricing-col h3 { color: #718096; font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
     .student-pricing-col .s-subtitle { color: #a0aec0; font-size: 0.82rem; margin-bottom: 20px; }
-    .student-price-box { background: #f7fafc; border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; }
-    .student-price-box .s-amount { font-size: 2rem; font-weight: 900; color: #2B6CB0; }
-    .student-price-box .s-gst { font-size: 0.82rem; color: #718096; margin-top: 2px; }
-    .student-price-box .s-total { font-size: 0.9rem; font-weight: 700; color: #1a3a5c; margin-top: 6px; }
-    .student-buy-btn { width: 100%; background: #2B6CB0; color: white; border: none; padding: 14px; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-bottom: 16px; }
-    .student-buy-btn:hover { background: #1a3a5c; }
     .student-hw-box { background: #fffbeb; border: 1px solid #f6e05e; border-radius: 8px; padding: 12px 14px; font-size: 0.8rem; color: #744210; line-height: 1.6; }
     .student-hw-box strong { display: block; margin-bottom: 4px; color: #744210; }
-    .not-included-label { font-size: 0.78rem; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; margin-top: 4px; }
 
     /* ── Student individual plan rows ── */
     .stu-plan-row { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #bee3f8; }
@@ -546,20 +317,18 @@
       max-width: 420px; width: 90%; box-shadow: 0 12px 48px rgba(0,0,0,0.2);
     }
     .pay-modal h3 { color: #1a3a5c; font-size: 1.1rem; margin-bottom: 6px; }
-    .pay-modal p  { color: #718096; font-size: 0.83rem; margin-bottom: 20px; line-height: 1.5; }
+    .pay-modal p { color: #718096; font-size: 0.83rem; margin-bottom: 20px; line-height: 1.5; }
     .pay-modal .plan-tag {
       background: #ebf4ff; color: #2B6CB0; font-size: 0.78rem; font-weight: 700;
       padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 16px;
     }
     .pay-modal label { display: block; font-size: 0.82rem; font-weight: 600; color: #1a3a5c; margin-bottom: 6px; }
-    .pay-modal input[type="email"],
-    .pay-modal input[type="text"] {
+    .pay-modal input[type="email"], .pay-modal input[type="text"] {
       width: 100%; padding: 10px 14px; border: 1.5px solid #cbd5e0;
       border-radius: 8px; font-size: 0.9rem; outline: none;
       transition: border-color 0.2s; box-sizing: border-box;
     }
-    .pay-modal input[type="email"]:focus,
-    .pay-modal input[type="text"]:focus { border-color: #2B6CB0; }
+    .pay-modal input[type="email"]:focus, .pay-modal input[type="text"]:focus { border-color: #2B6CB0; }
     #modalInstName { min-height: 52px; margin-bottom: 14px; }
     .pay-modal .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
     .pay-modal .btn-proceed {
@@ -573,15 +342,7 @@
       padding: 12px 18px; border-radius: 8px; font-size: 0.9rem;
       font-weight: 600; cursor: pointer;
     }
-    .payment-methods-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; padding-top: 14px; border-top: 1px solid #f0f4f8; }
-    .pm-badge { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 10px; font-size: 11px; font-weight: 600; color: #4a5568; }
-    .coming-soon-placeholder { text-align: center; padding: 40px 10px; color: #a0aec0; }
-    .coming-soon-placeholder .cs-icon { font-size: 44px; margin-bottom: 14px; }
-    .coming-soon-placeholder p { font-size: 13px; line-height: 1.7; }
-    .purchase-note { text-align: center; font-size: 13px; color: #718096; max-width: 500px; margin: 0 auto; }
     @media (max-width: 700px) {
-      .payment-options { max-width: 100%; padding: 0 16px; }
-      .purchase-steps::before { display: none; }
     }
 
     /* ── CONTACT ── */
@@ -674,9 +435,9 @@
     .typing-dots span {
       width:7px; height:7px; background:#bbb; border-radius:50%; animation:tdot 1.2s infinite;
     }
-    .typing-dots span:nth-child(2){animation-delay:0.2s;}
-    .typing-dots span:nth-child(3){animation-delay:0.4s;}
-    @keyframes tdot{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+    .typing-dots span:nth-child(2) {animation-delay:0.2s;}
+    .typing-dots span:nth-child(3) {animation-delay:0.4s;}
+    @keyframes tdot {0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
     #chat-input-area {
       display:flex; padding:11px; gap:7px; border-top:1px solid #eee; background:#fff;
     }
@@ -797,9 +558,7 @@
       color: #444;
       margin-bottom: 5px;
     }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .form-group input, .form-group select, .form-group textarea {
       width: 100%;
       border: 1.5px solid #e2e8f0;
       border-radius: 8px;
@@ -811,9 +570,7 @@
       transition: border-color 0.2s;
       background: #fafcff;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: #2B6CB0; background: #fff; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #2B6CB0; background: #fff; }
     .form-group textarea { resize: vertical; min-height: 80px; }
     .form-required { color: #e53e3e; }
     .btn-submit {
@@ -848,7 +605,6 @@
     @media (max-width: 600px) {
       nav { padding: 10px 15px; }
       .nav-links a { margin-left: 12px; font-size: 13px; }
-      .nav-btn { padding: 6px 14px; }
       .hero { padding: 50px 18px; text-align: center; }
       .hero h1 { font-size: 28px; }
       .hero p { font-size: 15px; }
@@ -862,7 +618,6 @@
       .product-inner { padding: 25px 18px; gap: 25px; }
       .product-text h2 { font-size: 24px; }
       .product-img iframe { height: 220px; }
-      .demo-video-wrap iframe { height: 220px; }
       .team-grid { grid-template-columns: 1fr; max-width: 100%; }
       .why-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -904,7 +659,7 @@
         </div>
       </div>
       <a href="#student">Pricing</a>
-      <a href="#purchase" style="color:#68d391; font-weight:700;">Buy Now</a>
+      <a href="#student" style="color:#68d391; font-weight:700;">Buy Now</a>
       <a href="#requirements">Requirements</a>
       <a href="#contact">Contact</a>
     </div>
@@ -999,199 +754,6 @@
     </div>
   </section>
 
-  <!-- SCHOOL / ENTERPRISE PRICING — disabled for Student-first launch (remove hidden to restore) -->
-  <section class="pricing" id="pricing" hidden aria-hidden="true">
-    <div class="section-title">
-      <div class="tag">Simple Pricing</div>
-      <h2>Sense AI Pricing</h2>
-      <p>Perpetual license — one-time payment. No monthly fees. No cloud subscription. Works 100% offline.</p>
-    </div>
-    <div class="pricing-grid">
-
-      <!-- CBSE Plan -->
-      <div class="pricing-card">
-        <h3>CBSE Plan</h3>
-        <div class="subtitle">Schools with CBSE curriculum</div>
-        <div class="pricing-price">
-          <span class="amount">₹75,000</span><br/>
-          <span class="period">one-time perpetual license + 18% GST</span>
-        </div>
-        <ul class="pricing-features">
-          <li>AQG — CBSE Exam Patterns</li>
-          <li>English Comprehension (Class 10/11/12)</li>
-          <li>RAG Knowledge Chat Assistant</li>
-          <li>Publish Test &amp; Online Quiz via PIN</li>
-          <li>OCR Document Upload</li>
-          <li>On-site Installation &amp; Staff Training</li>
-          <li>WhatsApp Support — Year 1 included</li>
-          <li>Hardware-locked License</li>
-        </ul>
-        <a href="#inquiry" class="btn-pricing-outline">Request Demo</a>
-        <a href="#purchase" class="btn-pricing-outline" style="margin-top:10px; background:#ebf4ff; border-color:#2B6CB0; color:#2B6CB0;">Buy Now →</a>
-      </div>
-
-      <!-- CBSE + NEET Plan (Popular) -->
-      <div class="pricing-card popular">
-        <div class="popular-badge">MOST POPULAR</div>
-        <h3>CBSE + NEET Plan</h3>
-        <div class="subtitle">Schools with medical entrance focus</div>
-        <div class="pricing-price">
-          <span class="amount">₹1,25,000</span><br/>
-          <span class="period">one-time perpetual license + 18% GST</span>
-        </div>
-        <ul class="pricing-features">
-          <li>AQG — CBSE &amp; NEET Exam Patterns</li>
-          <li>English Comprehension (Class 10/11/12)</li>
-          <li>RAG Knowledge Chat Assistant</li>
-          <li>Publish Test &amp; Online Quiz via PIN</li>
-          <li>OCR Document Upload</li>
-          <li>On-site Installation &amp; Staff Training</li>
-          <li>Priority WhatsApp Support — Year 1 included</li>
-          <li>Hardware-locked License</li>
-        </ul>
-        <a href="#inquiry" class="btn-pricing">Request Demo</a>
-        <a href="#purchase" class="btn-pricing" style="margin-top:10px; background:#1a3a5c;">Buy Now →</a>
-      </div>
-
-      <!-- Full Exam Pack -->
-      <div class="pricing-card">
-        <h3>Full Exam Pack</h3>
-        <div class="subtitle">CBSE + NEET + JEE — complete coverage</div>
-        <div class="pricing-price">
-          <span class="amount">₹1,50,000</span><br/>
-          <span class="period">one-time perpetual license + 18% GST</span>
-        </div>
-        <ul class="pricing-features">
-          <li>AQG — CBSE, NEET, JEE Main &amp; Advanced</li>
-          <li>English Comprehension (Class 10/11/12)</li>
-          <li>RAG Knowledge Chat Assistant</li>
-          <li>Publish Test &amp; Online Quiz via PIN</li>
-          <li>OCR Document Upload</li>
-          <li>On-site Installation &amp; Staff Training</li>
-          <li>Priority WhatsApp Support — Year 1 included</li>
-          <li>Hardware-locked License</li>
-        </ul>
-        <a href="#inquiry" class="btn-pricing-outline">Request Demo</a>
-        <a href="#purchase" class="btn-pricing-outline" style="margin-top:10px; background:#ebf4ff; border-color:#2B6CB0; color:#2B6CB0;">Buy Now →</a>
-      </div>
-
-    </div>
-
-    <!-- Multi-Machine Add-on -->
-    <div style="margin: 28px auto 0; max-width: 520px; background: #f0f7ff; border: 1.5px solid #bee3f8; border-radius: 10px; padding: 20px 28px; text-align: center;">
-      <div style="font-size: 1rem; font-weight: 800; color: #1a3a5c; margin-bottom: 6px;">&#43; Additional Server at the Same School</div>
-      <div style="font-size: 1.5rem; font-weight: 800; color: #2B6CB0; margin-bottom: 4px;">₹50,000 <span style="font-size: 0.85rem; font-weight: 400; color: #718096;">per additional server + 18% GST</span></div>
-      <div style="font-size: 0.8rem; color: #4a5568; margin-bottom: 14px;">Includes installation, hardware-locked license &amp; Year 1 support for each extra machine.<br/>AMC: ₹10,000/year per additional server from Year 2.</div>
-      <a href="#contact" style="display:inline-block; background:#2B6CB0; color:white; padding:8px 24px; border-radius:6px; font-weight:700; font-size:0.85rem; text-decoration:none;">Contact Us to Add Servers</a>
-    </div>
-
-    <p style="text-align:center; margin-top: 16px; font-size: 0.8rem; color: #718096;">
-      College, university, or group of schools? <a href="#contact" style="color:#2B6CB0; font-weight:600;">Contact us for a custom quote →</a>
-    </p>
-
-    <p class="pricing-note">
-      All plans include: Perpetual hardware-locked license • Fully offline operation • No monthly or cloud fees<br/>
-      Annual Maintenance Contract (AMC): ₹20,000/year from Year 2 — software updates, support &amp; license reactivation<br/>
-      Minimum hardware: Intel i7 / Ryzen 7 • 32 GB RAM • 512 GB NVMe SSD • Windows 10/11 Pro (64-bit) • WSL2 enabled
-    </p>
-  </section>
-
-  <!-- COACHING CENTRE — disabled for Student-first launch (remove hidden to restore) -->
-  <section class="coaching-section" id="coaching" hidden aria-hidden="true">
-    <div class="coaching-inner">
-      <div class="section-title">
-        <div class="tag">For Coaching Centres</div>
-        <h2>Coaching Centre Plans</h2>
-        <p>AI-powered question generation and practice tests built for competitive exam coaching — NEET, JEE Main &amp; Advanced.</p>
-      </div>
-      <div class="coaching-grid">
-
-        <!-- NEET Coaching Pack -->
-        <div class="coaching-card">
-          <h4>NEET Coaching Pack</h4>
-          <div class="c-target">Physics, Chemistry, Biology — Class 11 &amp; 12</div>
-          <div class="coaching-price">
-            <span class="c-base">₹60,000</span>
-            <span class="c-gst">+ ₹10,800 GST &nbsp;|&nbsp; Total ₹70,800</span>
-          </div>
-          <span class="coaching-amc">&#128197; Support renewal: ₹10,000/yr from Year 2</span>
-          <ul class="coaching-feats">
-            <li>AQG — NEET MCQ patterns (PCB)</li>
-            <li>RAG Knowledge Chat Assistant</li>
-            <li>Upload study material (PDF, DOCX, PPT)</li>
-            <li>Self-practice &amp; auto-graded tests</li>
-            <li>Class 11 &amp; 12 syllabus coverage</li>
-            <li>Fully offline — no internet after setup</li>
-          </ul>
-          <button class="coaching-buy-btn" onclick="openPayModal('NEET Coaching Pack — ₹60,000 + GST')">Buy Now &rarr;</button>
-        </div>
-
-        <!-- JEE Main Coaching Pack -->
-        <div class="coaching-card">
-          <h4>JEE Main Coaching Pack</h4>
-          <div class="c-target">Maths, Physics, Chemistry — Class 11 &amp; 12</div>
-          <div class="coaching-price">
-            <span class="c-base">₹60,000</span>
-            <span class="c-gst">+ ₹10,800 GST &nbsp;|&nbsp; Total ₹70,800</span>
-          </div>
-          <span class="coaching-amc">&#128197; Support renewal: ₹10,000/yr from Year 2</span>
-          <ul class="coaching-feats">
-            <li>AQG — JEE Main MCQ patterns (MPC)</li>
-            <li>RAG Knowledge Chat Assistant</li>
-            <li>Upload study material (PDF, DOCX, PPT)</li>
-            <li>Self-practice &amp; auto-graded tests</li>
-            <li>Class 11 &amp; 12 syllabus coverage</li>
-            <li>Fully offline — no internet after setup</li>
-          </ul>
-          <button class="coaching-buy-btn" onclick="openPayModal('JEE Main Coaching Pack — ₹60,000 + GST')">Buy Now &rarr;</button>
-        </div>
-
-        <!-- JEE Advanced Coaching Pack -->
-        <div class="coaching-card">
-          <h4>JEE Advanced Coaching Pack</h4>
-          <div class="c-target">Maths, Physics, Chemistry — harder pattern</div>
-          <div class="coaching-price">
-            <span class="c-base">₹75,000</span>
-            <span class="c-gst">+ ₹13,500 GST &nbsp;|&nbsp; Total ₹88,500</span>
-          </div>
-          <span class="coaching-amc">&#128197; Support renewal: ₹12,000/yr from Year 2</span>
-          <ul class="coaching-feats">
-            <li>AQG — JEE Advanced patterns (MPC)</li>
-            <li>Higher difficulty question generation</li>
-            <li>RAG Knowledge Chat Assistant</li>
-            <li>Upload study material (PDF, DOCX, PPT)</li>
-            <li>Self-practice &amp; auto-graded tests</li>
-            <li>Fully offline — no internet after setup</li>
-          </ul>
-          <button class="coaching-buy-btn" onclick="openPayModal('JEE Advanced Coaching Pack — ₹75,000 + GST')">Buy Now &rarr;</button>
-        </div>
-
-        <!-- Full Competitive Pack -->
-        <div class="coaching-card best-value">
-          <span class="coaching-best-badge">Best Value</span>
-          <h4>Full Competitive Pack</h4>
-          <div class="c-target">NEET + JEE Main + JEE Advanced bundled</div>
-          <div class="coaching-price">
-            <span class="c-base">₹1,25,000</span>
-            <span class="c-gst">+ ₹22,500 GST &nbsp;|&nbsp; Total ₹1,47,500</span>
-          </div>
-          <span class="coaching-amc">&#128197; Support renewal: ₹20,000/yr from Year 2</span>
-          <ul class="coaching-feats">
-            <li>AQG — NEET, JEE Main &amp; JEE Advanced</li>
-            <li>All subjects: Maths, Physics, Chemistry, Biology</li>
-            <li>RAG Knowledge Chat Assistant</li>
-            <li>Upload study material (PDF, DOCX, PPT)</li>
-            <li>Self-practice &amp; auto-graded tests</li>
-            <li>~15% savings vs buying separately</li>
-          </ul>
-          <button class="coaching-buy-btn" onclick="openPayModal('Full Competitive Pack — ₹1,25,000 + GST')">Buy Now &rarr;</button>
-        </div>
-
-      </div>
-      <p class="coaching-note">All plans include: Perpetual hardware-locked license &bull; Fully offline &bull; No monthly fees &bull; On-site installation included<br/>
-      AMC (Annual Maintenance Contract) from Year 2 — software updates, support &amp; license reactivation</p>
-    </div>
-  </section>
 
   <!-- STUDENT EDITION -->
   <section class="student-section" id="student">
@@ -1242,14 +804,6 @@
                 <span>No internet required after first setup. No data sent to any server. Everything runs on your laptop.</span>
               </div>
             </li>
-          </ul>
-
-          <div class="not-included-label">Not included in Student Edition</div>
-          <ul class="student-feat-list">
-            <li><span class="fx">&#10007;</span><div class="feat-body"><strong>Live Quiz with classroom leaderboard</strong></div></li>
-            <li><span class="fx">&#10007;</span><div class="feat-body"><strong>PIN-based multi-device sessions</strong></div></li>
-            <li><span class="fx">&#10007;</span><div class="feat-body"><strong>Multi-user / shared access</strong></div></li>
-            <li><span class="fx">&#10007;</span><div class="feat-body"><strong>LAN sharing across devices</strong></div></li>
           </ul>
         </div>
 
@@ -1305,150 +859,17 @@
             e.g. Lenovo LOQ, ASUS ROG, MSI Gaming series<br/>
             <span style="font-size:0.76rem; color:#975a16;">Standard laptops without a dedicated GPU are not supported.</span>
           </div>
+
+          <p style="margin:14px 0 0; text-align:center; font-size:0.82rem; color:#4a5568; line-height:1.5;">
+            Questions before buying? Email
+            <a href="mailto:senseai-support@ssquareai.com" style="color:#2B6CB0; font-weight:600; text-decoration:none;">senseai-support@ssquareai.com</a>
+          </p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- PURCHASE -->
-  <section class="purchase section-pad" id="purchase">
-    <div class="section-title">
-      <div class="tag">Simple Process</div>
-      <h2>How to Purchase</h2>
-      <p>Get SenseAI Student Edition on your laptop in 3 simple steps.</p>
-    </div>
-
-    <div class="purchase-steps">
-      <div class="step-item">
-        <div class="step-num">1</div>
-        <h4>Choose Your Plan</h4>
-        <p>Select NEET, JEE Main, JEE Advanced, or Combo from Student Edition pricing above</p>
-      </div>
-      <div class="step-item">
-        <div class="step-num">2</div>
-        <h4>Make Payment</h4>
-        <p>Pay online via UPI / Card / Netbanking (Razorpay)</p>
-      </div>
-      <div class="step-item">
-        <div class="step-num">3</div>
-        <h4>Download &amp; Activate</h4>
-        <p>Get the Student installer by email, install on your laptop, and activate with your license</p>
-      </div>
-    </div>
-
-    <div class="payment-options">
-
-      <!-- Bank Transfer — hidden for Student-first launch (remove hidden to restore) -->
-      <div class="payment-card" hidden aria-hidden="true">
-        <div class="payment-card-header">
-          <div class="payment-icon">🏦</div>
-          <div>
-            <h3>Bank Transfer (NEFT / IMPS / RTGS)</h3>
-            <p>Transfer directly to our bank account — available now</p>
-          </div>
-        </div>
-        <div class="bank-detail-row"><span>Bank</span><strong>HDFC Bank</strong></div>
-        <div class="bank-detail-row"><span>Account Holder</span><strong>SSQUARE AI SOLUTIONS PVT LTD</strong></div>
-        <div class="bank-detail-row"><span>Account Number</span><strong>50200120427487</strong></div>
-        <div class="bank-detail-row"><span>IFSC Code</span><strong>HDFC0005878</strong></div>
-        <div class="bank-detail-row"><span>Account Type</span><strong>Current Account</strong></div>
-        <div class="bank-detail-row"><span>Branch</span><strong>Tirunelveli STC Road, Tamil Nadu</strong></div>
-        <ol class="bank-steps">
-          <li>Transfer the Student plan amount to the account above</li>
-          <li>Email payment screenshot to <strong>senseai-support@ssquareai.com</strong> with your plan name</li>
-          <li>We will email your download link and activation steps within 1 business day</li>
-        </ol>
-      </div>
-
-      <!-- Razorpay — Online Payment -->
-      <div class="payment-card active">
-        <div class="payment-card-header">
-          <div class="payment-icon">💳</div>
-          <div>
-            <h3>Pay Online — UPI / Card / Netbanking <span class="live-badge">Live</span></h3>
-            <p>Secure payment via Razorpay — instant confirmation</p>
-          </div>
-        </div>
-        <!-- School / Enterprise Pay Now rows — hidden for Student-first launch
-        <div class="online-plan-row">
-          <span class="online-plan-name">CBSE Plan</span>
-          <span class="online-plan-amount">
-            <span class="amt-base">₹75,000</span>
-            <span class="amt-gst">+ ₹13,500 GST</span>
-          </span>
-          <button class="pay-now-btn" onclick="openPayModal('CBSE Plan')">Pay Now</button>
-        </div>
-        <div class="online-plan-row">
-          <span class="online-plan-name">CBSE + NEET Plan</span>
-          <span class="online-plan-amount">
-            <span class="amt-base">₹1,25,000</span>
-            <span class="amt-gst">+ ₹22,500 GST</span>
-          </span>
-          <button class="pay-now-btn" onclick="openPayModal('CBSE + NEET Plan')">Pay Now</button>
-        </div>
-        <div class="online-plan-row">
-          <span class="online-plan-name">Full Exam Pack</span>
-          <span class="online-plan-amount">
-            <span class="amt-base">₹1,50,000</span>
-            <span class="amt-gst">+ ₹27,000 GST</span>
-          </span>
-          <button class="pay-now-btn" onclick="openPayModal('Full Exam Pack (CBSE + NEET + JEE)')">Pay Now</button>
-        </div>
-        -->
-
-        <!-- Student Edition separator -->
-        <div style="margin: 10px 0 6px; font-size: 0.75rem; font-weight: 700; color: #2B6CB0; letter-spacing: 0.5px; text-transform: uppercase;">
-          Student Edition — Monthly Plans (NEET / JEE)
-        </div>
-        <div class="online-plan-row">
-          <span class="online-plan-name">NEET Student Plan</span>
-          <span class="online-plan-amount">
-            <span class="amt-base">₹2,999/mo</span>
-            <span class="amt-gst">₹3,539 incl. GST</span>
-          </span>
-          <button class="pay-now-btn" onclick="openPayModal('NEET Student Plan')">Pay Now</button>
-        </div>
-        <div class="online-plan-row">
-          <span class="online-plan-name">JEE Main Student Plan</span>
-          <span class="online-plan-amount">
-            <span class="amt-base">₹2,999/mo</span>
-            <span class="amt-gst">₹3,539 incl. GST</span>
-          </span>
-          <button class="pay-now-btn" onclick="openPayModal('JEE Main Student Plan')">Pay Now</button>
-        </div>
-        <div class="online-plan-row">
-          <span class="online-plan-name">JEE Advanced Student Plan</span>
-          <span class="online-plan-amount">
-            <span class="amt-base">₹3,499/mo</span>
-            <span class="amt-gst">₹4,129 incl. GST</span>
-          </span>
-          <button class="pay-now-btn" onclick="openPayModal('JEE Advanced Student Plan')">Pay Now</button>
-        </div>
-        <div class="online-plan-row">
-          <span class="online-plan-name">Combo — NEET + JEE Main + Adv</span>
-          <span class="online-plan-amount">
-            <span class="amt-base">₹4,999/mo</span>
-            <span class="amt-gst">₹5,899 incl. GST</span>
-          </span>
-          <button class="pay-now-btn" onclick="openPayModal('Student Edition — Monthly Subscription')">Pay Now</button>
-        </div>
-
-        <div class="payment-methods-row">
-          <span class="pm-badge">UPI</span>
-          <span class="pm-badge">VISA</span>
-          <span class="pm-badge">Mastercard</span>
-          <span class="pm-badge">RuPay</span>
-          <span class="pm-badge">Netbanking</span>
-        </div>
-      </div>
-
-    </div>
-
-    <p class="purchase-note">
-      Have questions before purchasing? Email <strong>senseai-support@ssquareai.com</strong> or use the <a href="#inquiry" style="color:#2B6CB0;">Request Demo</a> form above.
-    </p>
-  </section>
 
   <!-- SYSTEM REQUIREMENTS -->
   <section class="requirements section-pad" id="requirements">
@@ -1491,7 +912,7 @@
         <div class="req-icon">📦</div>
         <h4>What You Receive</h4>
         <table class="req-table">
-          <tr><td>Package</td><td>Student ZIP (~12.8 GB) by email after payment</td></tr>
+          <tr><td>Package</td><td>Student ZIP (~8.77 GB) by email after payment</td></tr>
           <tr><td>Installer</td><td>SenseAI-Student-Setup.exe + .bin</td></tr>
           <tr><td>License</td><td>1-user monthly license for your exam plan</td></tr>
           <tr><td>Support</td><td>WhatsApp / email during your subscription</td></tr>
