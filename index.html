@@ -203,6 +203,32 @@
       border-radius: 15px;
     }
     .product-img p { margin-top: 12px; font-size: 13px; opacity: 0.8; padding: 0 15px 15px; }
+    /* ── EXAM VIDEO SHOWCASE (NEET / JEE) ── */
+    .video-showcase { background: #f8faff; }
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 30px auto 0;
+      padding: 0 20px;
+    }
+    .video-card { text-align: center; scroll-margin-top: 90px; }
+    .stu-demo-link { font-size: 0.78rem; font-weight: 700; color: #2B6CB0; text-decoration: none; white-space: nowrap; margin-left: 4px; }
+    .stu-demo-link:hover { text-decoration: underline; }
+    .video-card iframe {
+      width: 100%;
+      height: 340px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      background: rgba(0,0,0,0.04);
+    }
+    .video-card p { margin-top: 14px; font-size: 15px; font-weight: 600; color: #2B6CB0; }
+    @media (max-width: 768px) {
+      .video-grid { grid-template-columns: 1fr; gap: 20px; }
+      .video-card iframe { height: 240px; }
+    }
     /* ── DEMO SECTION ── */
     .demo { background: #f8faff; }
     .btn-white {
@@ -669,6 +695,7 @@
       </div>
       <a href="#student">Pricing</a>
       <a href="#student" style="color:#68d391; font-weight:700;">Buy Now</a>
+      <a href="#see-in-action">Videos</a>
       <a href="#requirements">Requirements</a>
       <a href="#contact">Contact</a>
     </div>
@@ -826,7 +853,7 @@
 
           <div class="stu-plan-row">
             <span class="stu-exam-tag">NEET</span>
-            <span class="stu-plan-label">NEET Plan</span>
+            <span class="stu-plan-label">NEET Plan <a href="#video-neet" class="stu-demo-link">&#9654; demo</a></span>
             <div class="stu-plan-price">
               <span class="stu-amt">₹2,999/mo</span>
               <span class="stu-gst">₹3,539 incl. GST</span>
@@ -836,7 +863,7 @@
 
           <div class="stu-plan-row">
             <span class="stu-exam-tag">JEE MAIN</span>
-            <span class="stu-plan-label">JEE Main Plan</span>
+            <span class="stu-plan-label">JEE Main Plan <a href="#video-jee" class="stu-demo-link">&#9654; demo</a></span>
             <div class="stu-plan-price">
               <span class="stu-amt">₹2,999/mo</span>
               <span class="stu-gst">₹3,539 incl. GST</span>
@@ -846,7 +873,7 @@
 
           <div class="stu-plan-row">
             <span class="stu-exam-tag">JEE ADV</span>
-            <span class="stu-plan-label">JEE Advanced Plan</span>
+            <span class="stu-plan-label">JEE Advanced Plan <a href="#video-jee" class="stu-demo-link">&#9654; demo</a></span>
             <div class="stu-plan-price">
               <span class="stu-amt">₹3,499/mo</span>
               <span class="stu-gst">₹4,129 incl. GST</span>
@@ -856,7 +883,7 @@
 
           <div class="stu-plan-row">
             <span class="stu-exam-tag combo">ALL</span>
-            <span class="stu-plan-label" style="font-weight:800;color:#c05621;">Combo — NEET + JEE Main + Adv</span>
+            <span class="stu-plan-label" style="font-weight:800;color:#c05621;">Combo — NEET + JEE Main + Adv <a href="#see-in-action" class="stu-demo-link" style="color:#c05621;">&#9654; demo</a></span>
             <div class="stu-plan-price">
               <span class="stu-amt" style="color:#c05621;">₹4,999/mo</span>
               <span class="stu-gst">₹5,899 incl. GST</span>
@@ -877,6 +904,26 @@
           </p>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEE IT IN ACTION — NEET / JEE -->
+  <section class="video-showcase section-pad" id="see-in-action">
+    <div class="section-title">
+      <div class="tag">See It In Action</div>
+      <h2>SenseAI for NEET &amp; JEE</h2>
+      <p>Watch how SenseAI generates exam-ready questions for your target exam</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card" id="video-neet">
+        <iframe src="https://drive.google.com/file/d/1k01uOX2BsFCB2jUXaitn1tGs1t7IeOK1/preview" allowfullscreen allow="autoplay" title="SenseAI for NEET"></iframe>
+        <p>&#9654; NEET — Question Generation Demo</p>
+      </div>
+      <div class="video-card" id="video-jee">
+        <iframe src="https://drive.google.com/file/d/1QjKWs74wk1-wSgIJscGnl-UpDUOCpV88/preview" allowfullscreen allow="autoplay" title="SenseAI for JEE"></iframe>
+        <p>&#9654; JEE Main &amp; Advanced — Question Generation Demo</p>
       </div>
     </div>
   </section>
