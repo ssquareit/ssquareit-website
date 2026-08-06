@@ -229,6 +229,26 @@
       .video-grid { grid-template-columns: 1fr; gap: 20px; }
       .video-card iframe { height: 240px; }
     }
+    /* ── FREE TRIAL ── */
+    .trial-section { background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%); color: #fff; }
+    .trial-section .section-title h2, .trial-section .section-title p { color: #fff; }
+    .trial-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 30px auto 0; padding: 0 20px; }
+    .trial-step { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 24px; }
+    .trial-step .tn { width: 34px; height: 34px; border-radius: 50%; background:#68d391; color:#1a3a5c; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+    .trial-step h4 { margin: 0 0 8px; font-size: 1.05rem; }
+    .trial-step p { font-size: 0.88rem; opacity: 0.92; line-height: 1.6; }
+    .trial-form { max-width: 460px; margin: 30px auto 0; background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; }
+    .trial-form input { width:100%; padding:11px 14px; border:none; border-radius:8px; margin-bottom:12px; font-size:0.95rem; box-sizing:border-box; }
+    .trial-btn { background:#68d391; color:#1a3a5c; border:none; padding:12px 24px; border-radius:8px; font-weight:800; font-size:1rem; cursor:pointer; width:100%; }
+    .trial-btn:hover { background:#48bb78; }
+    .trial-btn:disabled { opacity:0.6; cursor:not-allowed; }
+    .trial-dl-btn { background:#fff; color:#2B6CB0; border:none; padding:10px 20px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.9rem; margin-top:10px; }
+    .trial-dl-btn:disabled { opacity:0.6; cursor:not-allowed; }
+    .trial-msg { margin-top:14px; font-size:0.9rem; padding:10px 14px; border-radius:8px; display:none; line-height:1.5; }
+    .trial-msg.ok { background:#c6f6d5; color:#22543d; display:block; }
+    .trial-msg.err { background:#fed7d7; color:#742a2a; display:block; }
+    .cf-turnstile { margin: 4px 0 14px; }
+    @media (max-width: 768px) { .trial-steps { grid-template-columns: 1fr; } }
     /* ── DEMO SECTION ── */
     .demo { background: #f8faff; }
     .btn-white {
@@ -695,6 +715,7 @@
       </div>
       <a href="#student">Pricing</a>
       <a href="#student" style="color:#68d391; font-weight:700;">Buy Now</a>
+      <a href="#free-trial" style="color:#68d391; font-weight:700;">Free Trial</a>
       <a href="#see-in-action">Videos</a>
       <a href="#requirements">Requirements</a>
       <a href="#contact">Contact</a>
@@ -925,6 +946,41 @@
         <iframe src="https://drive.google.com/file/d/1QjKWs74wk1-wSgIJscGnl-UpDUOCpV88/preview" allowfullscreen allow="autoplay" title="SenseAI for JEE"></iframe>
         <p>&#9654; JEE Main &amp; Advanced — Question Generation Demo</p>
       </div>
+    </div>
+  </section>
+
+
+  <!-- FREE TRIAL -->
+  <section class="trial-section section-pad" id="free-trial">
+    <div class="section-title">
+      <div class="tag" style="background:#68d391;color:#1a3a5c;">Try Before You Buy</div>
+      <h2>Free 3-Day Trial</h2>
+      <p>Test SenseAI on your own RTX laptop before paying — full features, no card required.</p>
+    </div>
+    <div class="trial-steps">
+      <div class="trial-step">
+        <div class="tn">1</div>
+        <h4>Download</h4>
+        <p>Get the installer (~8.17 GB). Free — no payment needed to try.</p>
+        <button class="trial-dl-btn" id="trialDownloadBtn" onclick="startTrialDownload()">&#8595; Download Installer</button>
+      </div>
+      <div class="trial-step">
+        <div class="tn">2</div>
+        <h4>Install</h4>
+        <p>Run setup. On the final screen, copy your <strong>Machine Fingerprint</strong> (also saved at C:\SenseAI\fingerprint.txt).</p>
+      </div>
+      <div class="trial-step">
+        <div class="tn">3</div>
+        <h4>Get your license</h4>
+        <p>Enter your email + fingerprint below — we email your 3-day license instantly.</p>
+      </div>
+    </div>
+    <div class="trial-form">
+      <input type="email" id="trialEmail" placeholder="Your email address" autocomplete="email" />
+      <input type="text" id="trialFingerprint" placeholder="Paste your Machine Fingerprint" />
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAEH1KWG_oKy6nFtl"></div>
+      <button class="trial-btn" id="trialSubmitBtn" onclick="requestTrialLicense()">Get My Free 3-Day License</button>
+      <div class="trial-msg" id="trialMsg"></div>
     </div>
   </section>
 
@@ -1510,5 +1566,59 @@
     <p>© 2026 SSQUARE AI SOLUTIONS PVT LTD. All Rights Reserved. | Tirunelveli, Tamil Nadu, India</p>
   </footer>
 
+  <!-- Cloudflare Turnstile (bot protection for the free-trial form) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>
+    var TRIAL_WORKER = 'https://sense-ai-payment.ssquareai.workers.dev';
+
+    function startTrialDownload() {
+      var btn = document.getElementById('trialDownloadBtn');
+      var orig = btn.innerHTML;
+      btn.disabled = true; btn.textContent = 'Preparing link...';
+      fetch(TRIAL_WORKER + '/trial-download', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d.ok && d.url) { window.location.href = d.url; }
+          else { alert('Could not start the download. Please try again or email senseai-support@ssquareai.com'); }
+          btn.disabled = false; btn.innerHTML = orig;
+        })
+        .catch(function () { alert('Network error. Please try again.'); btn.disabled = false; btn.innerHTML = orig; });
+    }
+
+    function requestTrialLicense() {
+      var email = document.getElementById('trialEmail').value.trim();
+      var fp    = document.getElementById('trialFingerprint').value.trim();
+      var msg   = document.getElementById('trialMsg');
+      var btn   = document.getElementById('trialSubmitBtn');
+      var token = (typeof turnstile !== 'undefined' && turnstile.getResponse) ? turnstile.getResponse() : '';
+
+      if (!email || email.indexOf('@') === -1) { msg.className = 'trial-msg err'; msg.textContent = 'Please enter a valid email address.'; return; }
+      if (!fp) { msg.className = 'trial-msg err'; msg.textContent = 'Please paste your Machine Fingerprint (from the installer).'; return; }
+      if (!token) { msg.className = 'trial-msg err'; msg.textContent = 'Please complete the verification checkbox.'; return; }
+
+      btn.disabled = true; btn.textContent = 'Issuing your license...';
+      fetch(TRIAL_WORKER + '/issue-trial', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, fingerprint: fp, turnstile_token: token })
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.ok) {
+          msg.className = 'trial-msg ok';
+          msg.innerHTML = '✅ Your 3-day trial license has been emailed to <strong>' + email + '</strong>. Check your inbox (and spam). Save <strong>license_signed.json</strong> into your install\\license folder and restart SenseAI.';
+          btn.textContent = 'License Sent ✓';
+        } else {
+          msg.className = 'trial-msg err';
+          msg.textContent = d.error || 'Could not issue your trial. Please email senseai-support@ssquareai.com';
+          btn.disabled = false; btn.textContent = 'Get My Free 3-Day License';
+          if (typeof turnstile !== 'undefined') turnstile.reset();
+        }
+      })
+      .catch(function () {
+        msg.className = 'trial-msg err'; msg.textContent = 'Network error. Please try again.';
+        btn.disabled = false; btn.textContent = 'Get My Free 3-Day License';
+      });
+    }
+  </script>
 </body>
 </html>
