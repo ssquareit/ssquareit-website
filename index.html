@@ -203,9 +203,7 @@
       border-radius: 15px;
     }
     .product-img p { margin-top: 12px; font-size: 13px; opacity: 0.8; padding: 0 15px 15px; }
-    .product-inner.velai-inner {
-      background: linear-gradient(135deg, #132840 0%, #1E3A5F 55%, #92400E 140%);
-    }
+    /* Velai uses same blue panel as Sense AI; amber kept as brand accent only */
     .product-features.velai-features li::before { color: #F59E0B; }
     .velai-brand {
       display: inline-flex;
@@ -219,7 +217,7 @@
     }
     .velai-brand-mark {
       width: 44px; height: 44px; border-radius: 12px;
-      background: #F59E0B; color: #132840;
+      background: #F59E0B; color: #1a3a5c;
       display: flex; align-items: center; justify-content: center;
       font-weight: 900; font-size: 22px;
     }
@@ -239,7 +237,7 @@
     }
     .velai-step-num {
       width: 28px; height: 28px; border-radius: 50%;
-      background: #F59E0B; color: #132840;
+      background: #F59E0B; color: #1a3a5c;
       font-weight: 800; font-size: 13px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
@@ -253,7 +251,7 @@
     .btn-amber {
       display: inline-block;
       background: #F59E0B;
-      color: #132840;
+      color: #1a3a5c;
       text-decoration: none;
       padding: 12px 26px;
       border-radius: 8px;
@@ -274,6 +272,7 @@
       font-size: 14px;
       border: 1.5px solid rgba(255,255,255,0.45);
       margin-top: 4px;
+      margin-right: 8px;
     }
     .btn-outline-light:hover { border-color: #F59E0B; color: #FCD34D; }
     /* ── EXAM VIDEO SHOWCASE (NEET / JEE) ── */
@@ -811,7 +810,7 @@
       <div class="hero-btns">
         <a href="#inquiry" class="btn-primary">Request Free Demo</a>
         <a href="#senseai" class="btn-secondary">View Sense AI</a>
-        <a href="#velai" class="btn-secondary" style="background:rgba(245,158,11,0.18); border-color:rgba(245,158,11,0.55);">View Velai</a>
+        <a href="#velai" class="btn-secondary">View Velai</a>
         <a href="#student" class="btn-secondary" style="background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.4);">Student Plans</a>
       </div>
       <div class="hero-stats">
@@ -896,13 +895,13 @@
   </section>
 
   <!-- PRODUCT: VELAI -->
-  <section class="product" id="velai" style="background:#f8fafc;">
+  <section class="product" id="velai">
     <div class="section-title">
       <div class="tag">Our Product</div>
       <h2>Velai</h2>
       <p>Hyperlocal job marketplace — find workers nearby in minutes</p>
     </div>
-    <div class="product-inner velai-inner">
+    <div class="product-inner">
       <div class="product-text">
         <div class="velai-brand">
           <div class="velai-brand-mark">V</div>
@@ -964,7 +963,7 @@
             </div>
           </div>
         </div>
-        <p style="margin-top:16px; font-size:13px; opacity:0.85; text-align:center;">
+        <p style="margin-top:16px; font-size:13px; opacity:0.8; text-align:center; color:#fff;">
           Made in Tirunelveli · For local daily work
         </p>
       </div>
