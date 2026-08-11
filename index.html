@@ -203,6 +203,79 @@
       border-radius: 15px;
     }
     .product-img p { margin-top: 12px; font-size: 13px; opacity: 0.8; padding: 0 15px 15px; }
+    .product-inner.velai-inner {
+      background: linear-gradient(135deg, #132840 0%, #1E3A5F 55%, #92400E 140%);
+    }
+    .product-features.velai-features li::before { color: #F59E0B; }
+    .velai-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(245,158,11,0.45);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-bottom: 22px;
+    }
+    .velai-brand-mark {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: #F59E0B; color: #132840;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 22px;
+    }
+    .velai-brand-text { font-size: 28px; font-weight: 800; letter-spacing: 0.5px; }
+    .velai-brand-text span { color: #F59E0B; }
+    .velai-steps {
+      display: flex; flex-direction: column; gap: 14px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 15px;
+      padding: 24px;
+    }
+    .velai-step {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .velai-step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #F59E0B; color: #132840;
+      font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .velai-step strong { display: block; font-size: 15px; margin-bottom: 3px; }
+    .velai-step span { font-size: 13px; opacity: 0.85; line-height: 1.5; }
+    .velai-legal {
+      margin-top: 18px; font-size: 13px; opacity: 0.85;
+    }
+    .velai-legal a { color: #FCD34D; }
+    .btn-amber {
+      display: inline-block;
+      background: #F59E0B;
+      color: #132840;
+      text-decoration: none;
+      padding: 12px 26px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 15px;
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+    .btn-amber:hover { background: #FBBF24; }
+    .btn-outline-light {
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1.5px solid rgba(255,255,255,0.45);
+      margin-top: 4px;
+    }
+    .btn-outline-light:hover { border-color: #F59E0B; color: #FCD34D; }
     /* ── EXAM VIDEO SHOWCASE (NEET / JEE) ── */
     .video-showcase { background: #f8faff; }
     .video-grid {
@@ -703,6 +776,13 @@
               <div class="prod-desc">Offline AI study assistant — NEET &amp; JEE</div>
             </div>
           </a>
+          <a href="#velai">
+            <span class="prod-icon">⚡</span>
+            <div class="prod-info">
+              <div class="prod-name">Velai</div>
+              <div class="prod-desc">Hyperlocal jobs — hire workers nearby in minutes</div>
+            </div>
+          </a>
           <hr class="nav-dropdown-divider"/>
           <a href="#contact" style="opacity:0.5; pointer-events:none;">
             <span class="prod-icon">🔜</span>
@@ -731,6 +811,7 @@
       <div class="hero-btns">
         <a href="#inquiry" class="btn-primary">Request Free Demo</a>
         <a href="#senseai" class="btn-secondary">View Sense AI</a>
+        <a href="#velai" class="btn-secondary" style="background:rgba(245,158,11,0.18); border-color:rgba(245,158,11,0.55);">View Velai</a>
         <a href="#student" class="btn-secondary" style="background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.4);">Student Plans</a>
       </div>
       <div class="hero-stats">
@@ -810,6 +891,80 @@
         <p>▶ Watch Live Demo — Sense AI in Action</p>
         <iframe src="https://drive.google.com/file/d/10lfBhgy4gOstcUfdDctxgv2ov61fALa7/preview" allowfullscreen allow="autoplay" title="Sense AI Installation Guide" style="margin-top:10px;"></iframe>
         <p>▶ How to Install — Step-by-Step Guide</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT: VELAI -->
+  <section class="product" id="velai" style="background:#f8fafc;">
+    <div class="section-title">
+      <div class="tag">Our Product</div>
+      <h2>Velai</h2>
+      <p>Hyperlocal job marketplace — find workers nearby in minutes</p>
+    </div>
+    <div class="product-inner velai-inner">
+      <div class="product-text">
+        <div class="velai-brand">
+          <div class="velai-brand-mark">V</div>
+          <div class="velai-brand-text">Vel<span>ai</span></div>
+        </div>
+        <h2>Hire local help. Fast.</h2>
+        <p>
+          Velai connects people who need work done with skilled workers nearby — electricians, plumbers,
+          cleaners, painters, drivers, and more. Built for Tirunelveli and local India, with Tamil &amp; English support.
+          Post a job, get accepts from nearby workers, confirm, call, and get the work done.
+        </p>
+        <ul class="product-features velai-features">
+          <li>Post a job and reach workers within your chosen radius</li>
+          <li>Workers see nearby open jobs in real time</li>
+          <li>Accept → confirm → call — contact after commitment</li>
+          <li>Ratings after job completion build trust</li>
+          <li>First 5 job posts free for employers; small platform fee after that</li>
+          <li>Worker wages stay between you and the worker (cash / UPI)</li>
+          <li>Available on Android (Play Store launch in progress)</li>
+        </ul>
+        <a href="#inquiry" class="btn-amber">Request Early Access</a>
+        <a href="velai-privacy.html" class="btn-outline-light">Privacy</a>
+        <a href="velai-terms.html" class="btn-outline-light">Terms</a>
+        <p class="velai-legal">
+          Legal: <a href="velai-privacy.html">Privacy Policy</a> ·
+          <a href="velai-terms.html">Terms of Service</a>
+        </p>
+      </div>
+      <div class="product-img" style="background:transparent; overflow:visible;">
+        <div class="velai-steps">
+          <div class="velai-step">
+            <div class="velai-step-num">1</div>
+            <div>
+              <strong>Employer posts a job</strong>
+              <span>Choose category, pay, duration, and search radius near your location.</span>
+            </div>
+          </div>
+          <div class="velai-step">
+            <div class="velai-step-num">2</div>
+            <div>
+              <strong>Nearby workers accept</strong>
+              <span>Available workers in the area see the job and accept if they can do it.</span>
+            </div>
+          </div>
+          <div class="velai-step">
+            <div class="velai-step-num">3</div>
+            <div>
+              <strong>Confirm &amp; call</strong>
+              <span>Employer confirms a worker; both sides can call and coordinate on-site work.</span>
+            </div>
+          </div>
+          <div class="velai-step">
+            <div class="velai-step-num">4</div>
+            <div>
+              <strong>Complete &amp; rate</strong>
+              <span>Mark the job done, settle payment offline, and leave a rating.</span>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:16px; font-size:13px; opacity:0.85; text-align:center;">
+          Made in Tirunelveli · For local daily work
+        </p>
       </div>
     </div>
   </section>
