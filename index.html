@@ -1686,7 +1686,7 @@
         <div class="chat-hdr-info">
           <div class="chat-hdr-avatar">SS</div>
           <div>
-            <strong>SSquare IT</strong>
+            <strong>SSquare AI</strong>
             <small><span class="chat-online">●</span> We reply quickly</small>
           </div>
         </div>
@@ -1711,7 +1711,7 @@
       win.style.display = open ? 'none' : 'flex';
       bbl.style.display = open ? 'flex' : 'none';
       if (!open && chatStep === 0) {
-        setTimeout(() => botSay("Hi! Welcome to SSquare IT \uD83D\uDC4B What\u2019s your name?"), 600);
+        setTimeout(() => botSay("Hi! Welcome to SSquare AI \uD83D\uDC4B What\u2019s your name?"), 600);
         chatStep = 1;
       }
     }
@@ -1764,11 +1764,11 @@
     function submitToEmail() {
       const body = new FormData();
       body.append('access_key', '520b1c7e-b15d-4a23-b022-b1f03e53a371');
-      body.append('subject', 'SSquare IT received a new message.');
+      body.append('subject', 'SSquare AI received a new message.');
       body.append('from_name', userName);
       body.append('to', 'info@ssquareai.com');
       body.append('message',
-        'SSquare IT received a new message.\n\nFrom ' + userName + ':\n\n' +
+        'SSquare AI received a new message.\n\nFrom ' + userName + ':\n\n' +
         userRequirement + '\n\nContact: ' + userContact
       );
       fetch('https://api.web3forms.com/submit', { method:'POST', body })
