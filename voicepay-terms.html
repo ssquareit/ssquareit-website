@@ -24,7 +24,7 @@
       flex-direction: column;
     }
     nav {
-      background: linear-gradient(135deg, #0B6E4F 0%, #08553C 100%);
+      background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%);
       padding: 15px 60px;
       display: flex;
       justify-content: space-between;
@@ -34,11 +34,11 @@
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-logo img { height: 36px; }
     .nav-logo-text { font-size: 20px; font-weight: 700; color: #fff; }
-    .nav-logo-text span { color: #6EE7B7; }
+    .nav-logo-text span { color: #90cdf4; }
     .nav-home {
       color: #e2e8f0; text-decoration: none; font-size: 14px; font-weight: 500;
     }
-    .nav-home:hover { color: #6EE7B7; }
+    .nav-home:hover { color: #90cdf4; }
     main { flex: 1; padding: 40px 20px 60px; }
     .doc {
       background: #fff;
@@ -70,7 +70,7 @@
     }
     p, li { font-size: 0.95rem; color: #4a5568; margin-bottom: 10px; }
     ul { padding-left: 1.25rem; margin-bottom: 12px; }
-    a { color: #0B6E4F; }
+    a { color: #2B6CB0; }
     .note {
       background: #FFF8E8;
       border: 1px solid #F0C36D;
@@ -81,13 +81,21 @@
       color: #744210;
     }
     footer {
-      background: #0B6E4F;
-      color: rgba(255,255,255,0.65);
+      background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%);
+      color: #e2e8f0;
       text-align: center;
-      padding: 18px;
-      font-size: 0.78rem;
+      padding: 25px;
+      font-size: 13px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    footer a { color: #6EE7B7; margin: 0 8px; text-decoration: none; }
+    footer a {
+      color: #90cdf4;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover { color: #fff; }
+    footer p { color: #e2e8f0; margin: 0; }
     @media (max-width: 600px) {
       nav { padding: 15px 20px; }
       .doc { padding: 28px 20px; }
@@ -203,12 +211,16 @@
   </main>
 
   <footer>
-    <div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:12px;">
+      <img src="ssquareit-logo.png" alt="SSquare IT" style="height:50px; border-radius:8px;" />
+    </div>
+    <p style="margin-bottom:10px;">
+      <a href="velai-privacy.html">Velai Privacy</a>
+      <a href="velai-terms.html">Velai Terms</a>
       <a href="voicepay-privacy.html">VoicePay Privacy</a>
       <a href="voicepay-terms.html">VoicePay Terms</a>
-      <a href="https://www.ssquareai.com">ssquareai.com</a>
-    </div>
-    <p style="margin-top:10px;">© 2026 SSQUARE AI SOLUTIONS PVT LTD. All Rights Reserved.</p>
+    </p>
+    <p>© 2026 SSQUARE AI SOLUTIONS PVT LTD. All Rights Reserved. | Tirunelveli, Tamil Nadu, India</p>
   </footer>
 </body>
 </html>
