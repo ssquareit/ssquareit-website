@@ -534,7 +534,7 @@
       background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%);
       color: #e2e8f0;
       text-align: center;
-      padding: 25px;
+      padding: 28px 24px 22px;
       font-size: 13px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -542,23 +542,70 @@
     footer a { color: #90cdf4; text-decoration: none; }
     footer a:hover { color: #fff; }
     footer p { color: #e2e8f0; }
-    .duns-trust {
+    .footer-logo { height: 44px; border-radius: 8px; margin-bottom: 16px; }
+    .duns-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff;
+      color: #1a3a5c;
+      border-radius: 12px;
+      padding: 10px 16px 10px 10px;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+      text-align: left;
+      max-width: 100%;
+    }
+    .duns-seals {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin: 4px 0 12px;
+      gap: 8px;
+      flex-shrink: 0;
     }
-    .duns-trust iframe {
+    .duns-seal, .duns-qr {
+      overflow: hidden;
+      line-height: 0;
       background: #fff;
-      border-radius: 6px;
-      vertical-align: middle;
+      flex-shrink: 0;
     }
-    .duns-meta {
+    /* Official D&B standard seal iframe is 114×97 */
+    .duns-seal { width: 114px; height: 97px; }
+    .duns-seal iframe { width: 114px; height: 97px; border: 0; display: block; }
+    /* QRcode.js writes an unsized iframe (browser default ~300×150). Clip to the QR. */
+    .duns-qr { width: 97px; height: 97px; }
+    .duns-qr iframe { width: 97px; height: 97px; border: 0; display: block; }
+    .duns-copy { min-width: 0; }
+    .duns-copy .duns-kicker {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #2B6CB0;
+      margin-bottom: 2px;
+    }
+    .duns-copy .duns-number {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1a3a5c;
+      line-height: 1.3;
+    }
+    .duns-copy a {
+      display: inline-block;
+      margin-top: 3px;
       font-size: 12px;
-      color: #90cdf4;
-      margin-bottom: 12px;
+      font-weight: 600;
+      color: #2B6CB0;
+    }
+    .duns-copy a:hover { color: #1a3a5c; text-decoration: underline; }
+    .footer-legal { margin-bottom: 8px; }
+    .footer-legal a { margin: 0 10px; }
+    @media (max-width: 560px) {
+      .duns-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 12px;
+      }
     }
 
     /* ── RESPONSIVE — TABLET (≤900px) ── */
@@ -1858,24 +1905,29 @@
 
   <!-- FOOTER -->
   <footer>
-    <div style="display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:12px;">
-      <img src="ssquareit-logo.png" alt="SSquare IT" style="height:50px; border-radius:8px;" />
+    <img class="footer-logo" src="ssquareit-logo.png" alt="SSQUARE AI SOLUTIONS" />
+    <div class="duns-card">
+      <div class="duns-seals">
+        <div class="duns-seal">
+          <!-- D&B D-U-N-S Registered™ Standard Website Seal (HTTPS). DUNS 772344523. -->
+          <script language="JavaScript" src="https://dunsregistered.dnb.com" type="text/javascript"></script>
+        </div>
+        <div class="duns-qr">
+          <!-- D&B website QR. Script iframe has no width/height; CSS clips it to 97×97. -->
+          <script language="JavaScript" src="https://dunsregistered.dnb.com/QRcode.js?QRW=97&QRH=97" type="text/javascript"></script>
+        </div>
+      </div>
+      <div class="duns-copy">
+        <div class="duns-kicker">D-U-N-S® Registered™</div>
+        <div class="duns-number">772344523</div>
+        <a href="https://dunsregistered.dnb.com/DunsRegisteredProfileAnywhere.aspx?Key1=3205453&PaArea=Email" target="_blank" rel="noopener noreferrer">View verified profile →</a>
+      </div>
     </div>
-    <div class="duns-trust">
-      <!-- D&B D-U-N-S Registered™ Standard Website Seal (HTTPS). DUNS 772344523. Valid 20/08/2026–19/08/2027. -->
-      <script language="JavaScript" src="https://dunsregistered.dnb.com" type="text/javascript"></script>
-      <!-- D&B website QR (100×100). Scan opens the registered company profile. -->
-      <script language="JavaScript" src="https://dunsregistered.dnb.com/QRcode.js?QRW=100&QRH=100" type="text/javascript"></script>
-    </div>
-    <p class="duns-meta">
-      D-U-N-S® Number: 772344523
-      · <a href="https://dunsregistered.dnb.com/DunsRegisteredProfileAnywhere.aspx?Key1=3205453&PaArea=Email" target="_blank" rel="noopener noreferrer">View D-U-N-S® Registered™ Profile</a>
-    </p>
-    <p style="margin-bottom:10px;">
-      <a href="velai-privacy.html" style="margin:0 10px;">Velai Privacy</a>
-      <a href="velai-terms.html" style="margin:0 10px;">Velai Terms</a>
-      <a href="voicepay-privacy.html" style="margin:0 10px;">VoicePay Privacy</a>
-      <a href="voicepay-terms.html" style="margin:0 10px;">VoicePay Terms</a>
+    <p class="footer-legal">
+      <a href="velai-privacy.html">Velai Privacy</a>
+      <a href="velai-terms.html">Velai Terms</a>
+      <a href="voicepay-privacy.html">VoicePay Privacy</a>
+      <a href="voicepay-terms.html">VoicePay Terms</a>
     </p>
     <p>© 2026 SSQUARE AI SOLUTIONS PVT LTD. All Rights Reserved. | Tirunelveli, Tamil Nadu, India</p>
   </footer>
