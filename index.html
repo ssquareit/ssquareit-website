@@ -542,9 +542,9 @@
     footer a { color: #90cdf4; text-decoration: none; }
     footer a:hover { color: #fff; }
     footer p { color: #e2e8f0; }
-    .footer-logo { height: 44px; border-radius: 8px; margin-bottom: 16px; }
+    .footer-logo { height: 28px; border-radius: 6px; margin-right: 6px; }
     .duns-card {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 14px;
       background: #fff;
@@ -554,6 +554,7 @@
       margin: 0 auto 16px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.18);
       text-align: left;
+      width: fit-content;
       max-width: 100%;
     }
     .duns-seals {
@@ -597,7 +598,14 @@
       color: #2B6CB0;
     }
     .duns-copy a:hover { color: #1a3a5c; text-decoration: underline; }
-    .footer-legal { margin-bottom: 8px; }
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px 0;
+      margin-bottom: 8px;
+    }
     .footer-legal a { margin: 0 10px; }
     @media (max-width: 560px) {
       .duns-card {
@@ -1905,7 +1913,6 @@
 
   <!-- FOOTER -->
   <footer>
-    <img class="footer-logo" src="ssquareit-logo.png" alt="SSQUARE AI SOLUTIONS" />
     <div class="duns-card">
       <div class="duns-seals">
         <div class="duns-seal">
@@ -1924,6 +1931,7 @@
       </div>
     </div>
     <p class="footer-legal">
+      <img class="footer-logo" src="ssquareit-logo.png" alt="SSQUARE AI SOLUTIONS" />
       <a href="velai-privacy.html">Velai Privacy</a>
       <a href="velai-terms.html">Velai Terms</a>
       <a href="voicepay-privacy.html">VoicePay Privacy</a>
