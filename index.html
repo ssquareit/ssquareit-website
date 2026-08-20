@@ -532,12 +532,34 @@
     /* ── FOOTER ── */
     footer {
       background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 100%);
-      color: rgba(255,255,255,0.6);
+      color: #e2e8f0;
       text-align: center;
       padding: 25px;
       font-size: 13px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     footer span { color: #90cdf4; }
+    footer a { color: #90cdf4; text-decoration: none; }
+    footer a:hover { color: #fff; }
+    footer p { color: #e2e8f0; }
+    .duns-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 4px 0 12px;
+    }
+    .duns-trust iframe {
+      background: #fff;
+      border-radius: 6px;
+      vertical-align: middle;
+    }
+    .duns-meta {
+      font-size: 12px;
+      color: #90cdf4;
+      margin-bottom: 12px;
+    }
 
     /* ── RESPONSIVE — TABLET (≤900px) ── */
     @media (max-width: 900px) {
@@ -1839,11 +1861,21 @@
     <div style="display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:12px;">
       <img src="ssquareit-logo.png" alt="SSquare IT" style="height:50px; border-radius:8px;" />
     </div>
+    <div class="duns-trust">
+      <!-- D&B D-U-N-S Registered™ Standard Website Seal (HTTPS). DUNS 772344523. Valid 20/08/2026–19/08/2027. -->
+      <script language="JavaScript" src="https://dunsregistered.dnb.com" type="text/javascript"></script>
+      <!-- D&B website QR (100×100). Scan opens the registered company profile. -->
+      <script language="JavaScript" src="https://dunsregistered.dnb.com/QRcode.js?QRW=100&QRH=100" type="text/javascript"></script>
+    </div>
+    <p class="duns-meta">
+      D-U-N-S® Number: 772344523
+      · <a href="https://dunsregistered.dnb.com/DunsRegisteredProfileAnywhere.aspx?Key1=3205453&PaArea=Email" target="_blank" rel="noopener noreferrer">View D-U-N-S® Registered™ Profile</a>
+    </p>
     <p style="margin-bottom:10px;">
-      <a href="velai-privacy.html" style="color:#90cdf4; text-decoration:none; margin:0 10px;">Velai Privacy</a>
-      <a href="velai-terms.html" style="color:#90cdf4; text-decoration:none; margin:0 10px;">Velai Terms</a>
-      <a href="voicepay-privacy.html" style="color:#90cdf4; text-decoration:none; margin:0 10px;">VoicePay Privacy</a>
-      <a href="voicepay-terms.html" style="color:#90cdf4; text-decoration:none; margin:0 10px;">VoicePay Terms</a>
+      <a href="velai-privacy.html" style="margin:0 10px;">Velai Privacy</a>
+      <a href="velai-terms.html" style="margin:0 10px;">Velai Terms</a>
+      <a href="voicepay-privacy.html" style="margin:0 10px;">VoicePay Privacy</a>
+      <a href="voicepay-terms.html" style="margin:0 10px;">VoicePay Terms</a>
     </p>
     <p>© 2026 SSQUARE AI SOLUTIONS PVT LTD. All Rights Reserved. | Tirunelveli, Tamil Nadu, India</p>
   </footer>
