@@ -248,6 +248,43 @@
       margin-top: 18px; font-size: 13px; opacity: 0.85;
     }
     .velai-legal a { color: #FCD34D; }
+    /* VoicePay product accents */
+    .product-features.voicepay-features li::before { color: #34D399; }
+    .voicepay-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(52,211,153,0.45);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-bottom: 22px;
+    }
+    .voicepay-brand-mark {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: #0B6E4F; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px;
+    }
+    .voicepay-brand-text { font-size: 26px; font-weight: 800; letter-spacing: 0.3px; }
+    .voicepay-brand-text span { color: #34D399; }
+    .btn-green {
+      display: inline-block;
+      background: #0B6E4F;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 26px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 15px;
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+    .btn-green:hover { background: #08553C; }
+    .voicepay-legal {
+      margin-top: 18px; font-size: 13px; opacity: 0.85;
+    }
+    .voicepay-legal a { color: #6EE7B7; }
     .btn-amber {
       display: inline-block;
       background: #F59E0B;
@@ -782,6 +819,13 @@
               <div class="prod-desc">Hyperlocal jobs — hire workers nearby in minutes</div>
             </div>
           </a>
+          <a href="#voicepay">
+            <span class="prod-icon">🔊</span>
+            <div class="prod-info">
+              <div class="prod-name">VoicePay</div>
+              <div class="prod-desc">Offline UPI payment announcer for shops</div>
+            </div>
+          </a>
           <hr class="nav-dropdown-divider"/>
           <a href="#contact" style="opacity:0.5; pointer-events:none;">
             <span class="prod-icon">🔜</span>
@@ -811,6 +855,7 @@
         <a href="#inquiry" class="btn-primary">Request Free Demo</a>
         <a href="#senseai" class="btn-secondary">View Sense AI</a>
         <a href="#velai" class="btn-secondary">View Velai</a>
+        <a href="#voicepay" class="btn-secondary">View VoicePay</a>
         <a href="#student" class="btn-secondary" style="background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.4);">Student Plans</a>
       </div>
       <div class="hero-stats">
@@ -965,6 +1010,81 @@
         </div>
         <p style="margin-top:16px; font-size:13px; opacity:0.8; text-align:center; color:#fff;">
           Made in Tirunelveli · For local daily work
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT: VOICEPAY -->
+  <section class="product" id="voicepay">
+    <div class="section-title">
+      <div class="tag">Our Product</div>
+      <h2>VoicePay</h2>
+      <p>Offline UPI payment announcer for shops and merchants</p>
+    </div>
+    <div class="product-inner">
+      <div class="product-text">
+        <div class="voicepay-brand">
+          <div class="voicepay-brand-mark">VP</div>
+          <div class="voicepay-brand-text">Voice<span>Pay</span></div>
+        </div>
+        <h2>Hear every UPI payment. Loud and clear.</h2>
+        <p>
+          VoicePay listens to credit notifications from PhonePe, Google Pay, Paytm, BHIM, and Amazon Pay,
+          then announces the amount (and payer) on your phone speaker — so busy shopkeepers never miss a payment.
+          Works offline on-device. No UPI PIN, no bank login, no cloud sync of your sales.
+        </p>
+        <ul class="product-features voicepay-features">
+          <li>Realtime announce for UPI credits on Android</li>
+          <li>Supports PhonePe, Google Pay, Paytm, BHIM, Amazon Pay</li>
+          <li>Local history, daily totals, search &amp; CSV export</li>
+          <li>Tamil, Hindi, English and more announcement languages</li>
+          <li>5-day free trial, then ₹99 one-time for 1 year</li>
+          <li>Payment data stays on your phone (SQLite)</li>
+          <li>Google Play listing in progress</li>
+        </ul>
+        <a href="#voicepay-download" class="btn-green" id="voicepay-download">Coming soon on Google Play</a>
+        <a href="voicepay-privacy.html" class="btn-outline-light">Privacy</a>
+        <a href="voicepay-terms.html" class="btn-outline-light">Terms</a>
+        <p class="voicepay-legal">
+          VoicePay is an <strong>announcer</strong>, not a payment app. It reads Android notifications you already receive from your UPI apps.
+          Legal: <a href="voicepay-privacy.html">Privacy Policy</a> ·
+          <a href="voicepay-terms.html">Terms of Service</a>
+        </p>
+      </div>
+      <div class="product-img" style="background:transparent; overflow:visible;">
+        <div class="velai-steps">
+          <div class="velai-step">
+            <div class="velai-step-num" style="background:#0B6E4F; color:#fff;">1</div>
+            <div>
+              <strong>Enable Notification Access</strong>
+              <span>Allow VoicePay to hear UPI payment alerts from your wallet apps.</span>
+            </div>
+          </div>
+          <div class="velai-step">
+            <div class="velai-step-num" style="background:#0B6E4F; color:#fff;">2</div>
+            <div>
+              <strong>Start Listening</strong>
+              <span>Keep Listening ON while you run the shop. Credits are parsed on-device.</span>
+            </div>
+          </div>
+          <div class="velai-step">
+            <div class="velai-step-num" style="background:#0B6E4F; color:#fff;">3</div>
+            <div>
+              <strong>Hear the amount</strong>
+              <span>VoicePay speaks the rupees received (and payer name if available).</span>
+            </div>
+          </div>
+          <div class="velai-step">
+            <div class="velai-step-num" style="background:#0B6E4F; color:#fff;">4</div>
+            <div>
+              <strong>Export when needed</strong>
+              <span>Download CSV backups every 15–90 days and keep the phone history fresh.</span>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:16px; font-size:13px; opacity:0.8; text-align:center; color:#fff;">
+          Made in Tirunelveli · Built for Indian shops
         </p>
       </div>
     </div>
@@ -1722,6 +1842,8 @@
     <p style="margin-bottom:10px;">
       <a href="velai-privacy.html" style="color:#90cdf4; text-decoration:none; margin:0 10px;">Velai Privacy</a>
       <a href="velai-terms.html" style="color:#90cdf4; text-decoration:none; margin:0 10px;">Velai Terms</a>
+      <a href="voicepay-privacy.html" style="color:#90cdf4; text-decoration:none; margin:0 10px;">VoicePay Privacy</a>
+      <a href="voicepay-terms.html" style="color:#90cdf4; text-decoration:none; margin:0 10px;">VoicePay Terms</a>
     </p>
     <p>© 2026 SSQUARE AI SOLUTIONS PVT LTD. All Rights Reserved. | Tirunelveli, Tamil Nadu, India</p>
   </footer>
