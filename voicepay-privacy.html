@@ -116,7 +116,7 @@
       <div class="eyebrow">VoicePay App</div>
       <h1>Privacy Policy</h1>
       <p class="meta">
-        Last updated: 20 August 2026<br/>
+        Last updated: 26 August 2026<br/>
         Operated by <strong>SSQUARE AI SOLUTIONS PVT LTD</strong> (“we”, “us”, “our”), Tirunelveli, Tamil Nadu, India.
       </p>
 
@@ -143,14 +143,14 @@
         <li><strong>Notification content:</strong> title and text of UPI credit notifications (to extract amount/payer and announce).</li>
         <li><strong>Transaction history:</strong> amount, payer name (if available), source app, timestamp, and related notification text — stored in a local SQLite database on your device.</li>
         <li><strong>App settings:</strong> language, volume, repeat count, listening on/off, dark mode, and similar preferences (AsyncStorage / local storage).</li>
-        <li><strong>License status:</strong> trial start date and, after purchase, license expiry and Razorpay payment / order identifiers needed to unlock the app.</li>
+        <li><strong>License status:</strong> trial start date and, after purchase, license expiry and Google Play Billing purchase / transaction identifiers needed to unlock the app.</li>
         <li><strong>Optional exports:</strong> if you use Export, a CSV file is created on your device so you can share it (for example Drive, WhatsApp, email).</li>
       </ul>
 
       <h2>3. Permissions</h2>
       <ul>
         <li><strong>Notification access (NotificationListenerService):</strong> required to hear UPI payment alerts. Without it, live announcements cannot work.</li>
-        <li><strong>Internet:</strong> used for license payment via Razorpay Checkout and (if applicable) app updates from Google Play — not to upload your payment history.</li>
+        <li><strong>Internet:</strong> used for license payment via Google Play Billing and app updates from Google Play — not to upload your payment history.</li>
       </ul>
 
       <h2>4. Cloud / sharing</h2>
@@ -159,8 +159,8 @@
         We do not operate a VoicePay cloud account that syncs your sales ledger in the current version.
       </p>
       <ul>
-        <li><strong>Razorpay:</strong> when you buy the annual license (after the free trial), payment is processed by Razorpay. Razorpay may receive payment details you enter in Checkout. We receive payment status / payment identifiers to activate your license.</li>
-        <li><strong>Google Play:</strong> if you install from Play, Google’s own terms and privacy practices apply to distribution, billing alternatives (if any), and crash/analytics they collect.</li>
+        <li><strong>Google Play Billing:</strong> when you buy the annual license (after the free trial), payment is processed entirely by Google Play Billing. Google, not VoicePay, collects your payment details (card, UPI, etc.) directly. We receive a purchase confirmation and transaction identifier to activate your license — we never see or store your payment instrument details.</li>
+        <li><strong>Google Play:</strong> if you install from Play, Google’s own terms and privacy practices apply to distribution, billing, and crash/analytics they collect.</li>
         <li><strong>Exports you share:</strong> if you export CSV and share it, the recipients you choose will see that data. That sharing is under your control.</li>
       </ul>
       <p>We do not sell your personal data.</p>
