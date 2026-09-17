@@ -116,12 +116,13 @@
       <div class="eyebrow">VoicePay App</div>
       <h1>Privacy Policy</h1>
       <p class="meta">
-        Last updated: 26 August 2026<br/>
+        Last updated: 17 September 2026<br/>
         Operated by <strong>SSQUARE AI SOLUTIONS PVT LTD</strong> (“we”, “us”, “our”), Tirunelveli, Tamil Nadu, India.
       </p>
 
       <div class="note">
-        This Privacy Policy applies to the <strong>VoicePay</strong> Android application — an offline UPI payment announcer for merchants and shopkeepers.
+        This Privacy Policy applies to the <strong>VoicePay</strong> Android application — an offline UPI payment announcer for merchants and shopkeepers,
+        including optional <strong>Owner Mode</strong> and shop <strong>counters</strong>.
         It does not replace policies for other SSquare products (such as Sense AI or Velai) unless we say so.
       </div>
 
@@ -130,6 +131,7 @@
         VoicePay reads <strong>payment credit notifications</strong> already shown by UPI apps on your Android phone
         (for example PhonePe, Google Pay, Paytm, BHIM, Amazon Pay), extracts amount and payer text when possible,
         announces them with Text-to-Speech, and stores a local history.
+        In Owner Mode, mapped credits can be sent to paired counter phones so the shop can hear the payment.
       </p>
       <ul>
         <li>VoicePay is <strong>not</strong> a payment app, UPI PSP, bank, or wallet.</li>
@@ -140,65 +142,91 @@
       <h2>2. Information we process on your device</h2>
       <p>Depending on how you use VoicePay, the app may process on your phone:</p>
       <ul>
-        <li><strong>Notification content:</strong> title and text of UPI credit notifications (to extract amount/payer and announce).</li>
+        <li><strong>Notification content:</strong> title and text of UPI credit notifications (to extract amount/payer and announce). Raw notification text stays on the listening device and is <strong>not</strong> uploaded to VoicePay cloud.</li>
         <li><strong>Transaction history:</strong> amount, payer name (if available), source app, timestamp, and related notification text — stored in a local SQLite database on your device.</li>
-        <li><strong>App settings:</strong> language, volume, repeat count, listening on/off, dark mode, and similar preferences (AsyncStorage / local storage).</li>
-        <li><strong>License status:</strong> trial start date and, after purchase, license expiry and Google Play Billing purchase / transaction identifiers needed to unlock the app.</li>
+        <li><strong>App settings:</strong> language, volume, repeat count, listening on/off, dark mode, chosen role, and similar preferences (AsyncStorage / local storage).</li>
+        <li><strong>License status:</strong> trial start date and, after purchase, license expiry, plan (Personal or Business), and Google Play Billing purchase / transaction identifiers needed to unlock the app.</li>
         <li><strong>Optional exports:</strong> if you use Export, a CSV file is created on your device so you can share it (for example Drive, WhatsApp, email).</li>
       </ul>
 
-      <h2>3. Permissions</h2>
-      <ul>
-        <li><strong>Notification access (NotificationListenerService):</strong> required to hear UPI payment alerts. Without it, live announcements cannot work.</li>
-        <li><strong>Internet:</strong> used for license payment via Google Play Billing and app updates from Google Play — not to upload your payment history.</li>
-      </ul>
-
-      <h2>4. Cloud / sharing</h2>
+      <h2>3. Owner Mode and counters (cloud)</h2>
       <p>
-        VoicePay is designed as <strong>offline-first</strong>. Your payment announcement history is stored on your device.
-        We do not operate a VoicePay cloud account that syncs your sales ledger in the current version.
+        <strong>Personal Mode</strong> does not need a VoicePay cloud account. Your sales history stays on that phone.
+      </p>
+      <p>
+        If you use <strong>Owner Mode</strong> or a <strong>counter</strong>, VoicePay uses <strong>Google Firebase</strong>
+        (Authentication, Cloud Firestore, Cloud Functions, and Firebase Cloud Messaging) to run the business:
+        shops, pairing, and sending mapped payments to the right counter.
       </p>
       <ul>
-        <li><strong>Google Play Billing:</strong> when you buy the annual license (after the free trial), payment is processed entirely by Google Play Billing. Google, not VoicePay, collects your payment details (card, UPI, etc.) directly. We receive a purchase confirmation and transaction identifier to activate your license — we never see or store your payment instrument details.</li>
+        <li><strong>Owner account:</strong> email and password you create in the app (stored by Firebase Authentication), plus the business name you enter.</li>
+        <li><strong>Shops and mapping:</strong> shop names, whether amounts are shown to that shop’s counter, and which UPI / wallet app on the Owner phone is mapped to which shop.</li>
+        <li><strong>Payment events sent to counters:</strong> amount, payer name if parsed, source app / package name, timestamps, shop, and delivery/acknowledgement status. We do <strong>not</strong> store raw notification text in the cloud.</li>
+        <li><strong>Devices:</strong> counter device ids, optional device label, pairing codes (short-lived, one-time), revoke status, and FCM tokens so we can wake the counter phone.</li>
+        <li>Counters do not create a Play Billing purchase. They are unlocked by a valid pairing from the Owner.</li>
+      </ul>
+      <p>
+        Unmapped payments stay on the Owner phone as Unassigned and are not sent to a counter.
+      </p>
+
+      <h2>4. Permissions</h2>
+      <ul>
+        <li><strong>Notification access (NotificationListenerService):</strong> required on the Personal / Owner phone to hear UPI payment alerts. Without it, live announcements cannot work. Counters do not need this permission to announce credits they receive from the Owner.</li>
+        <li><strong>Internet:</strong> used for Google Play Billing, app updates from Google Play, and — in Owner / Counter Mode — Firebase and push messaging. Personal history is not uploaded as a sales ledger.</li>
+        <li><strong>Foreground service / background:</strong> used so listening (Owner / Personal) and counter announcements can continue when the screen is off, as declared in Google Play.</li>
+      </ul>
+
+      <h2>5. Cloud / sharing</h2>
+      <p>
+        Personal Mode is <strong>offline-first</strong>. Owner / Counter Mode necessarily uses Firebase so shops can hear mapped payments.
+      </p>
+      <ul>
+        <li><strong>Google Play Billing:</strong> when you buy a Personal (₹99 / year) or Business (₹499 / year) license after the free trial, payment is processed entirely by Google Play Billing. Google, not VoicePay, collects your payment details (card, UPI, etc.) directly. We receive a purchase confirmation and transaction identifier to activate your license — we never see or store your payment instrument details.</li>
         <li><strong>Google Play:</strong> if you install from Play, Google’s own terms and privacy practices apply to distribution, billing, and crash/analytics they collect.</li>
+        <li><strong>Google Firebase:</strong> used only when you use Owner or Counter. Google processes that data as our infrastructure provider under their terms.</li>
         <li><strong>Exports you share:</strong> if you export CSV and share it, the recipients you choose will see that data. That sharing is under your control.</li>
       </ul>
       <p>We do not sell your personal data.</p>
 
-      <h2>5. Data retention on device</h2>
+      <h2>6. Data retention</h2>
       <ul>
-        <li>History remains on your phone until you clear it (for example after export) or uninstall the app.</li>
-        <li>VoicePay may automatically remove history older than <strong>90 days</strong> to keep the local database fresh.</li>
+        <li>On-device history remains on your phone until you clear it (for example after export) or uninstall the app.</li>
+        <li>VoicePay may automatically remove on-device history older than <strong>90 days</strong> to keep the local database fresh.</li>
         <li>License and settings remain until you clear app data or uninstall.</li>
+        <li>Owner / Counter cloud records (business, shops, mappings, devices, payment events) remain while the Owner account is used, and for a reasonable period after so we can operate, debug, and meet legal duties. You can ask us to delete an Owner account by emailing support.</li>
       </ul>
 
-      <h2>6. Security</h2>
+      <h2>7. Security</h2>
       <p>
         Keep your phone locked and Notification Access limited to apps you trust.
-        Because VoicePay can read UPI notification text, treat the device as sensitive business equipment.
-        No method of on-device storage is 100% secure if someone has physical access to an unlocked phone.
+        Because VoicePay can read UPI notification text, treat the Owner / Personal device as sensitive business equipment.
+        Keep Owner email and password secret. Revoke counters you no longer control.
+        No method of on-device or cloud storage is 100% secure if someone has physical access to an unlocked phone or your Owner login.
       </p>
 
-      <h2>7. Children’s privacy</h2>
+      <h2>8. Children’s privacy</h2>
       <p>
         VoicePay is intended for merchants and adults operating a business. It is not directed at children under 18.
       </p>
 
-      <h2>8. Your choices</h2>
+      <h2>9. Your choices</h2>
       <ul>
         <li>Turn Listening off in the app at any time.</li>
         <li>Revoke Notification Access in Android settings.</li>
+        <li>Stay in Personal Mode — no Owner account is required.</li>
+        <li>Revoke a counter device from Owner Mode so it stops receiving payments.</li>
         <li>Export and/or clear local history from the Export screen.</li>
         <li>Uninstall VoicePay to remove local app data (subject to Android behaviour).</li>
+        <li>Email us to request deletion of an Owner Business account and related cloud records.</li>
       </ul>
 
-      <h2>9. Changes</h2>
+      <h2>10. Changes</h2>
       <p>
         We may update this Policy from time to time. The “Last updated” date will change when we do.
         Continued use of VoicePay after an update means you accept the revised Policy.
       </p>
 
-      <h2>10. Contact us</h2>
+      <h2>11. Contact us</h2>
       <p>
         <strong>SSQUARE AI SOLUTIONS PVT LTD</strong><br/>
         Tirunelveli, Tamil Nadu, India<br/>
